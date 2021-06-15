@@ -7,15 +7,16 @@ namespace Character_Generator
         string option;
         int[] stats;
 
-        AutoRoller(string _option)
+        public AutoRoller(string _option)
         {
             option = _option;
             stats = new int[7];
         }
 
-        public void ReRoll()
+        public AutoRoller()
         {
-            Roll();
+            stats = new int[7];
+            option = "";
         }
 
         public void ReRoll(string _option)
@@ -24,14 +25,14 @@ namespace Character_Generator
             Roll();
         }
 
-        private void Roll()
+        public void Roll()
         {
             switch (option)
             {
                 case "4d6d1":
                     stats = Roll4d6d1();
                     break;
-                case "3d6d2":
+                case "3d6r2":
                     stats = RollTwice();
                     break;
                 default:
@@ -51,6 +52,7 @@ namespace Character_Generator
                     sum += rng.Next(1, 7);
 
                 rolled[i] = sum;
+                sum = 0;
             }
 
             return rolled;
@@ -69,8 +71,8 @@ namespace Character_Generator
                 }
                 else
                 {
-                    for (int j = 6; j < 14; j++)
-                        rolled[j] = set[j];
+                    for (int j = 7; j < 14; j++)
+                        rolled[j] = set[j - 7];
                 }
             }
 
@@ -127,7 +129,7 @@ namespace Character_Generator
                 int key = rolled[i];
                 int j = i - 1;
 
-                while (j >= 0 && rolled[j] > key)
+                while (j >= 0 && rolled[j] < key)
                 {
                     rolled[j + 1] = rolled[j];
                     j = j - 1;
