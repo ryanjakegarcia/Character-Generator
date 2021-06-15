@@ -13,23 +13,34 @@ namespace Character_Generator
             stats = new int[7];
         }
 
-        void Roll()
+        public void ReRoll()
+        {
+            Roll();
+        }
+
+        public void ReRoll(string _option)
+        {
+            option = _option;
+            Roll();
+        }
+
+        private void Roll()
         {
             switch (option)
             {
                 case "4d6d1":
-                    RollHeroic();
+                    stats = Roll4d6d1();
                     break;
                 case "3d6d2":
-                    RollTwice();
+                    stats = RollTwice();
                     break;
                 default:
-                    RollLine();
+                    stats = Roll3d6();
                     break;
             }
         }
 
-        private int[] RollLine()
+        private int[] Roll3d6()
         {
             Random rng = new Random();
             int sum = 0;
@@ -45,13 +56,13 @@ namespace Character_Generator
             return rolled;
         }
 
-        private void RollTwice()
+        private int[] RollTwice()
         {
             int[] rolled = new int[14];
-            for(int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
             {
-                int[] set = RollLine();
-                if(i < 1)
+                int[] set = Roll3d6();
+                if (i < 1)
                 {
                     for (int j = 0; j < 7; j++)
                         rolled[j] = set[j];
@@ -62,16 +73,67 @@ namespace Character_Generator
                         rolled[j] = set[j];
                 }
             }
+
+            sort(ref rolled);
+
+            int[] highest = new int[7];
+            for (int i = 0; i < 7; i++)
+            {
+                highest[i] = rolled[i];
+            }
+
+            return highest;
         }
 
-        private void RollHeroic()
+        private int[] Roll4d6d1()
         {
-            throw new NotImplementedException();
+            Random rng = new Random();
+            int[] dice = new int[4];
+            int num = 0;
+            int[] rolled = new int[7];
+
+            for(int i = 0; i < 7; i++)
+            {
+                for(int j = 0; j < 4; j++)
+                {
+                    dice[j] = rng.Next(1, 7);
+
+                    if(j > 0)
+                    {
+                        if(dice[j - 1] < dice[j])
+                        {
+                            num = dice[j];
+                            dice[j] = dice[j - 1];
+                            dice[j - 1] = num;
+                        }
+                    }
+                }
+
+                rolled[i] = dice[0] + dice[1] + dice[2];
+            }
+
+            return rolled;
         }
 
         public int[] getStats()
         {
             return stats;
+        }
+
+        private void sort(ref int[] rolled)
+        {
+            for(int i = 1; i < rolled.Length; ++i)
+            {
+                int key = rolled[i];
+                int j = i - 1;
+
+                while (j >= 0 && rolled[j] > key)
+                {
+                    rolled[j + 1] = rolled[j];
+                    j = j - 1;
+                }
+                rolled[j + 1] = key;
+            }
         }
     }
 }
