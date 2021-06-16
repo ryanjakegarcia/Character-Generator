@@ -7,24 +7,41 @@ namespace Character_Generator
     //The purpose of this race class is to assign a race based off of a characters race
     //Assumption: we have an array of 7 integers
     // We then apply a race to a given set of numbers and modify the stats.
-    public class  Race
+    public class Race
     {
-        //Race weights
-
+        //Base race weights
+        private
+        int HumanChance;    int HumanThreshhold;                     
+        int DwarfChance;    int DwarfThreshhold;        
+        int ElfChance;      int ElfThreshhold;            
+        int HalfingChance;  int HalfingThreshhold;      
+        int GnomeChance;    int GnomeThreshhold;      
+        int Half_ElfChance; int Half_ElfThreshhold;  
 
         //in case we wanted to expand we can generate a random number from the total
 
+        public Race() {
+            
+            //Base Race          //Chance                                                                   //Threshhold
+             HumanChance     = 50;            HumanThreshhold = HumanChance + 0;                      //50
+             DwarfChance    = 15;             DwarfThreshhold = DwarfChance + HumanThreshhold;        //65
+             ElfChance       = 15;            ElfThreshhold = ElfChance + DwarfThreshhold;            //80
+             HalfingChance   = 10;            HalfingThreshhold = HalfingChance + ElfThreshhold;      //90
+             GnomeChance     = 5;             GnomeThreshhold = GnomeChance + HalfingThreshhold;      //95
+             Half_ElfChance  = 5;             Half_ElfThreshhold = Half_ElfChance + GnomeThreshhold;  //100
 
 
-        //Base Ranges
-        int[] HumanChance    = { 1, 50 };
-        int[] DwarfeChance   = { 51, 65 };
-        int[] ElfChance      = { 66, 80 };
-        int[] HalfingChance  = { 81, 90 };
-        int[] GnomeChance    = { 91, 95 };
-        int[] Half_ElfChance = { 96, 100};
 
 
+
+
+        }
+
+        
+
+    
+        
+    
 
 
 
@@ -36,20 +53,39 @@ namespace Character_Generator
 
             //massive evaluation statement
 
-            if (roll < 51) 
-            { race = "Human"; }
-            else if (roll < 66)
-            { race = "Dwarf"; }
-            else if (roll < 81)
-            { race = "elf"; }
-            else if (roll < 91)
-            { race = "Halfing"; }
-            else if (roll < 96)
-            { race = "Gnome"; }
+            switch (roll) 
+            { 
+                case int n when n <= HumanThreshhold:
+                    { race = "Human"; }
+                    break;
+                case int n when n <= DwarfThreshhold:
+                    { race = "Dwarf"; }
+                    break;
+                case int n when n <= ElfThreshhold:
+                    { race = "Elf"; }
+                    break;
+                case int n when n <= HalfingThreshhold:
+                    { race = "Halfing"; }
+                    break;
+                case int n when n <= GnomeThreshhold:
+                    { race = "Gnome"; }
+                    break;
+                case int n when n <= Half_ElfThreshhold:
+                    { race = "Half-Elf"; }
+                    break;
+                default:
+                    Console.WriteLine($"Bad Things");
+                    break;
+
+
+
+
+
+            }
+
      
-            else 
-            { race = "Half-Elf"; }
-            Console.WriteLine("You are a dirty" + race);
+           
+            
 
 
 
