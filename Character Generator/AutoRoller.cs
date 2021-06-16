@@ -4,8 +4,8 @@ namespace Character_Generator
 {
     public class AutoRoller
     {
-        string option;
-        int[] stats;
+        private string option;
+        private int[] stats;
 
         public AutoRoller(string _option)
         {

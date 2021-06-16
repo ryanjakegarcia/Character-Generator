@@ -1,0 +1,56 @@
+{
+Fighter
+STR 9
+Race
+Any
+}
+
+{
+Paladin
+STR 12
+CON 9
+WIS 13
+CHR 17
+Race
+Human
+}
+
+{
+Ranger
+STR 13
+DEX 13
+CON 14
+WIS 14
+Race
+Human Elf Half-Elf
+}
+
+{
+Wizard
+INT 9
+Race
+Human Elf Half-Elf Gnome
+}
+
+{
+Cleric
+WIS 9
+Race
+Any
+}
+
+{
+Thief
+DEX 9
+Race
+Any
+}
+
+{
+Bard
+DEX 12
+INT 13
+CHR 15
+Race
+Human Half-Elf
+}
