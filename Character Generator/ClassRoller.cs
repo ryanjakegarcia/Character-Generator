@@ -25,6 +25,10 @@ namespace Character_Generator
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Parses a file with classes and their requirements/restrictions.
+        /// Stores parsed information for use during generation.
+        /// </summary>
         private void readReqs()
         {
             using (System.IO.StreamReader file = new System.IO.StreamReader("..\\..\\..\\..\\Character Generator\\ClassInfo.txt"))
@@ -63,6 +67,9 @@ namespace Character_Generator
             }
         }
 
+        /// <summary>
+        /// Wrapper class for storing and accessing parsed information.
+        /// </summary>
         protected class ClassInfo
         {
             protected string className;
