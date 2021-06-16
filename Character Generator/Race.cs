@@ -22,11 +22,7 @@ namespace Character_Generator
         int[] ElfChance      = { 66, 80 };
         int[] HalfingChance  = { 81, 90 };
         int[] GnomeChance    = { 91, 95 };
-        int[] Half_ElfChance = { 96, 100};
-
-
-
-
+        int[] Half_ElfChance = { 96, 100 };
 
         public void RaceRoll() 
         {
