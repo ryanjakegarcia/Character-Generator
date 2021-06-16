@@ -19,12 +19,19 @@ namespace Character_Generator
             option = "";
         }
 
+        /// <summary>
+        /// Used for changing the rolling method of this AutoRoller and then Rolling with that new method.
+        /// </summary>
+        /// <param name="_option"></param>
         public void ReRoll(string _option)
         {
             option = _option;
             Roll();
         }
 
+        /// <summary>
+        /// Generalized rolling method to apply the current AutoRoller option.
+        /// </summary>
         public void Roll()
         {
             switch (option)
@@ -41,6 +48,10 @@ namespace Character_Generator
             }
         }
 
+        /// <summary>
+        /// Generates 7 stats by rolling 3d6 once for each stat and then returns the 7 stats.
+        /// </summary>
+        /// <returns></returns>
         private int[] Roll3d6()
         {
             Random rng = new Random();
@@ -58,25 +69,29 @@ namespace Character_Generator
             return rolled;
         }
 
+        /// <summary>
+        /// Generates 14 stats and then returns the highest 7 stats.
+        /// </summary>
+        /// <returns></returns>
         private int[] RollTwice()
         {
             int[] rolled = new int[14];
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++) //Iterate 2 rolls of 3d6
             {
                 int[] set = Roll3d6();
-                if (i < 1)
+                if (i < 1) //First roll
                 {
                     for (int j = 0; j < 7; j++)
                         rolled[j] = set[j];
                 }
-                else
+                else //Second roll
                 {
                     for (int j = 7; j < 14; j++)
                         rolled[j] = set[j - 7];
                 }
             }
 
-            sort(ref rolled);
+            sort(ref rolled); //Sort the rolls from highest to lowest.
 
             int[] highest = new int[7];
             for (int i = 0; i < 7; i++)
@@ -87,6 +102,11 @@ namespace Character_Generator
             return highest;
         }
 
+        /// <summary>
+        /// Generates 7 stats by rolling 4d6 and then dropping the lowest number rolled for each individual stat.
+        /// Returns the 7 stats rolled.
+        /// </summary>
+        /// <returns></returns>
         private int[] Roll4d6d1()
         {
             Random rng = new Random();
@@ -117,11 +137,20 @@ namespace Character_Generator
             return rolled;
         }
 
+        /// <summary>
+        /// Getter used to retrieve the most recently rolled stats by this AutoRoller.
+        /// </summary>
+        /// <returns></returns>
         public int[] getStats()
         {
             return stats;
         }
 
+        /// <summary>
+        /// Helper sorting method that uses Insertion sort from Highest to Lowest.
+        /// Insertion sort performs the fastest on small arrays.
+        /// </summary>
+        /// <param name="rolled"></param>
         private void sort(ref int[] rolled)
         {
             for(int i = 1; i < rolled.Length; ++i)
