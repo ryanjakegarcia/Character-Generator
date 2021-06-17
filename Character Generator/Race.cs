@@ -34,7 +34,7 @@ namespace Character_Generator
         {
             string race;
             Random rng = new Random();
-            int roll = rng.Next(101);
+            int roll = rng.Next(Half_ElfThreshhold+1);
 
             //massive evaluation statement
 
