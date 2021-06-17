@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,34 +7,33 @@ using System.Text;
 namespace Character_Generator
 {
     public class ClassRoller
-    {   
+    {
         private string race;
         private int[] stats;
         private Dictionary<string, ClassInfo> classReqs;
 
         //class weights
         //Base race weights
-        private int FighterChance;  private int FighterThreshhold;
-        private int RangerChance;   private int RangerThreshhold;
-        private int PaladinChance;  private int PaladinThreshhold;
-        private int WizardChance;   private int WizardThreshhold;
-        private int ClericChance;   private int ClericThreshhold;
-        private int ThiefChance;    private int ThiefThreshhold;
-        private int BardChance;     private int BardThreshhold;
+        private int FighterChance; private int FighterThreshhold; //Could these be arrays of length 2? Might clean up the amount of variables/typing needed
+        private int RangerChance; private int RangerThreshhold;
+        private int PaladinChance; private int PaladinThreshhold;
+        private int WizardChance; private int WizardThreshhold;
+        private int ClericChance; private int ClericThreshhold;
+        private int ThiefChance; private int ThiefThreshhold;
+        private int BardChance; private int BardThreshhold;
 
 
-        ClassRoller()
-            
-            {
+        public ClassRoller()
+        {
 
-            //Base Race     //Weight                                                                
-            FighterChance   = 35;       FighterThreshhold   = FighterChance + 0;                      
-            RangerChance    = 20;       RangerThreshhold    = RangerChance  + FighterThreshhold;        
-            PaladinChance   = 5;        PaladinThreshhold   = PaladinChance + RangerThreshhold;            
-            WizardChance    = 10;       WizardThreshhold    = WizardChance  + PaladinThreshhold;      
-            ClericChance    = 15;        ClericThreshhold    = ClericChance  + WizardThreshhold;      
-            ThiefChance     = 20;       ThiefThreshhold     = ThiefChance   + ClericThreshhold;  
-            BardChance      = 15;       BardThreshhold        = BardChance + ThiefThreshhold;
+            //Base Race         //Weight                                                                
+            FighterChance = 35; FighterThreshhold = FighterChance + 0; //This feels needless complicated/bloated
+            RangerChance = 20; RangerThreshhold = RangerChance + FighterThreshhold;
+            PaladinChance = 5; PaladinThreshhold = PaladinChance + RangerThreshhold;
+            WizardChance = 10; WizardThreshhold = WizardChance + PaladinThreshhold;
+            ClericChance = 15; ClericThreshhold = ClericChance + WizardThreshhold;
+            ThiefChance = 20; ThiefThreshhold = ThiefChance + ClericThreshhold;
+            BardChance = 15; BardThreshhold = BardChance + ThiefThreshhold;
         }
 
 
@@ -49,15 +47,11 @@ namespace Character_Generator
 
         public string RollClass()
         {
-            throw new NotImplementedException();
-
-
-            
             Random rng = new Random();
             bool done = false;
-            while(!done)
-            { 
-            int roll = rng.Next(BardThreshhold + 1);
+            while (!done)
+            {
+                int roll = rng.Next(BardThreshhold + 1);
 
                 //massive evaluation statement
 
@@ -72,7 +66,6 @@ namespace Character_Generator
                                 return "Fighter";
                             }
                         }
-                        
                         break;
                     case int n when n <= RangerThreshhold:
                         { }
@@ -93,15 +86,10 @@ namespace Character_Generator
 
                     default:
                         done = true;
-                        return "Ultra instinct Log";
+                        return "Ultra instinct Log"; //Funny
                         break;
                 }
             }
-
-
-
-
-
         }
 
         /// <summary>
@@ -121,7 +109,7 @@ namespace Character_Generator
                     {
                         classInfo.ClassName = file.ReadLine();
                         line = file.ReadLine();
-                        while(line != "}")
+                        while (line != "}")
                         {
                             switch (line)
                             {
@@ -179,14 +167,6 @@ namespace Character_Generator
                 set { races = value; }
             }
         }
-
-      
-    
-    
-    
-    
-    
-    
     }
 
 }
