@@ -8,7 +8,7 @@ using System.Text;
 namespace Character_Generator
 {
     public class ClassRoller
-    {   private string CharacterClass;
+    {   
         private string race;
         private int[] stats;
         private Dictionary<string, ClassInfo> classReqs;
@@ -68,6 +68,7 @@ namespace Character_Generator
                             //tests to see if we can be a fighter
                             if (stats[0] >= 9)
                             {
+                                done = true;
                                 return "Fighter";
                             }
                         }
@@ -89,8 +90,10 @@ namespace Character_Generator
                         { }
                         break;
                     case int n when n <= BardThreshhold:
+
                     default:
-                        Console.WriteLine($"Bad class Things");
+                        done = true;
+                        return "Ultra instinct Log";
                         break;
                 }
             }
