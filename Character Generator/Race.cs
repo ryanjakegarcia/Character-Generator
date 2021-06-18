@@ -30,7 +30,7 @@ namespace Character_Generator
              Half_ElfChance = 5;              Half_ElfThreshhold = Half_ElfChance + GnomeThreshhold;  //100
         }
 
-        public void RaceRoll() 
+        public string RaceRoll() 
         {
             string race;
             Random rng = new Random();
@@ -42,26 +42,29 @@ namespace Character_Generator
             { 
                 case int n when n <= HumanThreshhold:
                     { race = "Human"; }
-                    break;
+                    return race;
+                    
                 case int n when n <= DwarfThreshhold:
                     { race = "Dwarf"; }
-                    break;
+                    return race;
                 case int n when n <= ElfThreshhold:
                     { race = "Elf"; }
-                    break;
+                    return race;
                 case int n when n <= HalfingThreshhold:
                     { race = "Halfing"; }
-                    break;
+                    return race;
                 case int n when n <= GnomeThreshhold:
                     { race = "Gnome"; }
-                    break;
+                    return race;
                 case int n when n <= Half_ElfThreshhold:
                     { race = "Half-Elf"; }
-                    break;
+                    return race;
                 default:
                     Console.WriteLine($"Bad Things");
-                    break;
+                    return "";
+                   
             }
+            
         }
     }
 }

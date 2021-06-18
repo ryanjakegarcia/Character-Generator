@@ -10,6 +10,7 @@ namespace Character_Generator
     {
         private string race;
         private int[] stats;
+        private string charclass;
         private Dictionary<string, ClassInfo> classReqs;
 
         //class weights
@@ -24,7 +25,7 @@ namespace Character_Generator
 
 
 
-
+        //constructor
 
         public ClassRoller(string _race, int[] _stats)
         {
@@ -45,6 +46,31 @@ namespace Character_Generator
             race = _race;
             stats = _stats;
             readReqs();
+        }
+
+
+        public void UpdateStats(int[] statroll) 
+        {
+            int i = 0;
+            foreach (int cstat in statroll) 
+            
+            {
+                stats[i] = statroll[i];
+                i++;
+
+            }
+          
+        }
+
+        public void UpdateRace(string CharRace) 
+        {
+
+            race = CharRace;
+
+        }
+        public string GetClass() 
+        {
+            return charclass;        
         }
 
         //This function checks to see if a character's race is valid for the given class
@@ -115,6 +141,7 @@ namespace Character_Generator
             }
             return true;
         }
+        //this functions purpose is to roll a class and determine if the stats apply
         public string RollClass()
         {
             //creaiting a new Random object
@@ -122,14 +149,32 @@ namespace Character_Generator
             // rolled class container
             String RolledClass = "";
             //Loop flag
+
+
+            //Statements needed to have to determine if we can be any class purely to see if we have run out of classes to be
+            bool CanFighter = true;
+            bool CanRanger = true;
+            bool CanPaladin = true;
+            bool CanWizard = true;
+            bool CanCleric = true;
+            bool CanThief = true;
+            bool CanBard = true;
             bool done = false;
+
             while (!done)
             {
+                //Log- as in stat log check
+
+
+                if (!(CanFighter || CanRanger || CanPaladin|| CanWizard|| CanCleric||CanThief||CanBard)) 
+                {
+                    return "Log";
+                    break; }
                 //Rolling the number
                 int roll = rng.Next(BardThreshhold + 1);
 
                 //massive evaluation statement
-                
+
                 switch (roll)
                 {
                     case int n when n <= FighterThreshhold:
@@ -138,6 +183,7 @@ namespace Character_Generator
                             //tests to see if we can be a fighter
                             if (validrace(RolledClass) && validstats(RolledClass))
                             { return RolledClass; }
+                            else CanFighter = false;
                         }
                         break;
                     case int n when n <= RangerThreshhold:
@@ -147,6 +193,7 @@ namespace Character_Generator
                             //tests to see if we can be a Ranger
                             if (validrace(RolledClass) && validstats(RolledClass))
                             { return RolledClass; }
+                            else CanRanger = false;
                         }
                         break;
                     case int n when n <= PaladinThreshhold:
@@ -155,6 +202,7 @@ namespace Character_Generator
                             //tests to see if we can be a Paladin
                             if (validrace(RolledClass) && validstats(RolledClass))
                             { return RolledClass; }
+                            else CanPaladin = false;
                         }
                         break;
                     case int n when n <= WizardThreshhold:
@@ -163,6 +211,7 @@ namespace Character_Generator
                             //tests to see if we can be a wizard
                             if (validrace(RolledClass) && validstats(RolledClass))
                             { return RolledClass; }
+                            else CanWizard = false;
                         }
                         break;
                     case int n when n <= ClericThreshhold:
@@ -171,6 +220,8 @@ namespace Character_Generator
                             //tests to see if we can be a cleric
                             if (validrace(RolledClass) && validstats(RolledClass))
                             { return RolledClass; }
+                            else CanCleric = false;
+
                         }
                         break;
                     case int n when n <= ThiefThreshhold:
@@ -179,23 +230,29 @@ namespace Character_Generator
                             //tests to see if we can be a Thief
                             if (validrace(RolledClass) && validstats(RolledClass))
                             { return RolledClass; }
+                            else CanThief = false;
+
                         }
                         break;
                     case int n when n <= BardThreshhold:
                         {
-                            RolledClass = "Bard";
+                            
+                                RolledClass = "Bard";
                             //tests to see if we can be a Bard
                             if (validrace(RolledClass) && validstats(RolledClass))
                             { return RolledClass; }
-                        }
+                            else
+                                CanBard = false;
+                        }   
+                            
                         break;
                     default:
                         done = true;
-                        return "Ultra instinct Log"; //Funny
+                        return "Roll switch statement is broken"; //Funny LR
                         break;
                 }
-            }
-            return "log";
+            } return "system failure";
+          
         }
 
         /// <summary>
