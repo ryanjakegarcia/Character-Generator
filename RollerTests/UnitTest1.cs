@@ -13,8 +13,13 @@ namespace RollerTests
         [Test]
         public void Test1()
         {
+            
             AutoRoller roller = new AutoRoller("4d6d1");
+          
             roller.Roll();
+            ClassRoller classRoller = new ClassRoller("Human", roller.getStats());
+            classRoller.RollClass();
+          
         }
     }
 }
