@@ -13,32 +13,27 @@ namespace RollerTests
         [Test]
         public void Test1()
         {
-
             AutoRoller roller = new AutoRoller("4d6d1");
-
             roller.Roll();
             ClassRoller classRoller = new ClassRoller("Human", roller.getStats());
             classRoller.RollClass();
 
-
-            int[] cn = new int[] {0,0,0,0,0,0,0,0};
+            int[] cn = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
 
             string CharClass;
-            for (int i = 0; i < 1000; i++)             
-        {
+            for (int i = 0; i < 1000000; i++)
+            {
                 roller.Roll();
                 classRoller.UpdateStats(roller.getStats());
                 classRoller.UpdateRace("Human");
                 CharClass = classRoller.RollClass();
 
-
-
-                switch (CharClass) 
+                switch (CharClass)
                 {
                     case "Fighter":
                         {
                             cn[0]++;
-                            break; 
+                            break;
                         }
                     case "Ranger":
                         {
@@ -75,20 +70,8 @@ namespace RollerTests
                             cn[7]++;
                             break;
                         }
-
-
-
-
-
-
-
                 }
-
-
-
             }
-
-
         }
     }
 }
