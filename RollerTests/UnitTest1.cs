@@ -11,6 +11,13 @@ namespace RollerTests
         }
 
         [Test]
+        public void TestRollTwice()
+        {
+            AutoRoller roller = new AutoRoller("3d6r2");
+            roller.Roll();
+        }
+
+        [Test]
         public void Test1()
         {
             AutoRoller roller = new AutoRoller("4d6d1");

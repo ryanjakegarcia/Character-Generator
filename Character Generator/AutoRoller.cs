@@ -99,6 +99,8 @@ namespace Character_Generator
                 highest[i] = rolled[i];
             }
 
+            shuffle(ref highest);
+
             return highest;
         }
 
@@ -164,6 +166,24 @@ namespace Character_Generator
                     j = j - 1;
                 }
                 rolled[j + 1] = key;
+            }
+        }
+
+        /// <summary>
+        /// Helper shuffle method.
+        /// </summary>
+        /// <param name="highest"></param>
+        private void shuffle(ref int[] highest)
+        {
+            Random rng = new Random();
+
+            for(int i = highest.Length - 1; i > 0; i--)
+            {
+                int j = rng.Next(0, i + 1);
+
+                int temp = highest[i];
+                highest[i] = highest[j];
+                highest[j] = temp;
             }
         }
     }
