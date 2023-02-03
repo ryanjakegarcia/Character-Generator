@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -34,12 +35,12 @@ namespace Character_Generator
 
             //Base Race    //Weight                                                                
             FighterChance   = 35; FighterThreshhold = FighterChance + 0; //This feels needless complicated/bloated
-            RangerChance    = 20; RangerThreshhold = RangerChance + FighterThreshhold;
-            PaladinChance   = 5; PaladinThreshhold = PaladinChance + RangerThreshhold;
+            RangerChance    = 40; RangerThreshhold = RangerChance + FighterThreshhold;
+            PaladinChance   = 40; PaladinThreshhold = PaladinChance + RangerThreshhold;
             WizardChance    = 10; WizardThreshhold = WizardChance + PaladinThreshhold;
-            ClericChance    = 15; ClericThreshhold = ClericChance + WizardThreshhold;
+            ClericChance    = 12; ClericThreshhold = ClericChance + WizardThreshhold;
             ThiefChance     = 20; ThiefThreshhold = ThiefChance + ClericThreshhold;
-            BardChance      = 15; BardThreshhold = BardChance + ThiefThreshhold;
+            BardChance      = 20; BardThreshhold = BardChance + ThiefThreshhold;
 
 
             classReqs = new Dictionary<string, ClassInfo>();
@@ -61,6 +62,7 @@ namespace Character_Generator
             }
           
         }
+        public int[] GetStats() { return stats; }
 
         public void UpdateRace(string CharRace) 
         {
@@ -68,6 +70,8 @@ namespace Character_Generator
             race = CharRace;
 
         }
+         public string GetRace() { return race; }
+
         public string GetClass() 
         {
             return charclass;        
@@ -108,7 +112,7 @@ namespace Character_Generator
         //This functions purpose is a helper function for RollClass
         //This function checks to see if a character's stats are valid for the given class
         //Assumptions: We know the selected class, and know our stats.
-        private bool validstats(string classname)
+        public bool validstats(string classname)
         {
            
             ClassInfo Storage;
@@ -261,7 +265,24 @@ namespace Character_Generator
         /// </summary>
         private void readReqs()
         {
-            using (System.IO.StreamReader file = new System.IO.StreamReader("..\\..\\..\\..\\Character Generator\\ClassInfo.txt"))
+
+            //alternate path for the file 
+            //original"..\\..\\..\\..\\Character Generator\\ClassInfo.txt"
+            //for github
+            
+            //path2 += "C:\\Users\\tyler\\Source\\Repos\\ryanjakegarcia\\Character-Generator\\Character Generator\\ClassInfo.txt";
+            string path2 = Directory.GetCurrentDirectory();
+            //due to some wierd ass build shit somehow the builds for the gui and the tests are not even the same distance from the classinfo.txt one is 3 away one is 4 away
+
+            while (path2[path2.Length-1] != 'r')
+            {
+                path2 = Directory.GetParent(path2).ToString();
+            }
+
+            path2 += "\\Character Generator\\ClassInfo.txt";
+
+
+            using (System.IO.StreamReader file = new System.IO.StreamReader(path2))
             {
                 string line;
                 while (!file.EndOfStream)

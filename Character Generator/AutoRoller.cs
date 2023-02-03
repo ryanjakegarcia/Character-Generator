@@ -42,6 +42,7 @@ namespace Character_Generator
                 case "3d6r2":
                     stats = RollTwice();
                     break;
+                    
                 default:
                     stats = Roll3d6();
                     break;

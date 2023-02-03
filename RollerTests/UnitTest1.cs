@@ -34,6 +34,11 @@ namespace RollerTests
                 classRoller.UpdateStats(roller.getStats());
                 classRoller.UpdateRace("Human");
                 CharClass = classRoller.RollClass();
+                // change to palender
+                // ranger
+                // druid
+                // bard
+
 
                 switch (CharClass)
                 {
@@ -77,8 +82,32 @@ namespace RollerTests
                             cn[7]++;
                             break;
                         }
+
                 }
+
             }
+        }
+
+
+        [Test]
+        public void Test2() 
+        {
+            ClassSelector cl = new ClassSelector();
+            cl.RollStatsforClass("Fighter", "4d6d1", false);
+            cl.RollStatsforClass("Wizard", "4d6d1", false);
+            cl.RollStatsforClass("Cleric", "4d6d1", false);
+            cl.RollStatsforClass("Bard", "4d6d1", false);
+            cl.RollStatsforClass("Ranger", "4d6d1", false);
+            cl.RollStatsforClass("Thief", "4d6d1", false);
+            cl.RollStatsforClass("Paladin", "4d6d1", false);
+
+
+
+
+
+
+
+
         }
     }
 

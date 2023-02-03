@@ -1,13 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Character Generator", "Character Generator\Character Generator.csproj", "{6F140D74-219F-4BB7-BFBF-BE3A2432D6E0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RollerTests", "RollerTests\RollerTests.csproj", "{5E64B450-94B1-4000-8655-50A888461FF5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterGUI", "CharacterGUI\CharacterGUI.csproj", "{82D08978-FAF6-4051-9BCD-C16E3FEB25AB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6F140D74-219F-4BB7-BFBF-BE3A2432D6E0} = {6F140D74-219F-4BB7-BFBF-BE3A2432D6E0}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
