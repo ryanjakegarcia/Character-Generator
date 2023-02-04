@@ -247,7 +247,7 @@ namespace CharacterGUI
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(702, 17);
+            this.label27.Location = new System.Drawing.Point(718, 16);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(52, 16);
             this.label27.TabIndex = 21;
@@ -305,7 +305,7 @@ namespace CharacterGUI
             // 
             // BBLGBox
             // 
-            this.BBLGBox.Location = new System.Drawing.Point(761, 11);
+            this.BBLGBox.Location = new System.Drawing.Point(777, 11);
             this.BBLGBox.Margin = new System.Windows.Forms.Padding(4);
             this.BBLGBox.Name = "BBLGBox";
             this.BBLGBox.ReadOnly = true;
@@ -329,7 +329,7 @@ namespace CharacterGUI
             this.OpenDoorsBox.Margin = new System.Windows.Forms.Padding(4);
             this.OpenDoorsBox.Name = "OpenDoorsBox";
             this.OpenDoorsBox.ReadOnly = true;
-            this.OpenDoorsBox.Size = new System.Drawing.Size(39, 26);
+            this.OpenDoorsBox.Size = new System.Drawing.Size(55, 26);
             this.OpenDoorsBox.TabIndex = 11;
             this.OpenDoorsBox.Text = "00";
             // 
@@ -361,6 +361,7 @@ namespace CharacterGUI
             this.StrengthBox.Size = new System.Drawing.Size(31, 26);
             this.StrengthBox.TabIndex = 1;
             this.StrengthBox.Text = "00";
+            this.StrengthBox.TextChanged += new System.EventHandler(this.StrengthBox_TextChanged);
             // 
             // label4
             // 
