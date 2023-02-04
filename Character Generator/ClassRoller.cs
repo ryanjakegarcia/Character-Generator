@@ -34,13 +34,14 @@ namespace Character_Generator
 
 
             //Base Race    //Weight                                                                
-            FighterChance   = 35; FighterThreshhold = FighterChance + 0; //This feels needless complicated/bloated
-            RangerChance    = 40; RangerThreshhold = RangerChance + FighterThreshhold;
-            PaladinChance   = 40; PaladinThreshhold = PaladinChance + RangerThreshhold;
-            WizardChance    = 10; WizardThreshhold = WizardChance + PaladinThreshhold;
-            ClericChance    = 12; ClericThreshhold = ClericChance + WizardThreshhold;
-            ThiefChance     = 20; ThiefThreshhold = ThiefChance + ClericThreshhold;
-            BardChance      = 20; BardThreshhold = BardChance + ThiefThreshhold;
+            FighterChance   = 1; FighterThreshhold = FighterChance + 0; //This feels needless complicated/bloated
+            RangerChance    = 1; RangerThreshhold = RangerChance + FighterThreshhold;
+            PaladinChance   = 1; PaladinThreshhold = PaladinChance + RangerThreshhold;
+            WizardChance    = 1; WizardThreshhold = WizardChance + PaladinThreshhold;
+            ClericChance    = 1; ClericThreshhold = ClericChance + WizardThreshhold;
+            ThiefChance     = 1; ThiefThreshhold = ThiefChance + ClericThreshhold;
+            BardChance      = 1; BardThreshhold = BardChance + ThiefThreshhold;
+            //Since we are changing the direction of the purpose of the program I don't think the classes need to be weighted anymore than the stat reqs
 
 
             classReqs = new Dictionary<string, ClassInfo>();
@@ -266,6 +267,148 @@ namespace Character_Generator
                 }
             } return "system failure";
           
+        }
+
+        /// <summary>
+        /// Overloaded RollClass used to replace the current stats with new ones and then Roll a new class
+        /// </summary>
+        /// <param name="_stats"></param>
+        /// <returns></returns>
+        public string RollClass(int[] _stats)
+        {
+            stats = _stats;
+            //creaiting a new Random object
+            Random rng = new Random();
+            // rolled class container
+            String RolledClass = "";
+            //Loop flag
+
+
+            //Statements needed to have to determine if we can be any class purely to see if we have run out of classes to be
+            bool CanFighter = true;
+            bool CanRanger = true;
+            bool CanPaladin = true;
+            bool CanWizard = true;
+            bool CanCleric = true;
+            bool CanThief = true;
+            bool CanBard = true;
+            bool done = false;
+
+            while (!done)
+            {
+                //Log- as in stat log check
+
+
+                if (!(CanFighter || CanRanger || CanPaladin || CanWizard || CanCleric || CanThief || CanBard))
+                {
+                    return "Log";
+                    break;
+                }
+                //Rolling the number
+                int roll = rng.Next(BardThreshhold + 1);
+
+                //massive evaluation statement
+
+                switch (roll)
+                {
+                    case int n when n <= FighterThreshhold:
+                        {
+                            RolledClass = "Fighter";
+                            //tests to see if we can be a fighter
+                            if (validrace(RolledClass) && validstats(RolledClass))
+                            {
+                                charclass = RolledClass;
+                                return RolledClass;
+                            }
+                            else CanFighter = false;
+                        }
+                        break;
+                    case int n when n <= RangerThreshhold:
+                        {
+
+                            RolledClass = "Ranger";
+                            //tests to see if we can be a Ranger
+                            if (validrace(RolledClass) && validstats(RolledClass))
+                            {
+                                charclass = RolledClass;
+                                return RolledClass;
+                            }
+                            else CanRanger = false;
+                        }
+                        break;
+                    case int n when n <= PaladinThreshhold:
+                        {
+                            RolledClass = "Paladin";
+                            //tests to see if we can be a Paladin
+                            if (validrace(RolledClass) && validstats(RolledClass))
+                            {
+                                charclass = RolledClass;
+                                return RolledClass;
+                            }
+                            else CanPaladin = false;
+                        }
+                        break;
+                    case int n when n <= WizardThreshhold:
+                        {
+                            RolledClass = "Wizard";
+                            //tests to see if we can be a wizard
+                            if (validrace(RolledClass) && validstats(RolledClass))
+                            {
+                                charclass = RolledClass;
+                                return RolledClass;
+                            }
+                            else CanWizard = false;
+                        }
+                        break;
+                    case int n when n <= ClericThreshhold:
+                        {
+                            RolledClass = "Cleric";
+                            //tests to see if we can be a cleric
+                            if (validrace(RolledClass) && validstats(RolledClass))
+                            {
+                                charclass = RolledClass;
+                                return RolledClass;
+                            }
+                            else CanCleric = false;
+
+                        }
+                        break;
+                    case int n when n <= ThiefThreshhold:
+                        {
+                            RolledClass = "Thief";
+                            //tests to see if we can be a Thief
+                            if (validrace(RolledClass) && validstats(RolledClass))
+                            {
+                                charclass = RolledClass;
+                                return RolledClass;
+                            }
+                            else CanThief = false;
+
+                        }
+                        break;
+                    case int n when n <= BardThreshhold:
+                        {
+
+                            RolledClass = "Bard";
+                            //tests to see if we can be a Bard
+                            if (validrace(RolledClass) && validstats(RolledClass))
+                            {
+                                charclass = RolledClass;
+                                return RolledClass;
+                            }
+                            else
+                                CanBard = false;
+                        }
+
+                        break;
+                    default:
+                        done = true;
+                        return "Roll switch statement is broken"; //Funny LR
+                        break;
+                }
+            }
+            return "system failure";
+
         }
 
         /// <summary>
