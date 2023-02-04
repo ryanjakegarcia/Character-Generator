@@ -19,9 +19,27 @@ namespace CharacterGUI
         private AutoRoller roller;
         private ClassRoller classRoller;
 
+        private Dictionary<int, string> str;
+        private Dictionary<int, string> dex;
+        private Dictionary<int, string> con;
+        private Dictionary<int, string> ent;
+        private Dictionary<int, string> wis;
+        private Dictionary<int, string> chr;
+        private Dictionary<int, string> pcp;
+
         public Form1()
         {
             InitializeComponent();
+
+            str = new Dictionary<int, string>();
+            dex = new Dictionary<int, string>();
+            con = new Dictionary<int, string>();
+            ent = new Dictionary<int, string>();
+            wis = new Dictionary<int, string>();
+            chr = new Dictionary<int, string>();
+            pcp = new Dictionary<int, string>();
+
+            readStats();
 
             roller = new AutoRoller("3d6");
             roller.Roll();
@@ -31,7 +49,7 @@ namespace CharacterGUI
 
         private void Random_Click(object sender, EventArgs e)
         {
-            string value ="";
+            string value = "";
             if (Rollmethod4d6d1.Checked)
             {
                 value = Rollmethod4d6d1.Text;
@@ -56,7 +74,7 @@ namespace CharacterGUI
         }
 
         //this function takes an array of numbers and updates the stats
-        private void populate_form(string charclass, string charrace, int[] charstats) 
+        private void populate_form(string charclass, string charrace, int[] charstats)
         {
             statDisplay.DataSource = charstats;
             //This is a much simpler way to display the stats
@@ -70,6 +88,19 @@ namespace CharacterGUI
             WisomBox.Text = charstats[4].ToString();
             CharismaBox.Text = charstats[5].ToString();
             DumpBox.Text = charstats[6].ToString();
+
+            string strLine = "";
+
+            str.TryGetValue(charstats[0], out strLine);
+
+            string[] strSplit = strLine.Split();
+
+            HitAdjBox.Text = strSplit[0];
+            DamAdjBox.Text = strSplit[1];
+            WeightAllowBox.Text = strSplit[2];
+            MaxPressBox.Text = strSplit[3];
+            OpenDoorsBox.Text = strSplit[4] + "(" + strSplit[5] + ")";
+            BBLGBox.Text = strSplit[6] + "%";
 
             Classbox.Text = charclass;
 
@@ -85,78 +116,57 @@ namespace CharacterGUI
 
         }
 
-        private void statsbox_Enter(object sender, EventArgs e)
-        {
 
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-       /// <summary>
-       /// This function takes in three parameters and access more data inside
-       /// We iterate through the classes and create an array of classes that we want
-       /// There various cases due to posibilities of elite and multi class characters
-       /// 
-       /// 
-       /// </summary>
-       /// <param name="race"></param>
-       /// <param name="ismulitclass"></param>
-       /// <param name="iselite"></param>
+        /// <summary>
+        /// This function takes in three parameters and access more data inside
+        /// We iterate through the classes and create an array of classes that we want
+        /// There various cases due to posibilities of elite and multi class characters
+        /// 
+        /// 
+        /// </summary>
+        /// <param name="race"></param>
+        /// <param name="ismulitclass"></param>
+        /// <param name="iselite"></param>
         private void GenerateButton_Click()
         {
-            
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
 
         }
 
-        private void label23_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Reads in the stat lines
+        /// </summary>
+        private void readStats()
         {
+            using (System.IO.StreamReader file = new System.IO.StreamReader("statFields.txt"))
+            {
+                string line;
+                string stat;
+                while (!file.EndOfStream)
+                {
+                    line = file.ReadLine();
 
-        }
+                    if (line.Equals("{"))
+                    {
+                        stat = file.ReadLine();
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
+                        switch (stat)
+                        {
+                            case "str":
+                                int i = 1;
+                                line = file.ReadLine();
+                                while (!line.Equals("}"))
+                                {
+                                    str.Add(i++, line);
+                                    line = file.ReadLine();
+                                }
+                                break;
+                            default:
+                                break;
 
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label16_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click_1(object sender, EventArgs e)
-        {
-
+                        }
+                    }
+                }
+            }
         }
     }
 }
