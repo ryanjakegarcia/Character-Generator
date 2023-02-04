@@ -36,21 +36,26 @@ namespace CharacterGUI
 
         }
 
-        private void Random_Click(object sender, EventArgs e)
+        private string Get_Roll_Method() 
         {
-            string value ="";
             if (Rollmethod4d6d1.Checked)
             {
-                value = Rollmethod4d6d1.Text;
+                return  Rollmethod4d6d1.Text;
             }
             else if (Rollmethod3d6r2.Checked)
             {
-                value = Rollmethod3d6r2.Text;
+                return Rollmethod3d6r2.Text;
             }
-            else if (Rollmethod3d6.Checked)
-            {
-                value = Rollmethod3d6.Text;
+            else  
+            {//default
+                return Rollmethod3d6.Text;
             }
+        }
+
+        private void Random_Click(object sender, EventArgs e)
+        {
+            string value = Get_Roll_Method();
+           
             
 
             AutoRoller roller = new AutoRoller(value);
@@ -115,21 +120,36 @@ namespace CharacterGUI
         {
 
         }
-       /// <summary>
-       /// This function takes in three parameters and access more data inside
-       /// We iterate through the classes and create an array of classes that we want
-       /// There various cases due to posibilities of elite and multi class characters
-       /// 
-       /// 
-       /// </summary>
-       /// <param name="race"></param>
-       /// <param name="ismulitclass"></param>
-       /// <param name="iselite"></param>
-        private void GenerateButton_Click()
+    
+        
+  
+        private bool ValidRaceInput() 
         {
+
+            if (ClassesList.CheckedItems.Count == 0)
+            {
+                ErrorBox.Text += ErrorBox.Text + "You must Select a race to continue";
+                return false;
+            }
+            return true;
+
+
+        }
+        private bool ValidClassInput() 
+        {
+
+            
+            //class input validation 
+            if (ClassesList.CheckedItems.Count == 0)
+            {
+                ErrorBox.Text += ErrorBox.Text + "You must Select a class to continue";
+                
+                return false;
+            }
+            return true;
+
             
         }
-
         private void label12_Click(object sender, EventArgs e)
         {
 
@@ -142,6 +162,63 @@ namespace CharacterGUI
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// This function takes in three parameters and access more data inside
+        /// We iterate through the classes and create an array of classes that we want
+        /// There various cases due to posibilities of elite and multi class characters
+        /// 
+        /// 
+        private void GenerateButton_Click(object sender, EventArgs e)
+        {
+            //clearing text for error box
+            ErrorBox.Text = "";
+            
+            if (ValidClassInput() && ValidRaceInput())
+            {
+                //selecting race
+                Random rnd = new Random();
+                int num = rnd.Next(RacesList.CheckedItems.Count);
+                string race = RacesList.CheckedItems[num].ToString();
+                
+
+                if (MultiCheck.Checked)
+
+                {
+
+
+                }
+                else
+                {
+                   //case of single no multiclass
+                    //selectiing class
+                    int x = rnd.Next(ClassesList.CheckedItems.Count);
+                    string charclass = ClassesList.CheckedItems[num].ToString();
+
+
+                    ClassSelector cl = new ClassSelector();
+                    cl.SetClass(charclass);
+                                                                        //iselite remove  later
+                    cl.RollStatsforClass(charclass,Get_Roll_Method());
+                    populate_form(charclass, race, cl.getStats());
+                  
+
+
+                }
+            }
+            else 
+            { 
+                //failure to have correct form data
+                return; 
+            
+            }
+
 
         }
     }

@@ -46,16 +46,16 @@ namespace CharacterGUI
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.Random = new System.Windows.Forms.Button();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.ClassesList = new System.Windows.Forms.CheckedListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Rollbox = new System.Windows.Forms.GroupBox();
             this.Rollmethod3d6r2 = new System.Windows.Forms.RadioButton();
             this.Rollmethod3d6 = new System.Windows.Forms.RadioButton();
             this.Rollmethod4d6d1 = new System.Windows.Forms.RadioButton();
-            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
+            this.RacesList = new System.Windows.Forms.CheckedListBox();
             this.GenerateButton = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.MultiCheck = new System.Windows.Forms.CheckBox();
             this.statsbox = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.StrengthBox = new System.Windows.Forms.TextBox();
@@ -106,6 +106,9 @@ namespace CharacterGUI
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.ErrorBox = new System.Windows.Forms.RichTextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1.SuspendLayout();
             this.Rollbox.SuspendLayout();
@@ -138,18 +141,20 @@ namespace CharacterGUI
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.ErrorBox);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Controls.Add(this.label13);
             this.tabPage1.Controls.Add(this.statsbox);
-            this.tabPage1.Controls.Add(this.checkBox2);
+            this.tabPage1.Controls.Add(this.MultiCheck);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.GenerateButton);
-            this.tabPage1.Controls.Add(this.checkedListBox2);
+            this.tabPage1.Controls.Add(this.RacesList);
             this.tabPage1.Controls.Add(this.Rollbox);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.checkedListBox1);
+            this.tabPage1.Controls.Add(this.ClassesList);
             this.tabPage1.Controls.Add(this.Random);
+            this.tabPage1.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabPage1.Location = new System.Drawing.Point(4, 27);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
@@ -171,23 +176,23 @@ namespace CharacterGUI
             this.Random.UseVisualStyleBackColor = true;
             this.Random.Click += new System.EventHandler(this.Random_Click);
             // 
-            // checkedListBox1
+            // ClassesList
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "Fighter ",
+            this.ClassesList.FormattingEnabled = true;
+            this.ClassesList.Items.AddRange(new object[] {
+            "Fighter",
             "Thief",
-            "Wizard ",
+            "Wizard",
             "Cleric",
             "Paladin",
             "Ranger",
             "Bard"});
-            this.checkedListBox1.Location = new System.Drawing.Point(77, 98);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(178, 180);
-            this.checkedListBox1.TabIndex = 10;
-            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            this.ClassesList.Location = new System.Drawing.Point(77, 98);
+            this.ClassesList.Margin = new System.Windows.Forms.Padding(4);
+            this.ClassesList.Name = "ClassesList";
+            this.ClassesList.Size = new System.Drawing.Size(178, 180);
+            this.ClassesList.TabIndex = 10;
+            this.ClassesList.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -250,21 +255,21 @@ namespace CharacterGUI
             this.Rollmethod4d6d1.UseVisualStyleBackColor = true;
             this.Rollmethod4d6d1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // checkedListBox2
+            // RacesList
             // 
-            this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Items.AddRange(new object[] {
+            this.RacesList.FormattingEnabled = true;
+            this.RacesList.Items.AddRange(new object[] {
             "Human",
             "Elf",
             "Dwarf",
             "Half-Elf",
             "Half-Orc",
             "h̵o̵b̵b̵i̵t̵ Halfing"});
-            this.checkedListBox2.Location = new System.Drawing.Point(304, 98);
-            this.checkedListBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(178, 180);
-            this.checkedListBox2.TabIndex = 24;
+            this.RacesList.Location = new System.Drawing.Point(304, 98);
+            this.RacesList.Margin = new System.Windows.Forms.Padding(4);
+            this.RacesList.Name = "RacesList";
+            this.RacesList.Size = new System.Drawing.Size(178, 180);
+            this.RacesList.TabIndex = 24;
             // 
             // GenerateButton
             // 
@@ -277,6 +282,7 @@ namespace CharacterGUI
             this.toolTip1.SetToolTip(this.GenerateButton, "Having multiple selections without multiclassing will roll a random character bet" +
         "ween those classes.");
             this.GenerateButton.UseVisualStyleBackColor = true;
+            this.GenerateButton.Click += new System.EventHandler(this.GenerateButton_Click);
             // 
             // label12
             // 
@@ -290,20 +296,22 @@ namespace CharacterGUI
             this.toolTip1.SetToolTip(this.label12, "Selecting multiple races will pick one randomly.");
             this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
-            // checkBox2
+            // MultiCheck
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(230, 318);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(106, 22);
-            this.checkBox2.TabIndex = 20;
-            this.checkBox2.Text = "Multiclass?";
-            this.toolTip1.SetToolTip(this.checkBox2, "Multiclassing is only available for  the four basic classes up to 3.");
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.MultiCheck.AutoSize = true;
+            this.MultiCheck.Location = new System.Drawing.Point(230, 318);
+            this.MultiCheck.Margin = new System.Windows.Forms.Padding(4);
+            this.MultiCheck.Name = "MultiCheck";
+            this.MultiCheck.Size = new System.Drawing.Size(106, 22);
+            this.MultiCheck.TabIndex = 20;
+            this.MultiCheck.Text = "Multiclass?";
+            this.toolTip1.SetToolTip(this.MultiCheck, "Multiclassing is only available for  the four basic classes up to 3.");
+            this.MultiCheck.UseVisualStyleBackColor = true;
             // 
             // statsbox
             // 
+            this.statsbox.Controls.Add(this.textBox8);
+            this.statsbox.Controls.Add(this.label29);
             this.statsbox.Controls.Add(this.groupBox2);
             this.statsbox.Controls.Add(this.Classbox);
             this.statsbox.Controls.Add(this.label11);
@@ -469,12 +477,13 @@ namespace CharacterGUI
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(14, 338);
+            this.label11.Location = new System.Drawing.Point(9, 338);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(47, 18);
             this.label11.TabIndex = 15;
             this.label11.Text = "Class";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // Classbox
             // 
@@ -522,7 +531,7 @@ namespace CharacterGUI
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Location = new System.Drawing.Point(471, 376);
+            this.groupBox1.Location = new System.Drawing.Point(516, 290);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(202, 240);
             this.groupBox1.TabIndex = 27;
@@ -835,6 +844,33 @@ namespace CharacterGUI
             this.label28.TabIndex = 22;
             this.label28.Text = "Opn dor";
             // 
+            // ErrorBox
+            // 
+            this.ErrorBox.Location = new System.Drawing.Point(77, 367);
+            this.ErrorBox.Name = "ErrorBox";
+            this.ErrorBox.ReadOnly = true;
+            this.ErrorBox.Size = new System.Drawing.Size(293, 96);
+            this.ErrorBox.TabIndex = 28;
+            this.ErrorBox.Text = "";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(9, 376);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(43, 18);
+            this.label29.TabIndex = 18;
+            this.label29.Text = "Race";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(112, 376);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(61, 27);
+            this.textBox8.TabIndex = 19;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -905,16 +941,16 @@ namespace CharacterGUI
         private System.Windows.Forms.TextBox DexterityBox;
         private System.Windows.Forms.TextBox StrengthBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox MultiCheck;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button GenerateButton;
-        private System.Windows.Forms.CheckedListBox checkedListBox2;
+        private System.Windows.Forms.CheckedListBox RacesList;
         private System.Windows.Forms.GroupBox Rollbox;
         private System.Windows.Forms.RadioButton Rollmethod4d6d1;
         private System.Windows.Forms.RadioButton Rollmethod3d6;
         private System.Windows.Forms.RadioButton Rollmethod3d6r2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox ClassesList;
         private System.Windows.Forms.Button Random;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBox1;
@@ -931,6 +967,9 @@ namespace CharacterGUI
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.RichTextBox ErrorBox;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label29;
     }
 }
 
