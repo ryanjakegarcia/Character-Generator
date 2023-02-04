@@ -39,27 +39,27 @@ namespace CharacterGUI
         private void Random_Click(object sender, EventArgs e)
         {
             string value ="";
-            if (Rollmethod3d6.Checked)
+            if (Rollmethod4d6d1.Checked)
             {
-                value = Rollmethod3d6.Text;
+                value = Rollmethod4d6d1.Text;
             }
             else if (Rollmethod3d6r2.Checked)
             {
-                value = Rollmethod3d6.Text;
+                value = Rollmethod3d6r2.Text;
             }
-            else if (Rollmethod4d6d1.Checked)
+            else if (Rollmethod3d6.Checked)
             {
                 value = Rollmethod3d6.Text;
             }
-            Console.WriteLine(value);
+            
 
             AutoRoller roller = new AutoRoller(value);
             roller.Roll();
 
             ClassRoller classRoller = new ClassRoller("Human", roller.getStats());
-            classRoller.RollClass();
+            
 
-            populate_form(classRoller.GetClass(), classRoller.GetRace(), roller.getStats());
+            populate_form(classRoller.RollClass() , classRoller.GetRace(), roller.getStats());
 
         }
 
@@ -71,7 +71,7 @@ namespace CharacterGUI
         //this function takes an array of numbers and updates the stats
         private void populate_form(string charclass, string charrace, int[] charstats) 
         {
-
+            //populating editable statbox
             StrengthBox.Text = charstats[0].ToString();
             DexterityBox.Text = charstats[1].ToString();
             ConstitutionBox.Text = charstats[2].ToString();
@@ -80,10 +80,67 @@ namespace CharacterGUI
             CharismaBox.Text = charstats[5].ToString();
             DumpBox.Text = charstats[6].ToString();
 
+            Classbox.Text = charclass;
+
+            //populating rollbox
+            StrengthLabel.Text = charstats[0].ToString();
+            DexterityLabel.Text = charstats[1].ToString();
+            ConstitutionLabel.Text = charstats[2].ToString();
+            IntelligenceLabel.Text = charstats[3].ToString();   
+            WisdomLabel.Text = charstats[4].ToString();
+            CharismaLabel.Text = charstats[5].ToString();
+            PerceptionLabel.Text = charstats[6].ToString();
+
+
+
 
         }
 
         private void statsbox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+       /// <summary>
+       /// This function takes in three parameters and access more data inside
+       /// We iterate through the classes and create an array of classes that we want
+       /// There various cases due to posibilities of elite and multi class characters
+       /// 
+       /// 
+       /// </summary>
+       /// <param name="race"></param>
+       /// <param name="ismulitclass"></param>
+       /// <param name="iselite"></param>
+        private void GenerateButton_Click()
+        {
+            
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label23_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }

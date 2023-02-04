@@ -186,7 +186,9 @@ namespace Character_Generator
                             RolledClass = "Fighter";
                             //tests to see if we can be a fighter
                             if (validrace(RolledClass) && validstats(RolledClass))
-                            { return RolledClass; }
+                            {
+                                charclass = RolledClass;
+                                return RolledClass; }
                             else CanFighter = false;
                         }
                         break;
@@ -196,7 +198,9 @@ namespace Character_Generator
                             RolledClass = "Ranger";
                             //tests to see if we can be a Ranger
                             if (validrace(RolledClass) && validstats(RolledClass))
-                            { return RolledClass; }
+                            { 
+                                charclass = RolledClass;
+                                return RolledClass; }
                             else CanRanger = false;
                         }
                         break;
@@ -205,7 +209,8 @@ namespace Character_Generator
                             RolledClass = "Paladin";
                             //tests to see if we can be a Paladin
                             if (validrace(RolledClass) && validstats(RolledClass))
-                            { return RolledClass; }
+                            { charclass = RolledClass; 
+                                return RolledClass; }
                             else CanPaladin = false;
                         }
                         break;
@@ -214,7 +219,8 @@ namespace Character_Generator
                             RolledClass = "Wizard";
                             //tests to see if we can be a wizard
                             if (validrace(RolledClass) && validstats(RolledClass))
-                            { return RolledClass; }
+                            { charclass = RolledClass; 
+                                return RolledClass; }
                             else CanWizard = false;
                         }
                         break;
@@ -223,7 +229,8 @@ namespace Character_Generator
                             RolledClass = "Cleric";
                             //tests to see if we can be a cleric
                             if (validrace(RolledClass) && validstats(RolledClass))
-                            { return RolledClass; }
+                            { charclass = RolledClass; 
+                                return RolledClass; }
                             else CanCleric = false;
 
                         }
@@ -233,7 +240,8 @@ namespace Character_Generator
                             RolledClass = "Thief";
                             //tests to see if we can be a Thief
                             if (validrace(RolledClass) && validstats(RolledClass))
-                            { return RolledClass; }
+                            { charclass = RolledClass; 
+                                return RolledClass; }
                             else CanThief = false;
 
                         }
@@ -244,7 +252,8 @@ namespace Character_Generator
                                 RolledClass = "Bard";
                             //tests to see if we can be a Bard
                             if (validrace(RolledClass) && validstats(RolledClass))
-                            { return RolledClass; }
+                            { charclass = RolledClass; 
+                                return RolledClass; }
                             else
                                 CanBard = false;
                         }   
