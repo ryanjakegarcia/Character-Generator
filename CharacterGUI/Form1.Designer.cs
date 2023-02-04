@@ -41,26 +41,25 @@ namespace CharacterGUI
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TabControl tabControl1;
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.statDisplay = new System.Windows.Forms.ListBox();
             this.Classbox = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.statsbox = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
+            this.MaxPressText = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.DamAdjBox = new System.Windows.Forms.TextBox();
+            this.BBLGBox = new System.Windows.Forms.TextBox();
+            this.MaxPressBox = new System.Windows.Forms.TextBox();
+            this.OpenDoorsBox = new System.Windows.Forms.TextBox();
+            this.WeightAllowBox = new System.Windows.Forms.TextBox();
+            this.HitAdjBox = new System.Windows.Forms.TextBox();
             this.StrengthBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -91,7 +90,6 @@ namespace CharacterGUI
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.statDisplay = new System.Windows.Forms.ListBox();
             tabControl1 = new System.Windows.Forms.TabControl();
             tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -138,6 +136,15 @@ namespace CharacterGUI
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // statDisplay
+            // 
+            this.statDisplay.FormattingEnabled = true;
+            this.statDisplay.ItemHeight = 20;
+            this.statDisplay.Location = new System.Drawing.Point(497, 309);
+            this.statDisplay.Name = "statDisplay";
+            this.statDisplay.Size = new System.Drawing.Size(120, 224);
+            this.statDisplay.TabIndex = 28;
+            // 
             // Classbox
             // 
             this.Classbox.Location = new System.Drawing.Point(550, 276);
@@ -145,16 +152,6 @@ namespace CharacterGUI
             this.Classbox.Name = "Classbox";
             this.Classbox.Size = new System.Drawing.Size(120, 26);
             this.Classbox.TabIndex = 16;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(493, 279);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(53, 20);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "Class";
             // 
             // label14
             // 
@@ -166,7 +163,6 @@ namespace CharacterGUI
             this.label14.TabIndex = 26;
             this.label14.Text = "Results";
             this.toolTip1.SetToolTip(this.label14, "Selecting multiple races will pick one randomly.");
-            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // label13
             // 
@@ -178,7 +174,16 @@ namespace CharacterGUI
             this.label13.TabIndex = 25;
             this.label13.Text = "Rolling Methods";
             this.toolTip1.SetToolTip(this.label13, "Selecting multiple races will pick one randomly.");
-            this.label13.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(493, 279);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 20);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Class";
             // 
             // statsbox
             // 
@@ -203,24 +208,21 @@ namespace CharacterGUI
             this.statsbox.Size = new System.Drawing.Size(839, 428);
             this.statsbox.TabIndex = 15;
             this.statsbox.TabStop = false;
-            this.statsbox.Enter += new System.EventHandler(this.statsbox_Enter);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label28);
             this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Controls.Add(this.label26);
-            this.groupBox2.Controls.Add(this.label25);
-            this.groupBox2.Controls.Add(this.label24);
+            this.groupBox2.Controls.Add(this.MaxPressText);
             this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.label22);
-            this.groupBox2.Controls.Add(this.textBox7);
-            this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.DamAdjBox);
+            this.groupBox2.Controls.Add(this.BBLGBox);
+            this.groupBox2.Controls.Add(this.MaxPressBox);
+            this.groupBox2.Controls.Add(this.OpenDoorsBox);
+            this.groupBox2.Controls.Add(this.WeightAllowBox);
+            this.groupBox2.Controls.Add(this.HitAdjBox);
             this.groupBox2.Controls.Add(this.StrengthBox);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(4, 30);
@@ -235,17 +237,17 @@ namespace CharacterGUI
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(618, 15);
+            this.label28.Location = new System.Drawing.Point(585, 17);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(63, 16);
+            this.label28.Size = new System.Drawing.Size(64, 16);
             this.label28.TabIndex = 22;
-            this.label28.Text = "Opn dor";
+            this.label28.Text = "Opn Drs";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(721, 15);
+            this.label27.Location = new System.Drawing.Point(702, 17);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(52, 16);
             this.label27.TabIndex = 21;
@@ -261,36 +263,25 @@ namespace CharacterGUI
             this.label26.TabIndex = 20;
             this.label26.Text = "Dam-Adj";
             // 
-            // label25
+            // MaxPressText
             // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(439, 14);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(54, 16);
-            this.label25.TabIndex = 19;
-            this.label25.Text = "Max P.";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(523, 16);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(55, 16);
-            this.label24.TabIndex = 18;
-            this.label24.Text = "Hit-Adj";
+            this.MaxPressText.AutoSize = true;
+            this.MaxPressText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaxPressText.Location = new System.Drawing.Point(461, 17);
+            this.MaxPressText.Name = "MaxPressText";
+            this.MaxPressText.Size = new System.Drawing.Size(54, 16);
+            this.MaxPressText.TabIndex = 19;
+            this.MaxPressText.Text = "Max P.";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(338, 13);
+            this.label23.Location = new System.Drawing.Point(346, 17);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(65, 16);
+            this.label23.Size = new System.Drawing.Size(48, 16);
             this.label23.TabIndex = 17;
-            this.label23.Text = "Wght All";
-            this.label23.Click += new System.EventHandler(this.label23_Click);
+            this.label23.Text = "Wt. A.";
             // 
             // label22
             // 
@@ -302,76 +293,65 @@ namespace CharacterGUI
             this.label22.TabIndex = 16;
             this.label22.Text = "Hit-Adj";
             // 
-            // textBox7
+            // DamAdjBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(300, 11);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(31, 26);
-            this.textBox7.TabIndex = 15;
-            this.textBox7.Text = "00";
+            this.DamAdjBox.Location = new System.Drawing.Point(308, 10);
+            this.DamAdjBox.Margin = new System.Windows.Forms.Padding(4);
+            this.DamAdjBox.Name = "DamAdjBox";
+            this.DamAdjBox.ReadOnly = true;
+            this.DamAdjBox.Size = new System.Drawing.Size(31, 26);
+            this.DamAdjBox.TabIndex = 15;
+            this.DamAdjBox.Text = "00";
             // 
-            // textBox6
+            // BBLGBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(772, 11);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(31, 26);
-            this.textBox6.TabIndex = 14;
-            this.textBox6.Text = "00";
+            this.BBLGBox.Location = new System.Drawing.Point(761, 11);
+            this.BBLGBox.Margin = new System.Windows.Forms.Padding(4);
+            this.BBLGBox.Name = "BBLGBox";
+            this.BBLGBox.ReadOnly = true;
+            this.BBLGBox.Size = new System.Drawing.Size(42, 26);
+            this.BBLGBox.TabIndex = 14;
+            this.BBLGBox.Text = "00";
             // 
-            // textBox5
+            // MaxPressBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(485, 10);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(31, 26);
-            this.textBox5.TabIndex = 13;
-            this.textBox5.Text = "00";
+            this.MaxPressBox.Location = new System.Drawing.Point(522, 11);
+            this.MaxPressBox.Margin = new System.Windows.Forms.Padding(4);
+            this.MaxPressBox.Name = "MaxPressBox";
+            this.MaxPressBox.ReadOnly = true;
+            this.MaxPressBox.Size = new System.Drawing.Size(56, 26);
+            this.MaxPressBox.TabIndex = 13;
+            this.MaxPressBox.Text = "00";
             // 
-            // textBox4
+            // OpenDoorsBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(580, 10);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(31, 26);
-            this.textBox4.TabIndex = 12;
-            this.textBox4.Text = "00";
+            this.OpenDoorsBox.Location = new System.Drawing.Point(656, 11);
+            this.OpenDoorsBox.Margin = new System.Windows.Forms.Padding(4);
+            this.OpenDoorsBox.Name = "OpenDoorsBox";
+            this.OpenDoorsBox.ReadOnly = true;
+            this.OpenDoorsBox.Size = new System.Drawing.Size(39, 26);
+            this.OpenDoorsBox.TabIndex = 11;
+            this.OpenDoorsBox.Text = "00";
             // 
-            // textBox3
+            // WeightAllowBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(683, 9);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(31, 26);
-            this.textBox3.TabIndex = 11;
-            this.textBox3.Text = "00";
+            this.WeightAllowBox.Location = new System.Drawing.Point(401, 11);
+            this.WeightAllowBox.Margin = new System.Windows.Forms.Padding(4);
+            this.WeightAllowBox.Name = "WeightAllowBox";
+            this.WeightAllowBox.ReadOnly = true;
+            this.WeightAllowBox.Size = new System.Drawing.Size(53, 26);
+            this.WeightAllowBox.TabIndex = 10;
+            this.WeightAllowBox.Text = "00";
             // 
-            // textBox2
+            // HitAdjBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(401, 10);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(31, 26);
-            this.textBox2.TabIndex = 10;
-            this.textBox2.Text = "00";
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(195, 10);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(31, 26);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.Text = "00";
+            this.HitAdjBox.Location = new System.Drawing.Point(195, 10);
+            this.HitAdjBox.Margin = new System.Windows.Forms.Padding(4);
+            this.HitAdjBox.Name = "HitAdjBox";
+            this.HitAdjBox.ReadOnly = true;
+            this.HitAdjBox.Size = new System.Drawing.Size(31, 26);
+            this.HitAdjBox.TabIndex = 9;
+            this.HitAdjBox.Text = "00";
             // 
             // StrengthBox
             // 
@@ -421,7 +401,6 @@ namespace CharacterGUI
             this.label8.Size = new System.Drawing.Size(41, 20);
             this.label8.TabIndex = 12;
             this.label8.Text = "Con";
-            this.label8.Click += new System.EventHandler(this.label8_Click_1);
             // 
             // label7
             // 
@@ -533,7 +512,6 @@ namespace CharacterGUI
             this.label12.TabIndex = 23;
             this.label12.Text = "Races";
             this.toolTip1.SetToolTip(this.label12, "Selecting multiple races will pick one randomly.");
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // GenerateButton
             // 
@@ -575,7 +553,6 @@ namespace CharacterGUI
             this.Rollbox.Size = new System.Drawing.Size(146, 138);
             this.Rollbox.TabIndex = 19;
             this.Rollbox.TabStop = false;
-            this.Rollbox.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // Rollmethod4d6d1
             // 
@@ -640,7 +617,6 @@ namespace CharacterGUI
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(178, 172);
             this.checkedListBox1.TabIndex = 10;
-            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // Random
             // 
@@ -675,15 +651,6 @@ namespace CharacterGUI
             this.label1.TabIndex = 0;
             this.label1.Text = "Character Generator";
             // 
-            // statDisplay
-            // 
-            this.statDisplay.FormattingEnabled = true;
-            this.statDisplay.ItemHeight = 20;
-            this.statDisplay.Location = new System.Drawing.Point(497, 309);
-            this.statDisplay.Name = "statDisplay";
-            this.statDisplay.Size = new System.Drawing.Size(120, 224);
-            this.statDisplay.TabIndex = 28;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -695,7 +662,6 @@ namespace CharacterGUI
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "AD&D Character Generator";
-            this.Load += new System.EventHandler(this.Form1_Load);
             tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -749,19 +715,17 @@ namespace CharacterGUI
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button Random;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox HitAdjBox;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox DamAdjBox;
+        private System.Windows.Forms.TextBox BBLGBox;
+        private System.Windows.Forms.TextBox MaxPressBox;
+        private System.Windows.Forms.TextBox OpenDoorsBox;
+        private System.Windows.Forms.TextBox WeightAllowBox;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label MaxPressText;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ListBox statDisplay;
     }
