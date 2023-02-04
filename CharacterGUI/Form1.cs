@@ -16,24 +16,17 @@ namespace CharacterGUI
 {
     public partial class Form1 : Form
     {
+        private AutoRoller roller;
+        private ClassRoller classRoller;
+
         public Form1()
         {
             InitializeComponent();
-        }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
+            roller = new AutoRoller("3d6");
+            roller.Roll();
 
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
+            classRoller = new ClassRoller("Human", roller.getStats());
         }
 
         private void Random_Click(object sender, EventArgs e)
@@ -51,16 +44,10 @@ namespace CharacterGUI
             {
                 value = Rollmethod3d6.Text;
             }
-            
 
-            AutoRoller roller = new AutoRoller(value);
-            roller.Roll();
+            roller.ReRoll(value);
 
-            ClassRoller classRoller = new ClassRoller("Human", roller.getStats());
-            
-
-            populate_form(classRoller.RollClass() , classRoller.GetRace(), roller.getStats());
-
+            populate_form(classRoller.RollClass(roller.getStats()), classRoller.GetRace(), roller.getStats());
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -71,6 +58,10 @@ namespace CharacterGUI
         //this function takes an array of numbers and updates the stats
         private void populate_form(string charclass, string charrace, int[] charstats) 
         {
+            statDisplay.DataSource = charstats;
+            //This is a much simpler way to display the stats
+
+
             //populating editable statbox
             StrengthBox.Text = charstats[0].ToString();
             DexterityBox.Text = charstats[1].ToString();
@@ -83,16 +74,14 @@ namespace CharacterGUI
             Classbox.Text = charclass;
 
             //populating rollbox
-            StrengthLabel.Text = charstats[0].ToString();
+            /*StrengthLabel.Text = charstats[0].ToString();
             DexterityLabel.Text = charstats[1].ToString();
             ConstitutionLabel.Text = charstats[2].ToString();
             IntelligenceLabel.Text = charstats[3].ToString();   
             WisdomLabel.Text = charstats[4].ToString();
             CharismaLabel.Text = charstats[5].ToString();
             PerceptionLabel.Text = charstats[6].ToString();
-
-
-
+            */
 
         }
 
@@ -141,6 +130,31 @@ namespace CharacterGUI
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click_1(object sender, EventArgs e)
         {
 
         }
