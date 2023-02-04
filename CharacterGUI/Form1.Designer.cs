@@ -685,7 +685,7 @@ namespace CharacterGUI
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.StrengthBox);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(12, 30);
+            this.groupBox2.Location = new System.Drawing.Point(4, 30);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
@@ -716,7 +716,7 @@ namespace CharacterGUI
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(672, 9);
+            this.textBox3.Location = new System.Drawing.Point(683, 9);
             this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
@@ -726,7 +726,7 @@ namespace CharacterGUI
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(569, 10);
+            this.textBox4.Location = new System.Drawing.Point(580, 10);
             this.textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
@@ -746,7 +746,7 @@ namespace CharacterGUI
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(765, 10);
+            this.textBox6.Location = new System.Drawing.Point(772, 11);
             this.textBox6.Margin = new System.Windows.Forms.Padding(4);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
@@ -789,7 +789,7 @@ namespace CharacterGUI
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Friz Quadrata Std", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(512, 16);
+            this.label24.Location = new System.Drawing.Point(523, 16);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(50, 15);
             this.label24.TabIndex = 18;
@@ -799,7 +799,7 @@ namespace CharacterGUI
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Friz Quadrata Std", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(439, 16);
+            this.label25.Location = new System.Drawing.Point(439, 14);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(46, 15);
             this.label25.TabIndex = 19;
@@ -819,7 +819,7 @@ namespace CharacterGUI
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Friz Quadrata Std", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(714, 13);
+            this.label27.Location = new System.Drawing.Point(721, 15);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(44, 15);
             this.label27.TabIndex = 21;
@@ -829,7 +829,7 @@ namespace CharacterGUI
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Friz Quadrata Std", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(607, 15);
+            this.label28.Location = new System.Drawing.Point(618, 15);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(58, 15);
             this.label28.TabIndex = 22;
