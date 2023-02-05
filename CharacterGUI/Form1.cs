@@ -178,14 +178,18 @@ namespace CharacterGUI
 
                 string strLine = "";
                 str.TryGetValue(stat, out strLine);
-                string[] strSplit = strLine.Split();
+                if (strLine != null)
+                {
+                    string[] strSplit = strLine.Split();
 
-                HitAdjBox.Text = strSplit[0];
-                DamAdjBox.Text = strSplit[1];
-                WeightAllowBox.Text = strSplit[2];
-                MaxPressBox.Text = strSplit[3];
-                OpenDoorsBox.Text = strSplit[4] + "(" + strSplit[5] + ")";
-                BBLGBox.Text = strSplit[6] + "%";
+
+                    HitAdjBox.Text = strSplit[0];
+                    DamAdjBox.Text = strSplit[1];
+                    WeightAllowBox.Text = strSplit[2];
+                    MaxPressBox.Text = strSplit[3];
+                    OpenDoorsBox.Text = strSplit[4] + "(" + strSplit[5] + ")";
+                    BBLGBox.Text = strSplit[6] + "%";
+                }
             }
             
         }
