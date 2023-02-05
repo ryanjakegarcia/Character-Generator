@@ -93,13 +93,13 @@ namespace RollerTests
         public void Test2() 
         {
             ClassSelector cl = new ClassSelector();
-            cl.RollStatsforClass("Fighter", "4d6d1", false);
-            cl.RollStatsforClass("Wizard", "4d6d1", false);
-            cl.RollStatsforClass("Cleric", "4d6d1", false);
-            cl.RollStatsforClass("Bard", "4d6d1", false);
-            cl.RollStatsforClass("Ranger", "4d6d1", false);
-            cl.RollStatsforClass("Thief", "4d6d1", false);
-            cl.RollStatsforClass("Paladin", "4d6d1", false);
+            cl.RollStatsforClass("Fighter", "4d6d1");
+            cl.RollStatsforClass("Wizard", "4d6d1");
+            cl.RollStatsforClass("Cleric", "4d6d1");
+            cl.RollStatsforClass("Bard", "4d6d1");
+            cl.RollStatsforClass("Ranger", "4d6d1");
+            cl.RollStatsforClass("Thief", "4d6d1");
+            cl.RollStatsforClass("Paladin", "4d6d1");
 
 
 

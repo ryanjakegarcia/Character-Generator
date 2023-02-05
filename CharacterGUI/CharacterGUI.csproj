@@ -85,8 +85,5 @@
       <Name>Character Generator</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="statFields.txt" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

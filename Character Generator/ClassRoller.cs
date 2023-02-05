@@ -173,8 +173,8 @@ namespace Character_Generator
 
                 if (!(CanFighter || CanRanger || CanPaladin|| CanWizard|| CanCleric||CanThief||CanBard)) 
                 {
-                    return "Log"; 
-                }
+                    return "Log";
+                    break; }
                 //Rolling the number
                 int roll = rng.Next(BardThreshhold + 1);
 
@@ -263,6 +263,7 @@ namespace Character_Generator
                     default:
                         done = true;
                         return "Roll switch statement is broken"; //Funny LR
+                        break;
                 }
             } return "system failure";
           
@@ -301,6 +302,7 @@ namespace Character_Generator
                 if (!(CanFighter || CanRanger || CanPaladin || CanWizard || CanCleric || CanThief || CanBard))
                 {
                     return "Log";
+                    break;
                 }
                 //Rolling the number
                 int roll = rng.Next(BardThreshhold + 1);
@@ -402,6 +404,7 @@ namespace Character_Generator
                     default:
                         done = true;
                         return "Roll switch statement is broken"; //Funny LR
+                        break;
                 }
             }
             return "system failure";
