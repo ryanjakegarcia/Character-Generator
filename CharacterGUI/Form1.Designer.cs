@@ -75,21 +75,22 @@ namespace CharacterGUI
             this.ConstitutionBox = new System.Windows.Forms.TextBox();
             this.DexterityBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.MultiCheck = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.GenerateButton = new System.Windows.Forms.Button();
-            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
+            this.RacesList = new System.Windows.Forms.CheckedListBox();
             this.Rollbox = new System.Windows.Forms.GroupBox();
             this.Rollmethod4d6d1 = new System.Windows.Forms.RadioButton();
             this.Rollmethod3d6 = new System.Windows.Forms.RadioButton();
             this.Rollmethod3d6r2 = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.ClassesList = new System.Windows.Forms.CheckedListBox();
             this.Random = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.ErrorBox = new System.Windows.Forms.TextBox();
             tabControl1 = new System.Windows.Forms.TabControl();
             tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -113,19 +114,20 @@ namespace CharacterGUI
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.ErrorBox);
             this.tabPage1.Controls.Add(this.statDisplay);
             this.tabPage1.Controls.Add(this.Classbox);
             this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Controls.Add(this.label13);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.statsbox);
-            this.tabPage1.Controls.Add(this.checkBox2);
+            this.tabPage1.Controls.Add(this.MultiCheck);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.GenerateButton);
-            this.tabPage1.Controls.Add(this.checkedListBox2);
+            this.tabPage1.Controls.Add(this.RacesList);
             this.tabPage1.Controls.Add(this.Rollbox);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.checkedListBox1);
+            this.tabPage1.Controls.Add(this.ClassesList);
             this.tabPage1.Controls.Add(this.Random);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
@@ -239,7 +241,7 @@ namespace CharacterGUI
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.Location = new System.Drawing.Point(585, 17);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(64, 16);
+            this.label28.Size = new System.Drawing.Size(63, 16);
             this.label28.TabIndex = 22;
             this.label28.Text = "Opn Drs";
             // 
@@ -249,7 +251,7 @@ namespace CharacterGUI
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.Location = new System.Drawing.Point(718, 16);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(52, 16);
+            this.label27.Size = new System.Drawing.Size(51, 16);
             this.label27.TabIndex = 21;
             this.label27.Text = "BB/LG";
             // 
@@ -259,7 +261,7 @@ namespace CharacterGUI
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.Location = new System.Drawing.Point(233, 14);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(68, 16);
+            this.label26.Size = new System.Drawing.Size(67, 16);
             this.label26.TabIndex = 20;
             this.label26.Text = "Dam-Adj";
             // 
@@ -269,7 +271,7 @@ namespace CharacterGUI
             this.MaxPressText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaxPressText.Location = new System.Drawing.Point(461, 17);
             this.MaxPressText.Name = "MaxPressText";
-            this.MaxPressText.Size = new System.Drawing.Size(54, 16);
+            this.MaxPressText.Size = new System.Drawing.Size(53, 16);
             this.MaxPressText.TabIndex = 19;
             this.MaxPressText.Text = "Max P.";
             // 
@@ -279,7 +281,7 @@ namespace CharacterGUI
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(346, 17);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(48, 16);
+            this.label23.Size = new System.Drawing.Size(47, 16);
             this.label23.TabIndex = 17;
             this.label23.Text = "Wt. A.";
             // 
@@ -289,7 +291,7 @@ namespace CharacterGUI
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(138, 14);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(55, 16);
+            this.label22.Size = new System.Drawing.Size(54, 16);
             this.label22.TabIndex = 16;
             this.label22.Text = "Hit-Adj";
             // 
@@ -491,17 +493,17 @@ namespace CharacterGUI
             this.label3.TabIndex = 0;
             this.label3.Text = "Stats";
             // 
-            // checkBox2
+            // MultiCheck
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(230, 318);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(117, 24);
-            this.checkBox2.TabIndex = 20;
-            this.checkBox2.Text = "Multiclass?";
-            this.toolTip1.SetToolTip(this.checkBox2, "Multiclassing is only available for  the four basic classes up to 3.");
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.MultiCheck.AutoSize = true;
+            this.MultiCheck.Location = new System.Drawing.Point(230, 318);
+            this.MultiCheck.Margin = new System.Windows.Forms.Padding(4);
+            this.MultiCheck.Name = "MultiCheck";
+            this.MultiCheck.Size = new System.Drawing.Size(117, 24);
+            this.MultiCheck.TabIndex = 20;
+            this.MultiCheck.Text = "Multiclass?";
+            this.toolTip1.SetToolTip(this.MultiCheck, "Multiclassing is only available for  the four basic classes up to 3.");
+            this.MultiCheck.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
@@ -525,22 +527,23 @@ namespace CharacterGUI
             this.toolTip1.SetToolTip(this.GenerateButton, "Having multiple selections without multiclassing will roll a random character bet" +
         "ween those classes.");
             this.GenerateButton.UseVisualStyleBackColor = true;
+            this.GenerateButton.Click += new System.EventHandler(this.GenerateButton_Click);
             // 
-            // checkedListBox2
+            // RacesList
             // 
-            this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Items.AddRange(new object[] {
+            this.RacesList.FormattingEnabled = true;
+            this.RacesList.Items.AddRange(new object[] {
             "Human",
             "Elf",
             "Dwarf",
             "Half-Elf",
             "Half-Orc",
             "h̵o̵b̵b̵i̵t̵ Halfing"});
-            this.checkedListBox2.Location = new System.Drawing.Point(304, 57);
-            this.checkedListBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(178, 172);
-            this.checkedListBox2.TabIndex = 24;
+            this.RacesList.Location = new System.Drawing.Point(304, 57);
+            this.RacesList.Margin = new System.Windows.Forms.Padding(4);
+            this.RacesList.Name = "RacesList";
+            this.RacesList.Size = new System.Drawing.Size(178, 172);
+            this.RacesList.TabIndex = 24;
             // 
             // Rollbox
             // 
@@ -602,10 +605,10 @@ namespace CharacterGUI
             this.label2.TabIndex = 1;
             this.label2.Text = "Classes";
             // 
-            // checkedListBox1
+            // ClassesList
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
+            this.ClassesList.FormattingEnabled = true;
+            this.ClassesList.Items.AddRange(new object[] {
             "Fighter ",
             "Thief",
             "Wizard ",
@@ -613,11 +616,11 @@ namespace CharacterGUI
             "Paladin",
             "Ranger",
             "Bard"});
-            this.checkedListBox1.Location = new System.Drawing.Point(84, 57);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(178, 172);
-            this.checkedListBox1.TabIndex = 10;
+            this.ClassesList.Location = new System.Drawing.Point(84, 57);
+            this.ClassesList.Margin = new System.Windows.Forms.Padding(4);
+            this.ClassesList.Name = "ClassesList";
+            this.ClassesList.Size = new System.Drawing.Size(178, 172);
+            this.ClassesList.TabIndex = 10;
             // 
             // Random
             // 
@@ -651,6 +654,13 @@ namespace CharacterGUI
             this.label1.Size = new System.Drawing.Size(175, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Character Generator";
+            // 
+            // ErrorBox
+            // 
+            this.ErrorBox.Location = new System.Drawing.Point(84, 384);
+            this.ErrorBox.Name = "ErrorBox";
+            this.ErrorBox.Size = new System.Drawing.Size(100, 26);
+            this.ErrorBox.TabIndex = 29;
             // 
             // Form1
             // 
@@ -704,16 +714,16 @@ namespace CharacterGUI
         private System.Windows.Forms.TextBox DexterityBox;
         private System.Windows.Forms.TextBox StrengthBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox MultiCheck;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button GenerateButton;
-        private System.Windows.Forms.CheckedListBox checkedListBox2;
+        private System.Windows.Forms.CheckedListBox RacesList;
         private System.Windows.Forms.GroupBox Rollbox;
         private System.Windows.Forms.RadioButton Rollmethod4d6d1;
         private System.Windows.Forms.RadioButton Rollmethod3d6;
         private System.Windows.Forms.RadioButton Rollmethod3d6r2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox ClassesList;
         private System.Windows.Forms.Button Random;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox HitAdjBox;
@@ -729,6 +739,7 @@ namespace CharacterGUI
         private System.Windows.Forms.Label MaxPressText;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ListBox statDisplay;
+        private System.Windows.Forms.TextBox ErrorBox;
     }
 }
 

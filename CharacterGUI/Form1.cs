@@ -127,10 +127,7 @@ namespace CharacterGUI
         /// <param name="race"></param>
         /// <param name="ismulitclass"></param>
         /// <param name="iselite"></param>
-        private void GenerateButton_Click()
-        {
-
-        }
+     
 
         /// <summary>
         /// Reads in the stat lines
@@ -198,5 +195,101 @@ namespace CharacterGUI
         
             
         }
+
+        private bool ValidRaceInput()
+        {
+
+            if (ClassesList.CheckedItems.Count == 0)
+            {
+                ErrorBox.Text += ErrorBox.Text + "You must Select a race to continue";
+                return false;
+            }
+            return true;
+
+
+        }
+        private bool ValidClassInput()
+        {
+
+
+            //class input validation 
+            if (ClassesList.CheckedItems.Count == 0)
+            {
+                ErrorBox.Text += ErrorBox.Text + "You must Select a class to continue";
+
+                return false;
+            }
+            return true;
+
+
+        }
+
+
+
+        private string Get_Roll_Method()
+        {
+            if (Rollmethod4d6d1.Checked)
+            {
+                return Rollmethod4d6d1.Text;
+            }
+            else if (Rollmethod3d6r2.Checked)
+            {
+                return Rollmethod3d6r2.Text;
+            }
+            else
+            {//default
+                return Rollmethod3d6.Text;
+            }
+        }
+
+
+        private void GenerateButton_Click(object sender, EventArgs e)
+        {
+            //clearing text for error box
+            ErrorBox.Text = "";
+
+            if (ValidClassInput() && ValidRaceInput())
+            {
+                //selecting race
+                Random rnd = new Random();
+                int num = rnd.Next(RacesList.CheckedItems.Count);
+                string race = RacesList.CheckedItems[num].ToString();
+
+
+                if (MultiCheck.Checked)
+
+                {
+
+
+                }
+                else
+                {
+                    //case of single no multiclass
+                    //selectiing class
+                    int x = rnd.Next(ClassesList.CheckedItems.Count);
+                    string charclass = ClassesList.CheckedItems[num].ToString();
+
+
+                    ClassSelector cl = new ClassSelector();
+                    cl.SetClass(charclass);
+                    //iselite remove  later
+                    cl.RollStatsforClass(charclass, Get_Roll_Method());
+                    populate_form(charclass, race, cl.getStats());
+
+
+
+                }
+            }
+            else
+            {
+                //failure to have correct form data
+                return;
+
+            }
+
+
+        }
     }
 }
+    
+
