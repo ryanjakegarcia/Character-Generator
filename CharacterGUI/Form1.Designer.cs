@@ -609,9 +609,9 @@ namespace CharacterGUI
             // 
             this.ClassesList.FormattingEnabled = true;
             this.ClassesList.Items.AddRange(new object[] {
-            "Fighter ",
+            "Fighter",
             "Thief",
-            "Wizard ",
+            "Wizard",
             "Cleric",
             "Paladin",
             "Ranger",

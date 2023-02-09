@@ -19,10 +19,10 @@ namespace Character_Generator
         public void SetClass(string classname) { SpecificClass = classname; }
         public void setElite(bool iselite) { elite = iselite; }
 
+        public int[] getStats() { return stats; }
 
 
-
-        public void RollStatsforClass(string classname, string rollingmethod, bool iselite) 
+        public void RollStatsforClass(string classname, string rollingmethod) 
         {
             ClassRoller croller;
             AutoRoller aroller = new AutoRoller(rollingmethod);
