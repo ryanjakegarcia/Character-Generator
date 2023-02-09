@@ -199,7 +199,7 @@ namespace CharacterGUI
         private bool ValidRaceInput()
         {
 
-            if (ClassesList.CheckedItems.Count == 0)
+            if (RacesList.CheckedItems.Count == 0)
             {
                 ErrorBox.Text += ErrorBox.Text + "You must Select a race to continue";
                 return false;
@@ -266,8 +266,9 @@ namespace CharacterGUI
                 {
                     //case of single no multiclass
                     //selectiing class
-                    int x = rnd.Next(ClassesList.CheckedItems.Count);
+                    num = rnd.Next(ClassesList.CheckedItems.Count);
                     string charclass = ClassesList.CheckedItems[num].ToString();
+                   
 
 
                     ClassSelector cl = new ClassSelector();

@@ -669,6 +669,7 @@ namespace CharacterGUI
             this.ClientSize = new System.Drawing.Size(1677, 927);
             this.Controls.Add(tabControl1);
             this.Controls.Add(this.label1);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
