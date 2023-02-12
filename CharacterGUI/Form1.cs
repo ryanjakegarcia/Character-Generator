@@ -90,9 +90,9 @@ namespace CharacterGUI
             DexterityBox.Text = charstats[1].ToString();
             ConstitutionBox.Text = charstats[2].ToString();
             IntelligenceBox.Text = charstats[3].ToString();
-            WisomBox.Text = charstats[4].ToString();
+            WisdomBox.Text = charstats[4].ToString();
             CharismaBox.Text = charstats[5].ToString();
-            DumpBox.Text = charstats[6].ToString();
+            PerceptionBox.Text = charstats[6].ToString();
 
             string strLine = "";
 
@@ -163,6 +163,60 @@ namespace CharacterGUI
                                     line = file.ReadLine();
                                 }
                                 break;
+                            case "dex":
+                                i = 1;
+                                line = file.ReadLine();
+                                while (!line.Equals("}"))
+                                {
+                                    dex.Add(i++, line);
+                                    line = file.ReadLine();
+                                }
+                                break;
+                            case "con":
+                                i = 1;
+                                line = file.ReadLine();
+                                while (!line.Equals("}"))
+                                {
+                                    con.Add(i++, line);
+                                    line = file.ReadLine();
+                                }
+                                break;
+                            case "int":
+                                i = 1;
+                                line = file.ReadLine();
+                                while (!line.Equals("}"))
+                                {
+                                    ent.Add(i++, line);
+                                    line = file.ReadLine();
+                                }
+                                break;
+                            case "wis":
+                                i = 1;
+                                line = file.ReadLine();
+                                while (!line.Equals("}"))
+                                {
+                                    wis.Add(i++, line);
+                                    line = file.ReadLine();
+                                }
+                                break;
+                            case "charisma":
+                                i = 1;
+                                line = file.ReadLine();
+                                while (!line.Equals("}"))
+                                {
+                                    chr.Add(i++, line);
+                                    line = file.ReadLine();
+                                }
+                                break;
+                            case "pcp":
+                                i = 1;
+                                line = file.ReadLine();
+                                while (!line.Equals("}"))
+                                {
+                                    pcp.Add(i++, line);
+                                    line = file.ReadLine();
+                                }
+                                break;
                             default:
                                 break;
 
@@ -201,6 +255,35 @@ namespace CharacterGUI
         
             
         }
+
+        private void DexterityBox_TextChanged(object sender, EventArgs e)
+        {
+            if (Int32.TryParse(DexterityBox.Text, out int stat))
+            {
+                if (stat > 26)
+                    return;
+
+
+
+                string dexLine = "";
+                dex.TryGetValue(stat, out dexLine);
+
+                if (dexLine != null)
+                {
+                    string[] dexSplit = dexLine.Split();
+
+
+                    ReactBox.Text = dexSplit[0];
+                    MissileBox.Text = dexSplit[1];
+                    ACBox.Text = dexSplit[2];
+          
+                }
+            }
+
+
+
+        }
+
 
         private bool ValidRaceInput()
         {
@@ -326,6 +409,36 @@ namespace CharacterGUI
         {
 
         }
+
+        private void ConstitutionBox_TextChanged(object sender, EventArgs e)
+        {
+            if (Int32.TryParse(ConstitutionBox.Text, out int stat))
+            {
+                if (stat > 26)
+                    return;
+
+
+
+                string dexLine = "";
+                con.TryGetValue(stat, out dexLine);
+
+                if (dexLine != null)
+                {
+                    string[] dexSplit = dexLine.Split();
+
+
+                    HPBox.Text = dexSplit[0];
+                    SSBox.Text = dexSplit[1];
+                    RSBox.Text = dexSplit[2];
+                    PSBox.Text = dexSplit[3];
+                    RegenBox.Text = dexSplit[4];
+
+                }
+            }
+
+        }
+
+
     }
 }
     
