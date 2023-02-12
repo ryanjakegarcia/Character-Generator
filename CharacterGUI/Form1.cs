@@ -71,11 +71,6 @@ namespace CharacterGUI
             populate_form(classRoller.RollClass(roller.getStats()), classRoller.GetRace(), roller.getStats());
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         //this function takes an array of numbers and updates the stats
         private void populate_form(string charclass, string charrace, int[] charstats)
         {
@@ -127,8 +122,6 @@ namespace CharacterGUI
         /// This function takes in three parameters and access more data inside
         /// We iterate through the classes and create an array of classes that we want
         /// There various cases due to posibilities of elite and multi class characters
-        /// 
-        /// 
         /// </summary>
         /// <param name="race"></param>
         /// <param name="ismulitclass"></param>
@@ -284,6 +277,29 @@ namespace CharacterGUI
 
         }
 
+        private void ConstitutionBox_TextChanged(object sender, EventArgs e)
+        {
+            if (Int32.TryParse(ConstitutionBox.Text, out int stat))
+            {
+                if (stat > 26)
+                    return;
+
+                string conLine = "";
+                con.TryGetValue(stat, out conLine);
+
+                if (conLine != null)
+                {
+                    string[] conSplit = conLine.Split();
+
+                    HPBox.Text = conSplit[0];
+                    SSBox.Text = conSplit[1];
+                    RSBox.Text = conSplit[2];
+                    PSBox.Text = conSplit[3];
+                    RegenBox.Text = conSplit[4];
+                }
+            }
+
+        }
 
         private bool ValidRaceInput()
         {
@@ -297,6 +313,7 @@ namespace CharacterGUI
 
 
         }
+
         private bool ValidClassInput()
         {
 
@@ -304,7 +321,7 @@ namespace CharacterGUI
             //class input validation 
             if (ClassesList.CheckedItems.Count == 0)
             {
-                ErrorBox.Text += ErrorBox.Text + "You must Select a class to continue";
+                ErrorBox.Text += ErrorBox.Text + "You must Select a class to continue"; //If options are unselected we should roll them randomly if possible -Ryan
 
                 return false;
             }
@@ -336,6 +353,7 @@ namespace CharacterGUI
             int num = rnd.Next(RacesList.Items.Count);
             return RacesList.Items[num].ToString();
         }
+
         //take priority on the character creation via book
         //scores race and class
         private void GenerateButton_Click(object sender, EventArgs e)
@@ -351,7 +369,7 @@ namespace CharacterGUI
 
 
 
-            if (ValidClassInput() )
+            if (ValidClassInput())
             {
                 //selecting race
                 Random rnd = new Random();
@@ -398,46 +416,31 @@ namespace CharacterGUI
             else
             {
                 //failure to have correct form data
+                //We should just roll a random character if nothing is selected -Ryan
+                string value = "";
+                if (Rollmethod4d6d1.Checked)
+                {
+                    value = Rollmethod4d6d1.Text;
+                }
+                else if (Rollmethod3d6r2.Checked)
+                {
+                    value = Rollmethod3d6r2.Text;
+                }
+                else if (Rollmethod3d6.Checked)
+                {
+                    value = Rollmethod3d6.Text;
+                }
+
+                roller.ReRoll(value);
+                classRoller.UpdateRace(raceroller.RaceRoll());
+
+                populate_form(classRoller.RollClass(roller.getStats()), classRoller.GetRace(), roller.getStats());
                 return;
 
             }
 
 
         }
-
-        private void label15_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ConstitutionBox_TextChanged(object sender, EventArgs e)
-        {
-            if (Int32.TryParse(ConstitutionBox.Text, out int stat))
-            {
-                if (stat > 26)
-                    return;
-
-
-
-                string dexLine = "";
-                con.TryGetValue(stat, out dexLine);
-
-                if (dexLine != null)
-                {
-                    string[] dexSplit = dexLine.Split();
-
-
-                    HPBox.Text = dexSplit[0];
-                    SSBox.Text = dexSplit[1];
-                    RSBox.Text = dexSplit[2];
-                    PSBox.Text = dexSplit[3];
-                    RegenBox.Text = dexSplit[4];
-
-                }
-            }
-
-        }
-
 
     }
 }
