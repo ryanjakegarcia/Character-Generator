@@ -41,6 +41,7 @@ namespace CharacterGUI
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TabControl tabControl1;
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ErrorBox = new System.Windows.Forms.TextBox();
             this.statDisplay = new System.Windows.Forms.ListBox();
             this.Classbox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -90,7 +91,8 @@ namespace CharacterGUI
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.ErrorBox = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.RaceBox = new System.Windows.Forms.TextBox();
             tabControl1 = new System.Windows.Forms.TabControl();
             tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -114,6 +116,8 @@ namespace CharacterGUI
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.RaceBox);
+            this.tabPage1.Controls.Add(this.label15);
             this.tabPage1.Controls.Add(this.ErrorBox);
             this.tabPage1.Controls.Add(this.statDisplay);
             this.tabPage1.Controls.Add(this.Classbox);
@@ -138,13 +142,20 @@ namespace CharacterGUI
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // ErrorBox
+            // 
+            this.ErrorBox.Location = new System.Drawing.Point(84, 384);
+            this.ErrorBox.Name = "ErrorBox";
+            this.ErrorBox.Size = new System.Drawing.Size(100, 26);
+            this.ErrorBox.TabIndex = 29;
+            // 
             // statDisplay
             // 
             this.statDisplay.FormattingEnabled = true;
             this.statDisplay.ItemHeight = 20;
-            this.statDisplay.Location = new System.Drawing.Point(497, 309);
+            this.statDisplay.Location = new System.Drawing.Point(497, 329);
             this.statDisplay.Name = "statDisplay";
-            this.statDisplay.Size = new System.Drawing.Size(120, 224);
+            this.statDisplay.Size = new System.Drawing.Size(120, 204);
             this.statDisplay.TabIndex = 28;
             // 
             // Classbox
@@ -655,12 +666,24 @@ namespace CharacterGUI
             this.label1.TabIndex = 0;
             this.label1.Text = "Character Generator";
             // 
-            // ErrorBox
+            // label15
             // 
-            this.ErrorBox.Location = new System.Drawing.Point(84, 384);
-            this.ErrorBox.Name = "ErrorBox";
-            this.ErrorBox.Size = new System.Drawing.Size(100, 26);
-            this.ErrorBox.TabIndex = 29;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(493, 306);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(51, 20);
+            this.label15.TabIndex = 30;
+            this.label15.Text = "Race";
+            this.label15.Click += new System.EventHandler(this.label15_Click);
+            // 
+            // RaceBox
+            // 
+            this.RaceBox.Location = new System.Drawing.Point(550, 303);
+            this.RaceBox.Margin = new System.Windows.Forms.Padding(4);
+            this.RaceBox.Name = "RaceBox";
+            this.RaceBox.Size = new System.Drawing.Size(120, 26);
+            this.RaceBox.TabIndex = 31;
             // 
             // Form1
             // 
@@ -741,6 +764,8 @@ namespace CharacterGUI
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ListBox statDisplay;
         private System.Windows.Forms.TextBox ErrorBox;
+        private System.Windows.Forms.TextBox RaceBox;
+        private System.Windows.Forms.Label label15;
     }
 }
 

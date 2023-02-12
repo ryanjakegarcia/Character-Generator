@@ -18,6 +18,7 @@ namespace CharacterGUI
     {
         private AutoRoller roller;
         private ClassRoller classRoller;
+        private Race raceroller;
 
         private Dictionary<int, string> str;
         private Dictionary<int, string> dex;
@@ -45,6 +46,7 @@ namespace CharacterGUI
             roller.Roll();
 
             classRoller = new ClassRoller("Human", roller.getStats());
+            raceroller = new Race();
         }
 
         private void Random_Click(object sender, EventArgs e)
@@ -64,6 +66,7 @@ namespace CharacterGUI
             }
 
             roller.ReRoll(value);
+            classRoller.UpdateRace(raceroller.RaceRoll());
 
             populate_form(classRoller.RollClass(roller.getStats()), classRoller.GetRace(), roller.getStats());
         }
@@ -76,6 +79,8 @@ namespace CharacterGUI
         //this function takes an array of numbers and updates the stats
         private void populate_form(string charclass, string charrace, int[] charstats)
         {
+
+
             statDisplay.DataSource = charstats;
             //This is a much simpler way to display the stats
 
@@ -103,6 +108,7 @@ namespace CharacterGUI
             BBLGBox.Text = strSplit[6] + "%";
 
             Classbox.Text = charclass;
+            RaceBox.Text= charrace;
 
             //populating rollbox
             /*StrengthLabel.Text = charstats[0].ToString();
@@ -241,19 +247,44 @@ namespace CharacterGUI
                 return Rollmethod3d6.Text;
             }
         }
-
-
+        private string RollRace()
+        {
+            Random rnd = new Random();
+            int num = rnd.Next(RacesList.Items.Count);
+            return RacesList.Items[num].ToString();
+        }
+        //take priority on the character creation via book
+        //scores race and class
         private void GenerateButton_Click(object sender, EventArgs e)
         {
             //clearing text for error box
             ErrorBox.Text = "";
 
-            if (ValidClassInput() && ValidRaceInput())
+
+
+
+
+
+
+
+
+            if (ValidClassInput() )
             {
                 //selecting race
                 Random rnd = new Random();
-                int num = rnd.Next(RacesList.CheckedItems.Count);
-                string race = RacesList.CheckedItems[num].ToString();
+                int num;
+                string race;
+                if (RacesList.CheckedItems.Count > 0)
+                {
+
+                     num = rnd.Next(RacesList.CheckedItems.Count);
+                     race = RacesList.CheckedItems[num].ToString();
+
+                }
+                else
+                {
+                    race = RollRace(); 
+                }
 
 
                 if (MultiCheck.Checked)
@@ -288,6 +319,11 @@ namespace CharacterGUI
 
             }
 
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
 
         }
     }
