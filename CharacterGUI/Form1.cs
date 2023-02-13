@@ -292,13 +292,100 @@ namespace CharacterGUI
                     string[] conSplit = conLine.Split();
 
                     HPBox.Text = conSplit[0];
-                    SSBox.Text = conSplit[1];
-                    RSBox.Text = conSplit[2];
+                    SSBox.Text = conSplit[1] + "%";
+                    RSBox.Text = conSplit[2] + "%";
                     PSBox.Text = conSplit[3];
                     RegenBox.Text = conSplit[4];
                 }
             }
 
+        }
+
+        private void IntelligenceBox_TextChanged(object sender, EventArgs e)
+        {
+
+            if (Int32.TryParse(IntelligenceBox.Text, out int stat))
+            {
+                if (stat > 26)
+                    return;
+
+                string entLine = "";
+                ent.TryGetValue(stat, out entLine);
+
+                if (entLine != null)
+                {
+                    string[] entSplit = entLine.Split();
+
+                    LangBox.Text = entSplit[0];
+                    if (stat < 9)
+                    {
+                        SpellBox.Text = "- -";
+                        SpellChanceBox.Text = "- -";
+                        MaxSpellBox.Text = "- -";
+                    }
+                    else 
+                    {
+                        SpellChanceBox.Text = entSplit[2] + "%";
+                        MaxSpellBox.Text = entSplit[3];
+                    }
+                    
+                    //ImmunityBox.Text = conSplit[4];
+                }
+            }
+        }
+
+        private void CharismaBox_TextChanged(object sender, EventArgs e)
+        {
+
+            if (Int32.TryParse(CharismaBox.Text, out int stat))
+            {
+                if (stat > 26)
+                    return;
+
+                string conLine = "";
+                chr.TryGetValue(stat, out conLine);
+
+                if (conLine != null)
+                {
+                    string[] conSplit = conLine.Split();
+
+                    HenchmenBox.Text = conSplit[0];
+                    LoyaltyBox.Text = conSplit[1];
+                    ReactAdjBox.Text = conSplit[2];
+
+                }
+            }
+        }
+
+        private void PerceptionBox_TextChanged(object sender, EventArgs e)
+        {
+            if (Int32.TryParse(PerceptionBox.Text, out int stat))
+            {
+                if (stat > 26)
+                    return;
+
+                string pcpLine = "";
+
+                dex.TryGetValue(stat, out pcpLine);
+
+                if (pcpLine != null)
+                {
+                    string[] pcpSplit = pcpLine.Split();
+
+                    PcpReactBox.Text = pcpSplit[2];
+
+                }
+
+                ent.TryGetValue(stat, out pcpLine);
+
+                if (pcpLine != null)
+                {
+                    string[] pcpSplit = pcpLine.Split();
+
+
+                    ImmunityBox.Text = pcpSplit[4];
+                }
+            }
         }
 
         private bool ValidRaceInput()
@@ -317,8 +404,6 @@ namespace CharacterGUI
             return !(ClassesList.CheckedItems.Count == 0);
         }
 
-
-
         private string Get_Roll_Method()
         {
             if (Rollmethod4d6d1.Checked)
@@ -334,6 +419,7 @@ namespace CharacterGUI
                 return Rollmethod3d6.Text;
             }
         }
+
         private string RollRace()
         {
             Random rnd = new Random();
@@ -427,87 +513,6 @@ namespace CharacterGUI
 
         }
 
-        private void IntelligenceBox_TextChanged(object sender, EventArgs e)
-        {
-
-            if (Int32.TryParse(IntelligenceBox.Text, out int stat))
-            {
-                if (stat > 26)
-                    return;
-
-                string conLine = "";
-                ent.TryGetValue(stat, out conLine);
-
-                if (conLine != null)
-                {
-                    string[] conSplit = conLine.Split();
-
-                    LangBox.Text = conSplit[0];
-                    SpellBox.Text = conSplit[1];
-                    SpellChanceBox.Text = conSplit[2];
-                    MaxSpellBox.Text = conSplit[3];
-                    //ImmunityBox.Text = conSplit[4];
-                }
-            }
-        }
-
-        private void CharismaBox_TextChanged(object sender, EventArgs e)
-        {
-
-            if (Int32.TryParse(CharismaBox.Text, out int stat))
-            {
-                if (stat > 26)
-                    return;
-
-                string conLine = "";
-                chr.TryGetValue(stat, out conLine);
-
-                if (conLine != null)
-                {
-                    string[] conSplit = conLine.Split();
-
-                    HenchmenBox.Text = conSplit[0];         
-                    LoyaltyBox.Text = conSplit[1];
-                    ReactAdjBox.Text = conSplit[2];
-                
-                }
-            }
-        }
-
-        private void PerceptionBox_TextChanged(object sender, EventArgs e)
-        {
-            if (Int32.TryParse(PerceptionBox.Text, out int stat))
-            {
-                if (stat > 26)
-                    return;
-
-                string conLine = "";
-                dex.TryGetValue(stat, out conLine);
-
-                if (conLine != null)
-                {
-                    string[] conSplit = conLine.Split();
-                   
-                    PcpReactBox.Text = conSplit[2]; 
-                    
-                }
-
-
-
-
-
-
-                ent.TryGetValue(stat, out conLine);
-
-                if (conLine != null)
-                {
-                    string[] conSplit = conLine.Split();
-
-                  
-                    ImmunityBox.Text = conSplit[4];
-                }
-            }
-        }
     }
 }
     
