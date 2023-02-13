@@ -60,13 +60,13 @@ namespace CharacterGUI
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.PerceptionBox = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.SpellChanceBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.SpellBox = new System.Windows.Forms.TextBox();
+            this.LangBox = new System.Windows.Forms.TextBox();
             this.IntelligenceBox = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
@@ -148,6 +148,10 @@ namespace CharacterGUI
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label16 = new System.Windows.Forms.Label();
+            this.MaxSpellBox = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.ImmunityBox = new System.Windows.Forms.TextBox();
             tabControl1 = new System.Windows.Forms.TabControl();
             tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -332,7 +336,7 @@ namespace CharacterGUI
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(233, 14);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 16);
+            this.label5.Size = new System.Drawing.Size(56, 16);
             this.label5.TabIndex = 20;
             this.label5.Text = "Missile";
             // 
@@ -342,7 +346,7 @@ namespace CharacterGUI
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(346, 17);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 16);
+            this.label6.Size = new System.Drawing.Size(27, 16);
             this.label6.TabIndex = 17;
             this.label6.Text = "AC";
             // 
@@ -352,7 +356,7 @@ namespace CharacterGUI
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(138, 14);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 16);
+            this.label7.Size = new System.Drawing.Size(48, 16);
             this.label7.TabIndex = 16;
             this.label7.Text = "React";
             // 
@@ -397,13 +401,17 @@ namespace CharacterGUI
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.textBox9);
+            this.groupBox5.Controls.Add(this.ImmunityBox);
+            this.groupBox5.Controls.Add(this.label17);
+            this.groupBox5.Controls.Add(this.MaxSpellBox);
+            this.groupBox5.Controls.Add(this.label16);
+            this.groupBox5.Controls.Add(this.SpellChanceBox);
             this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.label25);
             this.groupBox5.Controls.Add(this.label29);
             this.groupBox5.Controls.Add(this.label30);
-            this.groupBox5.Controls.Add(this.textBox10);
-            this.groupBox5.Controls.Add(this.textBox11);
+            this.groupBox5.Controls.Add(this.SpellBox);
+            this.groupBox5.Controls.Add(this.LangBox);
             this.groupBox5.Controls.Add(this.IntelligenceBox);
             this.groupBox5.Location = new System.Drawing.Point(4, 161);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(0);
@@ -413,15 +421,15 @@ namespace CharacterGUI
             this.groupBox5.TabIndex = 25;
             this.groupBox5.TabStop = false;
             // 
-            // textBox9
+            // SpellChanceBox
             // 
-            this.textBox9.Location = new System.Drawing.Point(401, 11);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(53, 26);
-            this.textBox9.TabIndex = 23;
-            this.textBox9.Text = "00";
+            this.SpellChanceBox.Location = new System.Drawing.Point(427, 11);
+            this.SpellChanceBox.Margin = new System.Windows.Forms.Padding(4);
+            this.SpellChanceBox.Name = "SpellChanceBox";
+            this.SpellChanceBox.ReadOnly = true;
+            this.SpellChanceBox.Size = new System.Drawing.Size(36, 26);
+            this.SpellChanceBox.TabIndex = 23;
+            this.SpellChanceBox.Text = "00";
             // 
             // label10
             // 
@@ -429,9 +437,9 @@ namespace CharacterGUI
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(233, 14);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(57, 16);
+            this.label10.Size = new System.Drawing.Size(67, 16);
             this.label10.TabIndex = 20;
-            this.label10.Text = "Missile";
+            this.label10.Text = "Spell Lvl";
             // 
             // label25
             // 
@@ -439,9 +447,9 @@ namespace CharacterGUI
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.Location = new System.Drawing.Point(346, 17);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(28, 16);
+            this.label25.Size = new System.Drawing.Size(82, 16);
             this.label25.TabIndex = 17;
-            this.label25.Text = "AC";
+            this.label25.Text = "SplChance";
             // 
             // label29
             // 
@@ -449,9 +457,9 @@ namespace CharacterGUI
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.Location = new System.Drawing.Point(138, 14);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(49, 16);
+            this.label29.Size = new System.Drawing.Size(41, 16);
             this.label29.TabIndex = 16;
-            this.label29.Text = "React";
+            this.label29.Text = "Lang";
             // 
             // label30
             // 
@@ -463,25 +471,25 @@ namespace CharacterGUI
             this.label30.TabIndex = 13;
             this.label30.Text = "Int";
             // 
-            // textBox10
+            // SpellBox
             // 
-            this.textBox10.Location = new System.Drawing.Point(308, 10);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(31, 26);
-            this.textBox10.TabIndex = 15;
-            this.textBox10.Text = "00";
+            this.SpellBox.Location = new System.Drawing.Point(308, 10);
+            this.SpellBox.Margin = new System.Windows.Forms.Padding(4);
+            this.SpellBox.Name = "SpellBox";
+            this.SpellBox.ReadOnly = true;
+            this.SpellBox.Size = new System.Drawing.Size(31, 26);
+            this.SpellBox.TabIndex = 15;
+            this.SpellBox.Text = "00";
             // 
-            // textBox11
+            // LangBox
             // 
-            this.textBox11.Location = new System.Drawing.Point(195, 10);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(31, 26);
-            this.textBox11.TabIndex = 9;
-            this.textBox11.Text = "00";
+            this.LangBox.Location = new System.Drawing.Point(195, 10);
+            this.LangBox.Margin = new System.Windows.Forms.Padding(4);
+            this.LangBox.Name = "LangBox";
+            this.LangBox.ReadOnly = true;
+            this.LangBox.Size = new System.Drawing.Size(31, 26);
+            this.LangBox.TabIndex = 9;
+            this.LangBox.Text = "00";
             // 
             // IntelligenceBox
             // 
@@ -491,6 +499,7 @@ namespace CharacterGUI
             this.IntelligenceBox.Size = new System.Drawing.Size(31, 26);
             this.IntelligenceBox.TabIndex = 2;
             this.IntelligenceBox.Text = "00";
+            this.IntelligenceBox.TextChanged += new System.EventHandler(this.IntelligenceBox_TextChanged);
             // 
             // groupBox6
             // 
@@ -527,7 +536,7 @@ namespace CharacterGUI
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.Location = new System.Drawing.Point(233, 14);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(57, 16);
+            this.label31.Size = new System.Drawing.Size(56, 16);
             this.label31.TabIndex = 20;
             this.label31.Text = "Missile";
             // 
@@ -537,7 +546,7 @@ namespace CharacterGUI
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.Location = new System.Drawing.Point(346, 17);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(28, 16);
+            this.label32.Size = new System.Drawing.Size(27, 16);
             this.label32.TabIndex = 17;
             this.label32.Text = "AC";
             // 
@@ -575,7 +584,7 @@ namespace CharacterGUI
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.Location = new System.Drawing.Point(233, 14);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(57, 16);
+            this.label35.Size = new System.Drawing.Size(56, 16);
             this.label35.TabIndex = 20;
             this.label35.Text = "Missile";
             // 
@@ -585,7 +594,7 @@ namespace CharacterGUI
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.Location = new System.Drawing.Point(346, 17);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(28, 16);
+            this.label36.Size = new System.Drawing.Size(27, 16);
             this.label36.TabIndex = 17;
             this.label36.Text = "AC";
             // 
@@ -595,7 +604,7 @@ namespace CharacterGUI
             this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label37.Location = new System.Drawing.Point(138, 14);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(49, 16);
+            this.label37.Size = new System.Drawing.Size(48, 16);
             this.label37.TabIndex = 16;
             this.label37.Text = "React";
             // 
@@ -644,7 +653,7 @@ namespace CharacterGUI
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.Location = new System.Drawing.Point(138, 14);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(49, 16);
+            this.label33.Size = new System.Drawing.Size(48, 16);
             this.label33.TabIndex = 16;
             this.label33.Text = "React";
             // 
@@ -721,7 +730,7 @@ namespace CharacterGUI
             this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label39.Location = new System.Drawing.Point(233, 14);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(57, 16);
+            this.label39.Size = new System.Drawing.Size(56, 16);
             this.label39.TabIndex = 20;
             this.label39.Text = "Missile";
             // 
@@ -731,7 +740,7 @@ namespace CharacterGUI
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label40.Location = new System.Drawing.Point(346, 17);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(28, 16);
+            this.label40.Size = new System.Drawing.Size(27, 16);
             this.label40.TabIndex = 17;
             this.label40.Text = "AC";
             // 
@@ -741,7 +750,7 @@ namespace CharacterGUI
             this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label41.Location = new System.Drawing.Point(138, 14);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(49, 16);
+            this.label41.Size = new System.Drawing.Size(48, 16);
             this.label41.TabIndex = 16;
             this.label41.Text = "React";
             // 
@@ -822,7 +831,7 @@ namespace CharacterGUI
             this.Regenlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Regenlabel.Location = new System.Drawing.Point(596, 16);
             this.Regenlabel.Name = "Regenlabel";
-            this.Regenlabel.Size = new System.Drawing.Size(54, 16);
+            this.Regenlabel.Size = new System.Drawing.Size(53, 16);
             this.Regenlabel.TabIndex = 27;
             this.Regenlabel.Text = "Regen";
             // 
@@ -852,7 +861,7 @@ namespace CharacterGUI
             this.l.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l.Location = new System.Drawing.Point(460, 16);
             this.l.Name = "l";
-            this.l.Size = new System.Drawing.Size(96, 16);
+            this.l.Size = new System.Drawing.Size(95, 16);
             this.l.TabIndex = 24;
             this.l.Text = "Poison Save";
             // 
@@ -862,7 +871,7 @@ namespace CharacterGUI
             this.SSlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SSlabel.Location = new System.Drawing.Point(247, 16);
             this.SSlabel.Name = "SSlabel";
-            this.SSlabel.Size = new System.Drawing.Size(36, 16);
+            this.SSlabel.Size = new System.Drawing.Size(35, 16);
             this.SSlabel.TabIndex = 20;
             this.SSlabel.Text = "S.S.";
             // 
@@ -872,7 +881,7 @@ namespace CharacterGUI
             this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label66.Location = new System.Drawing.Point(328, 16);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(92, 16);
+            this.label66.Size = new System.Drawing.Size(91, 16);
             this.label66.TabIndex = 17;
             this.label66.Text = "Res Chance";
             // 
@@ -882,7 +891,7 @@ namespace CharacterGUI
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(138, 14);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(56, 16);
+            this.label19.Size = new System.Drawing.Size(55, 16);
             this.label19.TabIndex = 16;
             this.label19.Text = "Hp-Adj";
             // 
@@ -960,7 +969,7 @@ namespace CharacterGUI
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(233, 14);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(57, 16);
+            this.label18.Size = new System.Drawing.Size(56, 16);
             this.label18.TabIndex = 20;
             this.label18.Text = "Missile";
             // 
@@ -970,7 +979,7 @@ namespace CharacterGUI
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(346, 17);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(28, 16);
+            this.label20.Size = new System.Drawing.Size(27, 16);
             this.label20.TabIndex = 17;
             this.label20.Text = "AC";
             // 
@@ -980,7 +989,7 @@ namespace CharacterGUI
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(138, 14);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(49, 16);
+            this.label21.Size = new System.Drawing.Size(48, 16);
             this.label21.TabIndex = 16;
             this.label21.Text = "React";
             // 
@@ -1054,7 +1063,7 @@ namespace CharacterGUI
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.Location = new System.Drawing.Point(585, 17);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(64, 16);
+            this.label28.Size = new System.Drawing.Size(63, 16);
             this.label28.TabIndex = 22;
             this.label28.Text = "Opn Drs";
             // 
@@ -1064,7 +1073,7 @@ namespace CharacterGUI
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.Location = new System.Drawing.Point(718, 16);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(52, 16);
+            this.label27.Size = new System.Drawing.Size(51, 16);
             this.label27.TabIndex = 21;
             this.label27.Text = "BB/LG";
             // 
@@ -1074,7 +1083,7 @@ namespace CharacterGUI
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.Location = new System.Drawing.Point(233, 14);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(68, 16);
+            this.label26.Size = new System.Drawing.Size(67, 16);
             this.label26.TabIndex = 20;
             this.label26.Text = "Dam-Adj";
             // 
@@ -1084,7 +1093,7 @@ namespace CharacterGUI
             this.MaxPressText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaxPressText.Location = new System.Drawing.Point(461, 17);
             this.MaxPressText.Name = "MaxPressText";
-            this.MaxPressText.Size = new System.Drawing.Size(54, 16);
+            this.MaxPressText.Size = new System.Drawing.Size(53, 16);
             this.MaxPressText.TabIndex = 19;
             this.MaxPressText.Text = "Max P.";
             // 
@@ -1094,7 +1103,7 @@ namespace CharacterGUI
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(346, 17);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(48, 16);
+            this.label23.Size = new System.Drawing.Size(47, 16);
             this.label23.TabIndex = 17;
             this.label23.Text = "Wt. A.";
             // 
@@ -1104,7 +1113,7 @@ namespace CharacterGUI
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(138, 14);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(55, 16);
+            this.label22.Size = new System.Drawing.Size(54, 16);
             this.label22.TabIndex = 16;
             this.label22.Text = "Hit-Adj";
             // 
@@ -1325,7 +1334,6 @@ namespace CharacterGUI
             this.ClassesList.Name = "ClassesList";
             this.ClassesList.Size = new System.Drawing.Size(178, 172);
             this.ClassesList.TabIndex = 10;
-
             // 
             // Random
             // 
@@ -1359,6 +1367,46 @@ namespace CharacterGUI
             this.label1.Size = new System.Drawing.Size(175, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Character Generator";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(483, 16);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(95, 16);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "Max Spell lvl";
+            // 
+            // MaxSpellBox
+            // 
+            this.MaxSpellBox.Location = new System.Drawing.Point(585, 10);
+            this.MaxSpellBox.Margin = new System.Windows.Forms.Padding(4);
+            this.MaxSpellBox.Name = "MaxSpellBox";
+            this.MaxSpellBox.ReadOnly = true;
+            this.MaxSpellBox.Size = new System.Drawing.Size(29, 26);
+            this.MaxSpellBox.TabIndex = 25;
+            this.MaxSpellBox.Text = "00";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(621, 16);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(120, 16);
+            this.label17.TabIndex = 26;
+            this.label17.Text = "Illusion Immunity";
+            // 
+            // ImmunityBox
+            // 
+            this.ImmunityBox.Location = new System.Drawing.Point(740, 10);
+            this.ImmunityBox.Margin = new System.Windows.Forms.Padding(4);
+            this.ImmunityBox.Name = "ImmunityBox";
+            this.ImmunityBox.ReadOnly = true;
+            this.ImmunityBox.Size = new System.Drawing.Size(49, 26);
+            this.ImmunityBox.TabIndex = 27;
+            this.ImmunityBox.Text = "00";
             // 
             // Form1
             // 
@@ -1462,13 +1510,13 @@ namespace CharacterGUI
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox PerceptionBox;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox SpellChanceBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox SpellBox;
+        private System.Windows.Forms.TextBox LangBox;
         private System.Windows.Forms.TextBox IntelligenceBox;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox textBox13;
@@ -1510,6 +1558,10 @@ namespace CharacterGUI
         private System.Windows.Forms.TextBox SSBox;
         private System.Windows.Forms.TextBox HPBox;
         private System.Windows.Forms.TextBox ConstitutionBox;
+        private System.Windows.Forms.TextBox MaxSpellBox;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox ImmunityBox;
     }
 }
 

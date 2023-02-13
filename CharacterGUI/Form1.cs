@@ -174,7 +174,7 @@ namespace CharacterGUI
                                     line = file.ReadLine();
                                 }
                                 break;
-                            case "int":
+                            case "ent":
                                 i = 1;
                                 line = file.ReadLine();
                                 while (!line.Equals("}"))
@@ -442,6 +442,29 @@ namespace CharacterGUI
 
         }
 
+        private void IntelligenceBox_TextChanged(object sender, EventArgs e)
+        {
+
+            if (Int32.TryParse(IntelligenceBox.Text, out int stat))
+            {
+                if (stat > 26)
+                    return;
+
+                string conLine = "";
+                ent.TryGetValue(stat, out conLine);
+
+                if (conLine != null)
+                {
+                    string[] conSplit = conLine.Split();
+
+                    LangBox.Text = conSplit[0];
+                    SpellBox.Text = conSplit[1];
+                    SpellChanceBox.Text = conSplit[2];
+                    MaxSpellBox.Text = conSplit[3];
+                    ImmunityBox.Text = conSplit[4];
+                }
+            }
+        }
     }
 }
     
