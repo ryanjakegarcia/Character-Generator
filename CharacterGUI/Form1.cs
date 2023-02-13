@@ -310,24 +310,11 @@ namespace CharacterGUI
                 return false;
             }
             return true;
-
-
         }
 
         private bool ValidClassInput()
         {
-
-
-            //class input validation 
-            if (ClassesList.CheckedItems.Count == 0)
-            {
-                ErrorBox.Text += ErrorBox.Text + "You must Select a class to continue"; //If options are unselected we should roll them randomly if possible -Ryan
-
-                return false;
-            }
-            return true;
-
-
+            return !(ClassesList.CheckedItems.Count == 0);
         }
 
 
@@ -408,8 +395,6 @@ namespace CharacterGUI
                     //iselite remove  later
                     cl.RollStatsforClass(charclass, Get_Roll_Method());
                     populate_form(charclass, race, cl.getStats());
-
-
 
                 }
             }
