@@ -192,7 +192,7 @@ namespace CharacterGUI
                                     line = file.ReadLine();
                                 }
                                 break;
-                            case "charisma":
+                            case "chr":
                                 i = 1;
                                 line = file.ReadLine();
                                 while (!line.Equals("}"))
@@ -446,6 +446,64 @@ namespace CharacterGUI
                     SpellBox.Text = conSplit[1];
                     SpellChanceBox.Text = conSplit[2];
                     MaxSpellBox.Text = conSplit[3];
+                    //ImmunityBox.Text = conSplit[4];
+                }
+            }
+        }
+
+        private void CharismaBox_TextChanged(object sender, EventArgs e)
+        {
+
+            if (Int32.TryParse(CharismaBox.Text, out int stat))
+            {
+                if (stat > 26)
+                    return;
+
+                string conLine = "";
+                chr.TryGetValue(stat, out conLine);
+
+                if (conLine != null)
+                {
+                    string[] conSplit = conLine.Split();
+
+                    HenchmenBox.Text = conSplit[0];         
+                    LoyaltyBox.Text = conSplit[1];
+                    ReactAdjBox.Text = conSplit[2];
+                
+                }
+            }
+        }
+
+        private void PerceptionBox_TextChanged(object sender, EventArgs e)
+        {
+            if (Int32.TryParse(PerceptionBox.Text, out int stat))
+            {
+                if (stat > 26)
+                    return;
+
+                string conLine = "";
+                dex.TryGetValue(stat, out conLine);
+
+                if (conLine != null)
+                {
+                    string[] conSplit = conLine.Split();
+                   
+                    PcpReactBox.Text = conSplit[2]; 
+                    
+                }
+
+
+
+
+
+
+                ent.TryGetValue(stat, out conLine);
+
+                if (conLine != null)
+                {
+                    string[] conSplit = conLine.Split();
+
+                  
                     ImmunityBox.Text = conSplit[4];
                 }
             }

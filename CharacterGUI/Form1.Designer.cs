@@ -51,13 +51,10 @@ namespace CharacterGUI
             this.label11 = new System.Windows.Forms.Label();
             this.statsbox = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.PcpReactBox = new System.Windows.Forms.TextBox();
             this.PerceptionBox = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.SpellChanceBox = new System.Windows.Forms.TextBox();
@@ -87,13 +84,13 @@ namespace CharacterGUI
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.WisdomBox = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.ReactAdjBox = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
-            this.textBox22 = new System.Windows.Forms.TextBox();
-            this.textBox23 = new System.Windows.Forms.TextBox();
+            this.LoyaltyBox = new System.Windows.Forms.TextBox();
+            this.HenchmenBox = new System.Windows.Forms.TextBox();
             this.CharismaBox = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.RegenBox = new System.Windows.Forms.TextBox();
@@ -304,13 +301,12 @@ namespace CharacterGUI
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.textBox5);
+            this.groupBox4.Controls.Add(this.ImmunityBox);
             this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.textBox6);
-            this.groupBox4.Controls.Add(this.textBox7);
+            this.groupBox4.Controls.Add(this.PcpReactBox);
             this.groupBox4.Controls.Add(this.PerceptionBox);
             this.groupBox4.Location = new System.Drawing.Point(4, 328);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(0);
@@ -320,35 +316,14 @@ namespace CharacterGUI
             this.groupBox4.TabIndex = 25;
             this.groupBox4.TabStop = false;
             // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(401, 11);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(53, 26);
-            this.textBox5.TabIndex = 23;
-            this.textBox5.Text = "00";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(233, 14);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 16);
+            this.label5.Size = new System.Drawing.Size(0, 16);
             this.label5.TabIndex = 20;
-            this.label5.Text = "Missile";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(346, 17);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(27, 16);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "AC";
             // 
             // label7
             // 
@@ -370,25 +345,15 @@ namespace CharacterGUI
             this.label8.TabIndex = 13;
             this.label8.Text = "PCP";
             // 
-            // textBox6
+            // PcpReactBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(308, 10);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(31, 26);
-            this.textBox6.TabIndex = 15;
-            this.textBox6.Text = "00";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(195, 10);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(31, 26);
-            this.textBox7.TabIndex = 9;
-            this.textBox7.Text = "00";
+            this.PcpReactBox.Location = new System.Drawing.Point(195, 10);
+            this.PcpReactBox.Margin = new System.Windows.Forms.Padding(4);
+            this.PcpReactBox.Name = "PcpReactBox";
+            this.PcpReactBox.ReadOnly = true;
+            this.PcpReactBox.Size = new System.Drawing.Size(31, 26);
+            this.PcpReactBox.TabIndex = 9;
+            this.PcpReactBox.Text = "00";
             // 
             // PerceptionBox
             // 
@@ -398,11 +363,10 @@ namespace CharacterGUI
             this.PerceptionBox.Size = new System.Drawing.Size(31, 26);
             this.PerceptionBox.TabIndex = 2;
             this.PerceptionBox.Text = "00";
+            this.PerceptionBox.TextChanged += new System.EventHandler(this.PerceptionBox_TextChanged);
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.ImmunityBox);
-            this.groupBox5.Controls.Add(this.label17);
             this.groupBox5.Controls.Add(this.MaxSpellBox);
             this.groupBox5.Controls.Add(this.label16);
             this.groupBox5.Controls.Add(this.SpellChanceBox);
@@ -698,13 +662,13 @@ namespace CharacterGUI
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.textBox21);
+            this.groupBox8.Controls.Add(this.ReactAdjBox);
             this.groupBox8.Controls.Add(this.label39);
             this.groupBox8.Controls.Add(this.label40);
             this.groupBox8.Controls.Add(this.label41);
             this.groupBox8.Controls.Add(this.label42);
-            this.groupBox8.Controls.Add(this.textBox22);
-            this.groupBox8.Controls.Add(this.textBox23);
+            this.groupBox8.Controls.Add(this.LoyaltyBox);
+            this.groupBox8.Controls.Add(this.HenchmenBox);
             this.groupBox8.Controls.Add(this.CharismaBox);
             this.groupBox8.Location = new System.Drawing.Point(4, 253);
             this.groupBox8.Margin = new System.Windows.Forms.Padding(0);
@@ -714,35 +678,35 @@ namespace CharacterGUI
             this.groupBox8.TabIndex = 25;
             this.groupBox8.TabStop = false;
             // 
-            // textBox21
+            // ReactAdjBox
             // 
-            this.textBox21.Location = new System.Drawing.Point(401, 11);
-            this.textBox21.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.ReadOnly = true;
-            this.textBox21.Size = new System.Drawing.Size(53, 26);
-            this.textBox21.TabIndex = 23;
-            this.textBox21.Text = "00";
+            this.ReactAdjBox.Location = new System.Drawing.Point(482, 9);
+            this.ReactAdjBox.Margin = new System.Windows.Forms.Padding(4);
+            this.ReactAdjBox.Name = "ReactAdjBox";
+            this.ReactAdjBox.ReadOnly = true;
+            this.ReactAdjBox.Size = new System.Drawing.Size(53, 26);
+            this.ReactAdjBox.TabIndex = 23;
+            this.ReactAdjBox.Text = "00";
             // 
             // label39
             // 
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(233, 14);
+            this.label39.Location = new System.Drawing.Point(272, 14);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(56, 16);
+            this.label39.Size = new System.Drawing.Size(61, 16);
             this.label39.TabIndex = 20;
-            this.label39.Text = "Missile";
+            this.label39.Text = "Loyalty ";
             // 
             // label40
             // 
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(346, 17);
+            this.label40.Location = new System.Drawing.Point(378, 16);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(27, 16);
+            this.label40.Size = new System.Drawing.Size(97, 16);
             this.label40.TabIndex = 17;
-            this.label40.Text = "AC";
+            this.label40.Text = "Reaction-Adj";
             // 
             // label41
             // 
@@ -750,9 +714,9 @@ namespace CharacterGUI
             this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label41.Location = new System.Drawing.Point(138, 14);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(48, 16);
+            this.label41.Size = new System.Drawing.Size(92, 16);
             this.label41.TabIndex = 16;
-            this.label41.Text = "React";
+            this.label41.Text = "# Henchmen";
             // 
             // label42
             // 
@@ -764,25 +728,25 @@ namespace CharacterGUI
             this.label42.TabIndex = 13;
             this.label42.Text = "Charisma";
             // 
-            // textBox22
+            // LoyaltyBox
             // 
-            this.textBox22.Location = new System.Drawing.Point(308, 10);
-            this.textBox22.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.ReadOnly = true;
-            this.textBox22.Size = new System.Drawing.Size(31, 26);
-            this.textBox22.TabIndex = 15;
-            this.textBox22.Text = "00";
+            this.LoyaltyBox.Location = new System.Drawing.Point(340, 9);
+            this.LoyaltyBox.Margin = new System.Windows.Forms.Padding(4);
+            this.LoyaltyBox.Name = "LoyaltyBox";
+            this.LoyaltyBox.ReadOnly = true;
+            this.LoyaltyBox.Size = new System.Drawing.Size(31, 26);
+            this.LoyaltyBox.TabIndex = 15;
+            this.LoyaltyBox.Text = "00";
             // 
-            // textBox23
+            // HenchmenBox
             // 
-            this.textBox23.Location = new System.Drawing.Point(195, 10);
-            this.textBox23.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox23.Name = "textBox23";
-            this.textBox23.ReadOnly = true;
-            this.textBox23.Size = new System.Drawing.Size(31, 26);
-            this.textBox23.TabIndex = 9;
-            this.textBox23.Text = "00";
+            this.HenchmenBox.Location = new System.Drawing.Point(234, 9);
+            this.HenchmenBox.Margin = new System.Windows.Forms.Padding(4);
+            this.HenchmenBox.Name = "HenchmenBox";
+            this.HenchmenBox.ReadOnly = true;
+            this.HenchmenBox.Size = new System.Drawing.Size(31, 26);
+            this.HenchmenBox.TabIndex = 9;
+            this.HenchmenBox.Text = "00";
             // 
             // CharismaBox
             // 
@@ -792,6 +756,7 @@ namespace CharacterGUI
             this.CharismaBox.Size = new System.Drawing.Size(31, 26);
             this.CharismaBox.TabIndex = 2;
             this.CharismaBox.Text = "00";
+            this.CharismaBox.TextChanged += new System.EventHandler(this.CharismaBox_TextChanged);
             // 
             // groupBox3
             // 
@@ -1392,7 +1357,7 @@ namespace CharacterGUI
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(621, 16);
+            this.label17.Location = new System.Drawing.Point(233, 16);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(120, 16);
             this.label17.TabIndex = 26;
@@ -1400,11 +1365,11 @@ namespace CharacterGUI
             // 
             // ImmunityBox
             // 
-            this.ImmunityBox.Location = new System.Drawing.Point(740, 10);
+            this.ImmunityBox.Location = new System.Drawing.Point(360, 10);
             this.ImmunityBox.Margin = new System.Windows.Forms.Padding(4);
             this.ImmunityBox.Name = "ImmunityBox";
             this.ImmunityBox.ReadOnly = true;
-            this.ImmunityBox.Size = new System.Drawing.Size(49, 26);
+            this.ImmunityBox.Size = new System.Drawing.Size(68, 26);
             this.ImmunityBox.TabIndex = 27;
             this.ImmunityBox.Text = "00";
             // 
@@ -1501,13 +1466,10 @@ namespace CharacterGUI
         private System.Windows.Forms.TextBox MissileBox;
         private System.Windows.Forms.TextBox ReactBox;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox PcpReactBox;
         private System.Windows.Forms.TextBox PerceptionBox;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox SpellChanceBox;
@@ -1537,13 +1499,13 @@ namespace CharacterGUI
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.TextBox WisdomBox;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.TextBox textBox21;
+        private System.Windows.Forms.TextBox ReactAdjBox;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.TextBox textBox22;
-        private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.TextBox LoyaltyBox;
+        private System.Windows.Forms.TextBox HenchmenBox;
         private System.Windows.Forms.TextBox CharismaBox;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox RegenBox;
