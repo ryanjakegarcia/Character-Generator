@@ -51,21 +51,21 @@ namespace CharacterGUI
 
         private void Random_Click(object sender, EventArgs e)
         {
-            string value = "";
+            string rollMethod = "";
             if (Rollmethod4d6d1.Checked)
             {
-                value = Rollmethod4d6d1.Text;
+                rollMethod = Rollmethod4d6d1.Text;
             }
             else if (Rollmethod3d6r2.Checked)
             {
-                value = Rollmethod3d6r2.Text;
+                rollMethod = Rollmethod3d6r2.Text;
             }
             else if (Rollmethod3d6.Checked)
             {
-                value = Rollmethod3d6.Text;
+                rollMethod = Rollmethod3d6.Text;
             }
 
-            roller.ReRoll(value);
+            roller.ReRoll(rollMethod);
             classRoller.UpdateRace(raceroller.RaceRoll());
 
             populate_form(classRoller.RollClass(roller.getStats()), classRoller.GetRace(), roller.getStats());
@@ -201,18 +201,8 @@ namespace CharacterGUI
                                     line = file.ReadLine();
                                 }
                                 break;
-                            case "pcp":
-                                i = 1;
-                                line = file.ReadLine();
-                                while (!line.Equals("}"))
-                                {
-                                    pcp.Add(i++, line);
-                                    line = file.ReadLine();
-                                }
-                                break;
                             default:
                                 break;
-
                         }
                     }
                 }
@@ -291,11 +281,15 @@ namespace CharacterGUI
                 {
                     string[] conSplit = conLine.Split();
 
-                    HPBox.Text = conSplit[0];
-                    SSBox.Text = conSplit[1] + "%";
-                    RSBox.Text = conSplit[2] + "%";
-                    PSBox.Text = conSplit[3];
-                    RegenBox.Text = conSplit[4];
+                    if (classRoller.isWarrior())
+                        HPBox.Text = conSplit[1];
+                    else
+                        HPBox.Text = conSplit[0];
+
+                    SSBox.Text = conSplit[2] + "%";
+                    RSBox.Text = conSplit[3] + "%";
+                    PSBox.Text = conSplit[4];
+                    RegenBox.Text = conSplit[5];
                 }
             }
 
@@ -330,6 +324,69 @@ namespace CharacterGUI
                     }
                     
                     //ImmunityBox.Text = conSplit[4];
+                }
+            }
+        }
+
+        private void WisdomBox_TextChanged(object sender, EventArgs e)
+        {
+            if(Int32.TryParse(WisdomBox.Text, out int stat))
+            {
+                if (stat > 26)
+                    return;
+
+                string wisLine = "";
+                wis.TryGetValue(stat, out wisLine);
+
+                if(wisLine != null)
+                {
+                    string[] wisSplit = wisLine.Split();
+
+                    MDAdjBox.Text = wisSplit[0];
+
+                    int l = wisSplit[1].Length;
+                    string bonusSpells = "";
+
+                    for (int i = 0; i < l - 1; i++, bonusSpells += ",")
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                bonusSpells += "1st x" + wisSplit[1][0];
+                                break;
+                            case 1:
+                                bonusSpells += "2nd x" + wisSplit[1][1];
+                                break;
+                            case 2:
+                                bonusSpells += "3rd x" + wisSplit[1][2];
+                                break;
+                            case 3:
+                                bonusSpells += "4th x" + wisSplit[1][3];
+                                break;
+                            case 4:
+                                bonusSpells += "5th x" + wisSplit[1][4];
+                                break;
+                            case 5: bonusSpells += "6th x" + wisSplit[1][5];
+                                break;
+                            case 6:
+                                bonusSpells += "7th x" + wisSplit[1][6];
+                                break;
+                            default: bonusSpells = "None";
+                                break;
+                        }
+                    }
+
+                    if (bonusSpells.Length > 1)
+                        bonusSpellBox.Text = bonusSpells;
+                    else
+                        bonusSpellBox.Text = "None";
+
+                    sFailureBox.Text = wisSplit[2] + "%";
+
+                    if (wisSplit[3] == "1")
+                        sImmunitiesBox.Text = "See book for more details.";
+                    else
+                        sImmunitiesBox.Text = "None";
                 }
             }
         }
@@ -434,14 +491,6 @@ namespace CharacterGUI
             //clearing text for error box
             ErrorBox.Text = "";
 
-
-
-
-
-
-
-
-
             if (ValidClassInput())
             {
                 //selecting race
@@ -449,22 +498,17 @@ namespace CharacterGUI
                 int num;
                 string race;
                 if (RacesList.CheckedItems.Count > 0)
-                {
-
+                { 
                      num = rnd.Next(RacesList.CheckedItems.Count);
                      race = RacesList.CheckedItems[num].ToString();
-
                 }
                 else
                 {
                     race = RollRace(); 
                 }
 
-
                 if (MultiCheck.Checked)
-
                 {
-
 
                 }
                 else
@@ -473,15 +517,12 @@ namespace CharacterGUI
                     //selectiing class
                     num = rnd.Next(ClassesList.CheckedItems.Count);
                     string charclass = ClassesList.CheckedItems[num].ToString();
-                   
-
 
                     ClassSelector cl = new ClassSelector();
                     cl.SetClass(charclass);
                     //iselite remove  later
                     cl.RollStatsforClass(charclass, Get_Roll_Method());
                     populate_form(charclass, race, cl.getStats());
-
                 }
             }
             else
@@ -507,12 +548,10 @@ namespace CharacterGUI
 
                 populate_form(classRoller.RollClass(roller.getStats()), classRoller.GetRace(), roller.getStats());
                 return;
-
             }
 
 
         }
-
     }
 }
     
