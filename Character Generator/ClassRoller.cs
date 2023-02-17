@@ -13,6 +13,7 @@ namespace Character_Generator
         private int[] stats;
         private string charclass;
         private Dictionary<string, ClassInfo> classReqs;
+        private bool warriorFlag = false;
 
         //class weights
         //Base race weights
@@ -24,25 +25,19 @@ namespace Character_Generator
         private int ThiefChance;    private int ThiefThreshhold;
         private int BardChance;     private int BardThreshhold;
 
-
-
         //constructor
 
         public ClassRoller(string _race, int[] _stats)
         {
-
-
-
             //Base Race    //Weight                                                                
-            FighterChance   = 1; FighterThreshhold = FighterChance + 0; //This feels needless complicated/bloated
+            FighterChance   = 1; FighterThreshhold = FighterChance + 0;
             RangerChance    = 1; RangerThreshhold = RangerChance + FighterThreshhold;
             PaladinChance   = 1; PaladinThreshhold = PaladinChance + RangerThreshhold;
             WizardChance    = 1; WizardThreshhold = WizardChance + PaladinThreshhold;
             ClericChance    = 1; ClericThreshhold = ClericChance + WizardThreshhold;
             ThiefChance     = 1; ThiefThreshhold = ThiefChance + ClericThreshhold;
             BardChance      = 1; BardThreshhold = BardChance + ThiefThreshhold;
-            //Since we are changing the direction of the purpose of the program I don't think the classes need to be weighted anymore than the stat reqs
-
+            //Since we are changing the direction of the purpose of the program I don't think the classes need to be weighted anymore than the stat reqs\
 
             classReqs = new Dictionary<string, ClassInfo>();
             race = _race;
@@ -50,33 +45,21 @@ namespace Character_Generator
             readReqs();
         }
 
-
         public void UpdateStats(int[] statroll) 
         {
-            int i = 0;
-            foreach (int cstat in statroll) 
-            
-            {
+            for(int i = 0; i < 7; i++)
                 stats[i] = statroll[i];
-                i++;
-
-            }
-          
         }
+
         public int[] GetStats() { return stats; }
 
-        public void UpdateRace(string CharRace) 
-        {
+        public void UpdateRace(string CharRace) { race = CharRace; }
 
-            race = CharRace;
+        public string GetRace() { return race; }
 
-        }
-         public string GetRace() { return race; }
+        public string GetClass() { return charclass; }
 
-        public string GetClass() 
-        {
-            return charclass;        
-        }
+        public bool isWarrior() { return warriorFlag; }
 
         //This function checks to see if a character's race is valid for the given class
         //Assumptions: We know the selected class, and We know the selected race and we have access to a list of valid races
@@ -110,6 +93,7 @@ namespace Character_Generator
         
         
         }
+
         //This functions purpose is a helper function for RollClass
         //This function checks to see if a character's stats are valid for the given class
         //Assumptions: We know the selected class, and know our stats.
@@ -146,6 +130,7 @@ namespace Character_Generator
             }
             return true;
         }
+
         //this functions purpose is to roll a class and determine if the stats apply
         public string RollClass()
         {
@@ -153,7 +138,7 @@ namespace Character_Generator
             Random rng = new Random();
             // rolled class container
             String RolledClass = "";
-            //Loop flag
+            warriorFlag = false;
 
 
             //Statements needed to have to determine if we can be any class purely to see if we have run out of classes to be
@@ -189,7 +174,9 @@ namespace Character_Generator
                             if (validrace(RolledClass) && validstats(RolledClass))
                             {
                                 charclass = RolledClass;
-                                return RolledClass; }
+                                warriorFlag = true;
+                                return RolledClass; 
+                            }
                             else CanFighter = false;
                         }
                         break;
@@ -201,7 +188,9 @@ namespace Character_Generator
                             if (validrace(RolledClass) && validstats(RolledClass))
                             { 
                                 charclass = RolledClass;
-                                return RolledClass; }
+                                warriorFlag = true;
+                                return RolledClass; 
+                            }
                             else CanRanger = false;
                         }
                         break;
@@ -210,8 +199,11 @@ namespace Character_Generator
                             RolledClass = "Paladin";
                             //tests to see if we can be a Paladin
                             if (validrace(RolledClass) && validstats(RolledClass))
-                            { charclass = RolledClass; 
-                                return RolledClass; }
+                            { 
+                                charclass = RolledClass;
+                                warriorFlag = true;
+                                return RolledClass;
+                            }
                             else CanPaladin = false;
                         }
                         break;
@@ -316,6 +308,7 @@ namespace Character_Generator
                             if (validrace(RolledClass) && validstats(RolledClass))
                             {
                                 charclass = RolledClass;
+                                warriorFlag = true;
                                 return RolledClass;
                             }
                             else CanFighter = false;
