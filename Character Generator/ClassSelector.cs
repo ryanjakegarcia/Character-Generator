@@ -4,12 +4,11 @@ using System.Text;
 
 namespace Character_Generator
 {
+    //I think ClassSelecter will be totally removed
     public class ClassSelector
     {
-
-
         string SpecificClass = "fighter";
-        bool elite = false;
+        bool elite = false; //we will remove this in the future
         int[] stats;
 
         public ClassSelector() 
@@ -17,33 +16,30 @@ namespace Character_Generator
         }
 
         public void SetClass(string classname) { SpecificClass = classname; }
-        public void setElite(bool iselite) { elite = iselite; }
+
+        public void setElite(bool iselite) { elite = iselite; } //we will remove this in the future
 
         public int[] getStats() { return stats; }
 
 
         public void RollStatsforClass(string classname, string rollingmethod) 
         {
-            ClassRoller croller;
-            AutoRoller aroller = new AutoRoller(rollingmethod);
+            ClassRoller cRoller;
+            AutoRoller aRoller = new AutoRoller(rollingmethod);
             SpecificClass= classname;
-
-
 
             do
             {
                 //need stats to check if they are correct
-                aroller.Roll();
-                croller = new ClassRoller("Human", aroller.getStats());
-            } while (!croller.validstats(classname)); 
+                aRoller.Roll();
+                cRoller = new ClassRoller("Human", aRoller.getStats());
+            } while (!cRoller.validstats(classname)); 
   
-            stats = croller.GetStats();
+            stats = cRoller.GetStats();
 
             // check list out stat requirements 
             // roll stats
             // see if it checks out roll again
-
-
         }
     }
 }

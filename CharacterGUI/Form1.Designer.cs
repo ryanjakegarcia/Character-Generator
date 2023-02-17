@@ -70,9 +70,11 @@ namespace CharacterGUI
             this.LangBox = new System.Windows.Forms.TextBox();
             this.IntelligenceBox = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
+            this.sImmunitiesBox = new System.Windows.Forms.TextBox();
+            this.sImmunitiesLabel = new System.Windows.Forms.Label();
+            this.sFailureBox = new System.Windows.Forms.TextBox();
+            this.bonusSpellLabel = new System.Windows.Forms.Label();
+            this.sFailureLabel = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
@@ -82,10 +84,10 @@ namespace CharacterGUI
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.textBox20 = new System.Windows.Forms.TextBox();
-            this.label33 = new System.Windows.Forms.Label();
+            this.MDAdjLabel = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.bonusSpellBox = new System.Windows.Forms.TextBox();
+            this.MDAdjBox = new System.Windows.Forms.TextBox();
             this.WisdomBox = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.ReactAdjBox = new System.Windows.Forms.TextBox();
@@ -507,14 +509,16 @@ namespace CharacterGUI
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.textBox13);
-            this.groupBox6.Controls.Add(this.label31);
-            this.groupBox6.Controls.Add(this.label32);
+            this.groupBox6.Controls.Add(this.sImmunitiesBox);
+            this.groupBox6.Controls.Add(this.sImmunitiesLabel);
+            this.groupBox6.Controls.Add(this.sFailureBox);
+            this.groupBox6.Controls.Add(this.bonusSpellLabel);
+            this.groupBox6.Controls.Add(this.sFailureLabel);
             this.groupBox6.Controls.Add(this.groupBox7);
-            this.groupBox6.Controls.Add(this.label33);
+            this.groupBox6.Controls.Add(this.MDAdjLabel);
             this.groupBox6.Controls.Add(this.label34);
-            this.groupBox6.Controls.Add(this.textBox14);
-            this.groupBox6.Controls.Add(this.textBox15);
+            this.groupBox6.Controls.Add(this.bonusSpellBox);
+            this.groupBox6.Controls.Add(this.MDAdjBox);
             this.groupBox6.Controls.Add(this.WisdomBox);
             this.groupBox6.Location = new System.Drawing.Point(4, 201);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(0);
@@ -524,35 +528,54 @@ namespace CharacterGUI
             this.groupBox6.TabIndex = 25;
             this.groupBox6.TabStop = false;
             // 
-            // textBox13
+            // sImmunitiesBox
             // 
-            this.textBox13.Location = new System.Drawing.Point(401, 11);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(53, 26);
-            this.textBox13.TabIndex = 23;
-            this.textBox13.Text = "00";
+            this.sImmunitiesBox.Location = new System.Drawing.Point(721, 11);
+            this.sImmunitiesBox.Margin = new System.Windows.Forms.Padding(4);
+            this.sImmunitiesBox.Name = "sImmunitiesBox";
+            this.sImmunitiesBox.ReadOnly = true;
+            this.sImmunitiesBox.Size = new System.Drawing.Size(97, 26);
+            this.sImmunitiesBox.TabIndex = 27;
             // 
-            // label31
+            // sImmunitiesLabel
             // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(233, 14);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(57, 16);
-            this.label31.TabIndex = 20;
-            this.label31.Text = "Missile";
+            this.sImmunitiesLabel.AutoSize = true;
+            this.sImmunitiesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sImmunitiesLabel.Location = new System.Drawing.Point(633, 17);
+            this.sImmunitiesLabel.Name = "sImmunitiesLabel";
+            this.sImmunitiesLabel.Size = new System.Drawing.Size(81, 16);
+            this.sImmunitiesLabel.TabIndex = 26;
+            this.sImmunitiesLabel.Text = "Immunities";
             // 
-            // label32
+            // sFailureBox
             // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(346, 17);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(28, 16);
-            this.label32.TabIndex = 17;
-            this.label32.Text = "AC";
+            this.sFailureBox.Location = new System.Drawing.Point(573, 10);
+            this.sFailureBox.Margin = new System.Windows.Forms.Padding(4);
+            this.sFailureBox.Name = "sFailureBox";
+            this.sFailureBox.ReadOnly = true;
+            this.sFailureBox.Size = new System.Drawing.Size(53, 26);
+            this.sFailureBox.TabIndex = 23;
+            this.sFailureBox.Text = "00";
+            // 
+            // bonusSpellLabel
+            // 
+            this.bonusSpellLabel.AutoSize = true;
+            this.bonusSpellLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bonusSpellLabel.Location = new System.Drawing.Point(245, 17);
+            this.bonusSpellLabel.Name = "bonusSpellLabel";
+            this.bonusSpellLabel.Size = new System.Drawing.Size(99, 16);
+            this.bonusSpellLabel.TabIndex = 20;
+            this.bonusSpellLabel.Text = "Bonus Spells";
+            // 
+            // sFailureLabel
+            // 
+            this.sFailureLabel.AutoSize = true;
+            this.sFailureLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sFailureLabel.Location = new System.Drawing.Point(492, 16);
+            this.sFailureLabel.Name = "sFailureLabel";
+            this.sFailureLabel.Size = new System.Drawing.Size(74, 16);
+            this.sFailureLabel.TabIndex = 17;
+            this.sFailureLabel.Text = "Spell Fail";
             // 
             // groupBox7
             // 
@@ -651,15 +674,15 @@ namespace CharacterGUI
             this.textBox20.TabIndex = 2;
             this.textBox20.Text = "00";
             // 
-            // label33
+            // MDAdjLabel
             // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(138, 14);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(49, 16);
-            this.label33.TabIndex = 16;
-            this.label33.Text = "React";
+            this.MDAdjLabel.AutoSize = true;
+            this.MDAdjLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MDAdjLabel.Location = new System.Drawing.Point(138, 14);
+            this.MDAdjLabel.Name = "MDAdjLabel";
+            this.MDAdjLabel.Size = new System.Drawing.Size(62, 16);
+            this.MDAdjLabel.TabIndex = 16;
+            this.MDAdjLabel.Text = "MD Adj.";
             // 
             // label34
             // 
@@ -671,25 +694,27 @@ namespace CharacterGUI
             this.label34.TabIndex = 13;
             this.label34.Text = "Wis";
             // 
-            // textBox14
+            // bonusSpellBox
             // 
-            this.textBox14.Location = new System.Drawing.Point(308, 10);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.ReadOnly = true;
-            this.textBox14.Size = new System.Drawing.Size(31, 26);
-            this.textBox14.TabIndex = 15;
-            this.textBox14.Text = "00";
+            this.bonusSpellBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bonusSpellBox.Location = new System.Drawing.Point(351, 11);
+            this.bonusSpellBox.Margin = new System.Windows.Forms.Padding(4);
+            this.bonusSpellBox.Multiline = true;
+            this.bonusSpellBox.Name = "bonusSpellBox";
+            this.bonusSpellBox.ReadOnly = true;
+            this.bonusSpellBox.Size = new System.Drawing.Size(141, 26);
+            this.bonusSpellBox.TabIndex = 15;
+            this.bonusSpellBox.Text = "00";
             // 
-            // textBox15
+            // MDAdjBox
             // 
-            this.textBox15.Location = new System.Drawing.Point(195, 10);
-            this.textBox15.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.ReadOnly = true;
-            this.textBox15.Size = new System.Drawing.Size(31, 26);
-            this.textBox15.TabIndex = 9;
-            this.textBox15.Text = "00";
+            this.MDAdjBox.Location = new System.Drawing.Point(207, 10);
+            this.MDAdjBox.Margin = new System.Windows.Forms.Padding(4);
+            this.MDAdjBox.Name = "MDAdjBox";
+            this.MDAdjBox.ReadOnly = true;
+            this.MDAdjBox.Size = new System.Drawing.Size(31, 26);
+            this.MDAdjBox.TabIndex = 9;
+            this.MDAdjBox.Text = "00";
             // 
             // WisdomBox
             // 
@@ -699,6 +724,7 @@ namespace CharacterGUI
             this.WisdomBox.Size = new System.Drawing.Size(31, 26);
             this.WisdomBox.TabIndex = 2;
             this.WisdomBox.Text = "00";
+            this.WisdomBox.TextChanged += new System.EventHandler(this.WisdomBox_TextChanged);
             // 
             // groupBox8
             // 
@@ -822,11 +848,11 @@ namespace CharacterGUI
             // 
             // RegenBox
             // 
-            this.RegenBox.Location = new System.Drawing.Point(657, 10);
+            this.RegenBox.Location = new System.Drawing.Point(688, 10);
             this.RegenBox.Margin = new System.Windows.Forms.Padding(4);
             this.RegenBox.Name = "RegenBox";
             this.RegenBox.ReadOnly = true;
-            this.RegenBox.Size = new System.Drawing.Size(45, 26);
+            this.RegenBox.Size = new System.Drawing.Size(130, 26);
             this.RegenBox.TabIndex = 28;
             this.RegenBox.Text = "00";
             // 
@@ -834,7 +860,7 @@ namespace CharacterGUI
             // 
             this.Regenlabel.AutoSize = true;
             this.Regenlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Regenlabel.Location = new System.Drawing.Point(596, 16);
+            this.Regenlabel.Location = new System.Drawing.Point(627, 16);
             this.Regenlabel.Name = "Regenlabel";
             this.Regenlabel.Size = new System.Drawing.Size(54, 16);
             this.Regenlabel.TabIndex = 27;
@@ -846,17 +872,17 @@ namespace CharacterGUI
             this.RSBox.Margin = new System.Windows.Forms.Padding(4);
             this.RSBox.Name = "RSBox";
             this.RSBox.ReadOnly = true;
-            this.RSBox.Size = new System.Drawing.Size(36, 26);
+            this.RSBox.Size = new System.Drawing.Size(49, 26);
             this.RSBox.TabIndex = 26;
             this.RSBox.Text = "00";
             // 
             // PSBox
             // 
-            this.PSBox.Location = new System.Drawing.Point(563, 10);
+            this.PSBox.Location = new System.Drawing.Point(582, 10);
             this.PSBox.Margin = new System.Windows.Forms.Padding(4);
             this.PSBox.Name = "PSBox";
             this.PSBox.ReadOnly = true;
-            this.PSBox.Size = new System.Drawing.Size(26, 26);
+            this.PSBox.Size = new System.Drawing.Size(38, 26);
             this.PSBox.TabIndex = 25;
             this.PSBox.Text = "00";
             // 
@@ -864,7 +890,7 @@ namespace CharacterGUI
             // 
             this.l.AutoSize = true;
             this.l.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l.Location = new System.Drawing.Point(460, 16);
+            this.l.Location = new System.Drawing.Point(479, 16);
             this.l.Name = "l";
             this.l.Size = new System.Drawing.Size(96, 16);
             this.l.TabIndex = 24;
@@ -884,7 +910,7 @@ namespace CharacterGUI
             // 
             this.label66.AutoSize = true;
             this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label66.Location = new System.Drawing.Point(328, 16);
+            this.label66.Location = new System.Drawing.Point(337, 16);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(92, 16);
             this.label66.TabIndex = 17;
@@ -916,7 +942,7 @@ namespace CharacterGUI
             this.SSBox.Margin = new System.Windows.Forms.Padding(4);
             this.SSBox.Name = "SSBox";
             this.SSBox.ReadOnly = true;
-            this.SSBox.Size = new System.Drawing.Size(31, 26);
+            this.SSBox.Size = new System.Drawing.Size(44, 26);
             this.SSBox.TabIndex = 15;
             this.SSBox.Text = "00";
             // 
@@ -1481,9 +1507,9 @@ namespace CharacterGUI
         private System.Windows.Forms.TextBox LangBox;
         private System.Windows.Forms.TextBox IntelligenceBox;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox sFailureBox;
+        private System.Windows.Forms.Label bonusSpellLabel;
+        private System.Windows.Forms.Label sFailureLabel;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.Label label35;
@@ -1493,10 +1519,10 @@ namespace CharacterGUI
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.TextBox textBox19;
         private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label MDAdjLabel;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox bonusSpellBox;
+        private System.Windows.Forms.TextBox MDAdjBox;
         private System.Windows.Forms.TextBox WisdomBox;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.TextBox ReactAdjBox;
@@ -1524,6 +1550,8 @@ namespace CharacterGUI
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox ImmunityBox;
+        private System.Windows.Forms.TextBox sImmunitiesBox;
+        private System.Windows.Forms.Label sImmunitiesLabel;
     }
 }
 
