@@ -348,7 +348,7 @@ namespace CharacterGUI
                     int l = wisSplit[1].Length;
                     string bonusSpells = "";
 
-                    for (int i = 0; i < l - 1; i++, bonusSpells += ",")
+                    for (int i = 0; i < l; i++, bonusSpells += ",")
                     {
                         switch (i)
                         {
@@ -377,10 +377,10 @@ namespace CharacterGUI
                         }
                     }
 
-                    if (bonusSpells.Length > 1)
-                        bonusSpellBox.Text = bonusSpells;
-                    else
-                        bonusSpellBox.Text = "None";
+                    if (Int32.Parse(wisSplit[1]) == 0)
+                        bonusSpells = "None";
+
+                    bonusSpellBox.Text = bonusSpells;
 
                     sFailureBox.Text = wisSplit[2] + "%";
 

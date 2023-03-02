@@ -706,10 +706,9 @@ namespace CharacterGUI
             this.bonusSpellBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bonusSpellBox.Location = new System.Drawing.Point(351, 11);
             this.bonusSpellBox.Margin = new System.Windows.Forms.Padding(4);
-            this.bonusSpellBox.Multiline = true;
             this.bonusSpellBox.Name = "bonusSpellBox";
             this.bonusSpellBox.ReadOnly = true;
-            this.bonusSpellBox.Size = new System.Drawing.Size(141, 26);
+            this.bonusSpellBox.Size = new System.Drawing.Size(141, 20);
             this.bonusSpellBox.TabIndex = 15;
             this.bonusSpellBox.Text = "00";
             // 
