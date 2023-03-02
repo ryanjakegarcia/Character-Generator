@@ -104,6 +104,7 @@ namespace CharacterGUI
 
             Classbox.Text = charclass;
             RaceBox.Text= charrace;
+            Update_Proficiencies();
 
             //populating rollbox
             /*StrengthLabel.Text = charstats[0].ToString();
@@ -552,7 +553,50 @@ namespace CharacterGUI
 
 
         }
+    
+
+        //updates the number of weapon and regular proficiencies via class and stats
+
+        private void Update_Proficiencies() 
+        {
+            int weapon = 0;
+            int regular = 0;
+            switch (Classbox.Text) 
+            {
+                case "Ranger":
+                case "Paladin":
+                case "Fighter":
+                    weapon = 4;
+                    regular = 3;
+                     break;
+                case "Cleric":
+                    weapon = 2;
+                    regular = 4;
+                    break;
+                case "Wizard":
+                    weapon= 1;
+                    regular= 4;
+                    break;
+                case "Bard":
+                case "Thief":
+                    weapon = 2;
+                    regular = 3;
+                    break;
+                case "Log ":
+                    weapon = -1;
+                    regular = -1;
+                  
+                    break;
+                default: break;
+
+            }
+            WeaponNumber.Text = weapon.ToString();
+            RegularNumber.Text = (regular + Convert.ToInt32(LangBox.Text )) .ToString();
+        }
+        
+        
     }
+
 }
     
 

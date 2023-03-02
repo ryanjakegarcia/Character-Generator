@@ -8,7 +8,7 @@ namespace Character_Generator
     public class ClassSelector
     {
         string SpecificClass = "fighter";
-        bool elite = false; //we will remove this in the future
+      
         int[] stats;
 
         public ClassSelector() 
@@ -17,7 +17,7 @@ namespace Character_Generator
 
         public void SetClass(string classname) { SpecificClass = classname; }
 
-        public void setElite(bool iselite) { elite = iselite; } //we will remove this in the future
+      
 
         public int[] getStats() { return stats; }
 
