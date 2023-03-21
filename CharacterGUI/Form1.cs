@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Character_Generator;
+using static System.Windows.Forms.AxHost;
 //using AutoRoller;
 
 
@@ -20,6 +21,7 @@ namespace CharacterGUI
         private ClassRoller classRoller;
         private Race raceroller;
 
+        //stat dictionaries
         private Dictionary<int, string> str;
         private Dictionary<int, string> dex;
         private Dictionary<int, string> con;
@@ -27,6 +29,32 @@ namespace CharacterGUI
         private Dictionary<int, string> wis;
         private Dictionary<int, string> chr;
         private Dictionary<int, string> pcp;
+
+        //proficiency list
+
+        
+        struct proficiency 
+        {
+            public string name;
+            public int slots;
+            public string stat;
+            public int modifier;
+
+            public override string ToString()
+            {
+
+                string x = $"{name,30 }{slots,3}{stat,-15}{modifier,-3}";
+                return x;
+                //return String.Format("{0,-30}|{1,3}|{2, -15}|{3,-3}",name, slots, stat, modifier);
+                //return name + " "+ slots+ " "+ stat + " "+ modifier;
+            }
+        }
+        private List<proficiency> GeneralProf = new List<proficiency>();
+        private List<proficiency> PriestProf = new List<proficiency>();
+        private List<proficiency> WarriorProf = new List<proficiency>();
+        private List<proficiency> RogueProf = new List<proficiency>();
+        private List<proficiency> WizardProf = new List<proficiency>();
+
 
         public Form1()
         {
@@ -40,7 +68,11 @@ namespace CharacterGUI
             chr = new Dictionary<int, string>();
             pcp = new Dictionary<int, string>();
 
+            //proficiency dictionary initializations
+            
+
             readStats();
+            readProficiencies();
 
             roller = new AutoRoller("3d6");
             roller.Roll();
@@ -105,6 +137,8 @@ namespace CharacterGUI
             Classbox.Text = charclass;
             RaceBox.Text= charrace;
             Update_Proficiencies();
+
+
 
             //populating rollbox
             /*StrengthLabel.Text = charstats[0].ToString();
@@ -209,7 +243,97 @@ namespace CharacterGUI
                 }
             }
         }
+        private void readProficiencies() {
 
+            using (System.IO.StreamReader file = new System.IO.StreamReader("regularProficiencies.txt"))
+            {
+                string line;
+                string group;
+                proficiency temp;
+                while (!file.EndOfStream)
+                {
+                    line = file.ReadLine();
+
+                    if (line.Equals("{"))
+                    {
+                        group = file.ReadLine();
+
+                        switch (group)
+                        {//priest rogue warrior wizard
+                            case "gen":
+                                line = file.ReadLine();
+                                while (!line.Equals("}"))
+                                {
+                                    temp.name = line;
+                                    temp.slots = Convert.ToInt32(file.ReadLine());
+                                    temp.stat = file.ReadLine();
+                                    temp.modifier = Convert.ToInt32(file.ReadLine());
+                                    GeneralProf.Add(temp);
+                                    line = file.ReadLine();
+
+                                }
+                                break;
+                            case "pri":
+                                line = file.ReadLine();
+                                while (!line.Equals("}"))
+                                {
+                                    temp.name = line;
+                                    temp.slots = Convert.ToInt32(file.ReadLine());
+                                    temp.stat = file.ReadLine();
+                                    temp.modifier = Convert.ToInt32(file.ReadLine());
+                                    PriestProf.Add(temp);
+                                    line = file.ReadLine();
+
+                                }
+                                break;
+                            case "war":
+                                line = file.ReadLine();
+                                while (!line.Equals("}"))
+                                {
+                                    temp.name = line;
+                                    temp.slots = Convert.ToInt32(file.ReadLine());
+                                    temp.stat = file.ReadLine();
+                                    temp.modifier = Convert.ToInt32(file.ReadLine());
+                                    WarriorProf.Add(temp);
+                                    line = file.ReadLine();
+
+                                }
+                                break;
+                            case "wiz":
+                                line = file.ReadLine();
+                                while (!line.Equals("}"))
+                                {
+                                    temp.name = line;
+                                    temp.slots = Convert.ToInt32(file.ReadLine());
+                                    temp.stat = file.ReadLine();
+                                    temp.modifier = Convert.ToInt32(file.ReadLine());
+                                    WizardProf.Add(temp);
+                                    line = file.ReadLine();
+
+                                }
+                                break;
+                            case "rog":
+                                line = file.ReadLine();
+                                while (!line.Equals("}"))
+                                {
+                                    temp.name = line;
+                                    temp.slots = Convert.ToInt32(file.ReadLine());
+                                    temp.stat = file.ReadLine();
+                                    temp.modifier = Convert.ToInt32(file.ReadLine());
+                                    RogueProf.Add(temp);
+                                    line = file.ReadLine();
+
+                                }
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
+            General.DataSource = GeneralProf;
+        }
         private void StrengthBox_TextChanged(object sender, EventArgs e)
         {
             if (Int32.TryParse(StrengthBox.Text, out int stat))

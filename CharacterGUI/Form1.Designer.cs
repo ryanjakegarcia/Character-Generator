@@ -148,14 +148,16 @@ namespace CharacterGUI
             this.ClassesList = new System.Windows.Forms.CheckedListBox();
             this.Random = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.RegularNumber = new System.Windows.Forms.TextBox();
+            this.WeaponNumber = new System.Windows.Forms.TextBox();
+            this.RegularProf = new System.Windows.Forms.Label();
+            this.WeaponProf = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.WeaponProf = new System.Windows.Forms.Label();
-            this.RegularProf = new System.Windows.Forms.Label();
-            this.WeaponNumber = new System.Windows.Forms.TextBox();
-            this.RegularNumber = new System.Windows.Forms.TextBox();
+            this.Proficiencies = new System.Windows.Forms.ListBox();
+            this.General = new System.Windows.Forms.CheckedListBox();
             tabControl1 = new System.Windows.Forms.TabControl();
             tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1386,6 +1388,8 @@ namespace CharacterGUI
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.General);
+            this.tabPage2.Controls.Add(this.Proficiencies);
             this.tabPage2.Controls.Add(this.groupBox9);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
@@ -1395,16 +1399,6 @@ namespace CharacterGUI
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Proficiencies ";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(726, 12);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(175, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Character Generator";
             // 
             // groupBox9
             // 
@@ -1419,14 +1413,19 @@ namespace CharacterGUI
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Proficiencies ";
             // 
-            // WeaponProf
+            // RegularNumber
             // 
-            this.WeaponProf.AutoSize = true;
-            this.WeaponProf.Location = new System.Drawing.Point(6, 22);
-            this.WeaponProf.Name = "WeaponProf";
-            this.WeaponProf.Size = new System.Drawing.Size(149, 20);
-            this.WeaponProf.TabIndex = 0;
-            this.WeaponProf.Text = "# of Weapon Prof";
+            this.RegularNumber.Location = new System.Drawing.Point(158, 48);
+            this.RegularNumber.Name = "RegularNumber";
+            this.RegularNumber.Size = new System.Drawing.Size(18, 26);
+            this.RegularNumber.TabIndex = 3;
+            // 
+            // WeaponNumber
+            // 
+            this.WeaponNumber.Location = new System.Drawing.Point(158, 19);
+            this.WeaponNumber.Name = "WeaponNumber";
+            this.WeaponNumber.Size = new System.Drawing.Size(18, 26);
+            this.WeaponNumber.TabIndex = 2;
             // 
             // RegularProf
             // 
@@ -1437,19 +1436,41 @@ namespace CharacterGUI
             this.RegularProf.TabIndex = 1;
             this.RegularProf.Text = "# of Regular Prof";
             // 
-            // WeaponNumber
+            // WeaponProf
             // 
-            this.WeaponNumber.Location = new System.Drawing.Point(158, 19);
-            this.WeaponNumber.Name = "WeaponNumber";
-            this.WeaponNumber.Size = new System.Drawing.Size(18, 26);
-            this.WeaponNumber.TabIndex = 2;
+            this.WeaponProf.AutoSize = true;
+            this.WeaponProf.Location = new System.Drawing.Point(6, 22);
+            this.WeaponProf.Name = "WeaponProf";
+            this.WeaponProf.Size = new System.Drawing.Size(149, 20);
+            this.WeaponProf.TabIndex = 0;
+            this.WeaponProf.Text = "# of Weapon Prof";
             // 
-            // RegularNumber
+            // label1
             // 
-            this.RegularNumber.Location = new System.Drawing.Point(158, 48);
-            this.RegularNumber.Name = "RegularNumber";
-            this.RegularNumber.Size = new System.Drawing.Size(18, 26);
-            this.RegularNumber.TabIndex = 3;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(726, 12);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(175, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Character Generator";
+            // 
+            // Proficiencies
+            // 
+            this.Proficiencies.FormattingEnabled = true;
+            this.Proficiencies.ItemHeight = 20;
+            this.Proficiencies.Location = new System.Drawing.Point(286, 48);
+            this.Proficiencies.Name = "Proficiencies";
+            this.Proficiencies.Size = new System.Drawing.Size(120, 84);
+            this.Proficiencies.TabIndex = 1;
+            // 
+            // General
+            // 
+            this.General.FormattingEnabled = true;
+            this.General.Location = new System.Drawing.Point(453, 51);
+            this.General.Name = "General";
+            this.General.Size = new System.Drawing.Size(694, 88);
+            this.General.TabIndex = 2;
             // 
             // Form1
             // 
@@ -1612,6 +1633,8 @@ namespace CharacterGUI
         private System.Windows.Forms.Label WeaponProf;
         private System.Windows.Forms.TextBox RegularNumber;
         private System.Windows.Forms.TextBox WeaponNumber;
+        private System.Windows.Forms.CheckedListBox General;
+        private System.Windows.Forms.ListBox Proficiencies;
     }
 }
 
