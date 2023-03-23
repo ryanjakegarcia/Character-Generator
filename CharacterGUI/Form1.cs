@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -32,8 +33,18 @@ namespace CharacterGUI
 
         //proficiency list
 
-        
-        struct proficiency 
+
+
+
+
+
+
+
+
+
+
+
+        struct proficiency
         {
             public string name;
             public int slots;
@@ -42,11 +53,42 @@ namespace CharacterGUI
 
             public override string ToString()
             {
+                string x;
+                // this will return a string IT ISNT PRETTY INB THE UI BECAUSE IT NEEDS A MONOSPACE FONT
+                return normalize(name, slots, stat, modifier, 40);
 
-                string x = $"{name,30 }{slots,3}{stat,-15}{modifier,-3}";
-                return x;
+                //THE BACKUP
+               //return String.Format("{0,-30} {1,3} {2, -15} {3,-3}", name, slots, stat, modifier);
+
+
+
                 //return String.Format("{0,-30}|{1,3}|{2, -15}|{3,-3}",name, slots, stat, modifier);
                 //return name + " "+ slots+ " "+ stat + " "+ modifier;
+            }
+
+
+            
+            string normalize(string name, int slot, string stat, int modifier, int mathlength)
+            {
+                int maxNameWidth = 180;
+                Graphics graphics = Graphics.FromImage(new Bitmap(1, 1));
+                float spacewidth;
+                Font measurement = new Font("Friz Quadrata Std", (12));
+                string teststring = name + "";
+                int spacesAdded = 0;
+
+                StringFormat f = new StringFormat(StringFormat.GenericTypographic)
+                { FormatFlags = StringFormatFlags.MeasureTrailingSpaces };
+
+                //cant use space this is a solve but there isnt really a point
+                // it wont even work with the same character
+                while (maxNameWidth > graphics.MeasureString(teststring + "x", measurement).Width)
+                {
+                    spacesAdded++;
+                    teststring += " ";
+                }
+
+                return name + " ".PadRight(spacesAdded,'x') + slot;
             }
         }
         private List<proficiency> GeneralProf = new List<proficiency>();
@@ -69,7 +111,7 @@ namespace CharacterGUI
             pcp = new Dictionary<int, string>();
 
             //proficiency dictionary initializations
-            
+
 
             readStats();
             readProficiencies();
@@ -81,6 +123,7 @@ namespace CharacterGUI
             raceroller = new Race();
         }
 
+        
         private void Random_Click(object sender, EventArgs e)
         {
             string rollMethod = "";
@@ -332,7 +375,12 @@ namespace CharacterGUI
                     }
                 }
             }
-            General.DataSource = GeneralProf;
+            General_Prof_Box.DataSource = GeneralProf;
+            Rogue_Prof_Box.DataSource = RogueProf;
+            Wizard_Prof_Box.DataSource = WizardProf;
+            Warrior_Prof_Box.DataSource = WarriorProf;
+            Priest_Prof_Box.DataSource = PriestProf;
+
         }
         private void StrengthBox_TextChanged(object sender, EventArgs e)
         {
