@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Character_Generator;
 using static System.Windows.Forms.AxHost;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 //using AutoRoller;
 
 
@@ -55,10 +56,10 @@ namespace CharacterGUI
             {
                 string x;
                 // this will return a string IT ISNT PRETTY INB THE UI BECAUSE IT NEEDS A MONOSPACE FONT
-                return normalize(name, slots, stat, modifier, 40);
+                //return normalize(name, slots, stat, modifier, 40);
 
                 //THE BACKUP
-               //return String.Format("{0,-30} {1,3} {2, -15} {3,-3}", name, slots, stat, modifier);
+               return String.Format("{0,-20} {1,-3} {2, -15} {3,-3}", name, slots, stat, modifier);
 
 
 
@@ -67,7 +68,8 @@ namespace CharacterGUI
             }
 
 
-            
+
+            //useless
             string normalize(string name, int slot, string stat, int modifier, int mathlength)
             {
                 int maxNameWidth = 180;
@@ -733,26 +735,43 @@ namespace CharacterGUI
         {
             int weapon = 0;
             int regular = 0;
+            Proficiency_Access_Box.Text = string.Empty;
+            Proficiency_Access_Box.Text += "General ";
             switch (Classbox.Text) 
             {
                 case "Ranger":
+                    Proficiency_Access_Box.Text += "Wizard ";
+                    goto case "Fighter";
+
                 case "Paladin":
+                    Proficiency_Access_Box.Text += "Priest ";
+                    goto case "Fighter";
                 case "Fighter":
                     weapon = 4;
                     regular = 3;
+                    Proficiency_Access_Box.Text += "Fighter ";
                      break;
                 case "Cleric":
+                    Proficiency_Access_Box.Text += "Priest ";
+
                     weapon = 2;
                     regular = 4;
                     break;
                 case "Wizard":
-                    weapon= 1;
+                    Proficiency_Access_Box.Text += "Wizard ";
+
+                    weapon = 1;
                     regular= 4;
                     break;
                 case "Bard":
+                    Proficiency_Access_Box.Text += "Warrior ";
+                    Proficiency_Access_Box.Text += "Wizard ";
+                    goto case "Thief";
                 case "Thief":
+                    Proficiency_Access_Box.Text += "Rogue ";
                     weapon = 2;
                     regular = 3;
+
                     break;
                 case "Log ":
                     weapon = -1;
@@ -764,9 +783,76 @@ namespace CharacterGUI
             }
             WeaponNumber.Text = weapon.ToString();
             RegularNumber.Text = (regular + Convert.ToInt32(LangBox.Text )) .ToString();
+            Remaining_Prof.Text = (regular + Convert.ToInt32(LangBox.Text)).ToString();
         }
+
         
-        
+
+
+
+        //user tries to add a general proficiency 
+
+        private void General_Prof_Box_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            //clearing box
+            Proficiency_Error_Box.Text = "";
+            int result =0;
+            int.TryParse(Remaining_Prof.Text, out result);
+
+            if (General_Prof_Box.GetItemCheckState(e.Index) != CheckState.Checked) 
+            {
+                //check to see if we have slots if not uncheck
+                //check to see if its already in the list if so check slot
+              
+
+                if (result - GeneralProf[e.Index].slots >= 0)
+                {
+                    if (Proficiencies_Box.Items.Count == 0) 
+                    {
+                        Proficiencies_Box.Items.Add(General_Prof_Box.Items[e.Index]);
+                        Remaining_Prof.Text = (result - GeneralProf[e.Index].slots).ToString();
+                        return;
+                    }
+
+                    //checking to see if it is alreay in the proficiency box
+                    foreach (var stuff in Proficiencies_Box.Items)
+                    {
+                        if (!stuff.ToString().Equals(GeneralProf[e.Index].ToString())) 
+                        {
+                            Proficiencies_Box.Items.Add(General_Prof_Box.Items[e.Index]);
+                            Remaining_Prof.Text = (result - GeneralProf[e.Index].slots).ToString();
+
+                            return;
+                        }
+                    }
+                    General_Prof_Box.SetItemChecked(e.Index, false);
+                    Proficiency_Error_Box.Text = "Proficiency has already been added";
+                    return;
+                    
+                }
+                General_Prof_Box.SetItemChecked(e.Index, false);
+               Proficiency_Error_Box.Text = "You do not have enough slots";
+                return;
+            }
+            else 
+            {
+
+
+                foreach (var stuff in Proficiencies_Box.Items)
+                {
+                    if (stuff.ToString().Equals(GeneralProf[e.Index].ToString()))
+                    {
+
+                        //Console.WriteLine("WE happy");
+                        Proficiencies_Box.Items.Remove(General_Prof_Box.Items[e.Index]);
+                        Remaining_Prof.Text = (result + GeneralProf[e.Index].slots).ToString();
+                        return;
+                    }
+                }
+     
+            }
+
+        }
     }
 
 }

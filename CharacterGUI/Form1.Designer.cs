@@ -148,13 +148,15 @@ namespace CharacterGUI
             this.ClassesList = new System.Windows.Forms.CheckedListBox();
             this.Random = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.Proficiency_Error_Box = new System.Windows.Forms.TextBox();
+            this.Proficiency_Access = new System.Windows.Forms.Label();
+            this.Proficiency_Access_Box = new System.Windows.Forms.TextBox();
             this.General_Prof_Box = new System.Windows.Forms.CheckedListBox();
             this.Wizard_Prof_Box = new System.Windows.Forms.CheckedListBox();
             this.Warrior_Prof_Box = new System.Windows.Forms.CheckedListBox();
             this.Priest_Prof_Box = new System.Windows.Forms.CheckedListBox();
             this.Rogue_Prof_Box = new System.Windows.Forms.CheckedListBox();
-            this.Proficiencies = new System.Windows.Forms.ListBox();
+            this.Proficiencies_Box = new System.Windows.Forms.ListBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.RegularNumber = new System.Windows.Forms.TextBox();
             this.WeaponNumber = new System.Windows.Forms.TextBox();
@@ -163,6 +165,8 @@ namespace CharacterGUI
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label6 = new System.Windows.Forms.Label();
+            this.Remaining_Prof = new System.Windows.Forms.TextBox();
             tabControl1 = new System.Windows.Forms.TabControl();
             tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -177,7 +181,6 @@ namespace CharacterGUI
             this.groupBox2.SuspendLayout();
             this.Rollbox.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -185,7 +188,7 @@ namespace CharacterGUI
             // 
             tabControl1.Controls.Add(this.tabPage1);
             tabControl1.Controls.Add(this.tabPage2);
-            tabControl1.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            tabControl1.Cursor = System.Windows.Forms.Cursors.Default;
             tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             tabControl1.Location = new System.Drawing.Point(0, 0);
             tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -213,11 +216,11 @@ namespace CharacterGUI
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.ClassesList);
             this.tabPage1.Controls.Add(this.Random);
-            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Location = new System.Drawing.Point(4, 27);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage1.Size = new System.Drawing.Size(1502, 803);
+            this.tabPage1.Size = new System.Drawing.Size(1502, 804);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1412,12 +1415,16 @@ namespace CharacterGUI
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.groupBox10);
+            this.tabPage2.Controls.Add(this.Remaining_Prof);
+            this.tabPage2.Controls.Add(this.Proficiency_Error_Box);
+            this.tabPage2.Controls.Add(this.Proficiency_Access);
+            this.tabPage2.Controls.Add(this.Proficiency_Access_Box);
+            this.tabPage2.Controls.Add(this.General_Prof_Box);
             this.tabPage2.Controls.Add(this.Wizard_Prof_Box);
             this.tabPage2.Controls.Add(this.Warrior_Prof_Box);
             this.tabPage2.Controls.Add(this.Priest_Prof_Box);
             this.tabPage2.Controls.Add(this.Rogue_Prof_Box);
-            this.tabPage2.Controls.Add(this.Proficiencies);
+            this.tabPage2.Controls.Add(this.Proficiencies_Box);
             this.tabPage2.Controls.Add(this.groupBox9);
             this.tabPage2.Location = new System.Drawing.Point(4, 27);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -1428,77 +1435,90 @@ namespace CharacterGUI
             this.tabPage2.Text = "Proficiencies ";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // groupBox10
+            // Proficiency_Error_Box
             // 
-            this.groupBox10.Controls.Add(this.General_Prof_Box);
-            this.groupBox10.Location = new System.Drawing.Point(474, 45);
-            this.groupBox10.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.groupBox10.Size = new System.Drawing.Size(207, 232);
-            this.groupBox10.TabIndex = 7;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "groupBox10";
+            this.Proficiency_Error_Box.Location = new System.Drawing.Point(16, 187);
+            this.Proficiency_Error_Box.Name = "Proficiency_Error_Box";
+            this.Proficiency_Error_Box.Size = new System.Drawing.Size(195, 27);
+            this.Proficiency_Error_Box.TabIndex = 9;
+            // 
+            // Proficiency_Access
+            // 
+            this.Proficiency_Access.AutoSize = true;
+            this.Proficiency_Access.Location = new System.Drawing.Point(16, 134);
+            this.Proficiency_Access.Name = "Proficiency_Access";
+            this.Proficiency_Access.Size = new System.Drawing.Size(145, 18);
+            this.Proficiency_Access.TabIndex = 8;
+            this.Proficiency_Access.Text = "Proficiency Access";
+            // 
+            // Proficiency_Access_Box
+            // 
+            this.Proficiency_Access_Box.Location = new System.Drawing.Point(16, 153);
+            this.Proficiency_Access_Box.Name = "Proficiency_Access_Box";
+            this.Proficiency_Access_Box.Size = new System.Drawing.Size(195, 27);
+            this.Proficiency_Access_Box.TabIndex = 7;
             // 
             // General_Prof_Box
             // 
             this.General_Prof_Box.Font = new System.Drawing.Font("Friz Quadrata Std", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.General_Prof_Box.FormattingEnabled = true;
-            this.General_Prof_Box.Location = new System.Drawing.Point(0, 44);
+            this.General_Prof_Box.Location = new System.Drawing.Point(328, 27);
             this.General_Prof_Box.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.General_Prof_Box.Name = "General_Prof_Box";
-            this.General_Prof_Box.Size = new System.Drawing.Size(202, 136);
+            this.General_Prof_Box.Size = new System.Drawing.Size(377, 642);
             this.General_Prof_Box.TabIndex = 2;
+            this.General_Prof_Box.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.General_Prof_Box_ItemCheck);
             // 
             // Wizard_Prof_Box
             // 
             this.Wizard_Prof_Box.Font = new System.Drawing.Font("Friz Quadrata Std", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Wizard_Prof_Box.FormattingEnabled = true;
-            this.Wizard_Prof_Box.Location = new System.Drawing.Point(434, 299);
+            this.Wizard_Prof_Box.Location = new System.Drawing.Point(718, 318);
             this.Wizard_Prof_Box.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Wizard_Prof_Box.Name = "Wizard_Prof_Box";
-            this.Wizard_Prof_Box.Size = new System.Drawing.Size(321, 268);
+            this.Wizard_Prof_Box.Size = new System.Drawing.Size(377, 290);
             this.Wizard_Prof_Box.TabIndex = 6;
             // 
             // Warrior_Prof_Box
             // 
             this.Warrior_Prof_Box.FormattingEnabled = true;
-            this.Warrior_Prof_Box.Location = new System.Drawing.Point(735, 341);
+            this.Warrior_Prof_Box.Location = new System.Drawing.Point(1108, 411);
             this.Warrior_Prof_Box.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Warrior_Prof_Box.Name = "Warrior_Prof_Box";
-            this.Warrior_Prof_Box.Size = new System.Drawing.Size(302, 334);
+            this.Warrior_Prof_Box.Size = new System.Drawing.Size(379, 356);
             this.Warrior_Prof_Box.TabIndex = 5;
             // 
             // Priest_Prof_Box
             // 
             this.Priest_Prof_Box.FormattingEnabled = true;
-            this.Priest_Prof_Box.Location = new System.Drawing.Point(761, 163);
+            this.Priest_Prof_Box.Location = new System.Drawing.Point(718, 25);
             this.Priest_Prof_Box.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Priest_Prof_Box.Name = "Priest_Prof_Box";
-            this.Priest_Prof_Box.Size = new System.Drawing.Size(257, 136);
+            this.Priest_Prof_Box.Size = new System.Drawing.Size(377, 268);
             this.Priest_Prof_Box.TabIndex = 4;
             // 
             // Rogue_Prof_Box
             // 
             this.Rogue_Prof_Box.FormattingEnabled = true;
-            this.Rogue_Prof_Box.Location = new System.Drawing.Point(763, 44);
+            this.Rogue_Prof_Box.Location = new System.Drawing.Point(1108, 25);
             this.Rogue_Prof_Box.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Rogue_Prof_Box.Name = "Rogue_Prof_Box";
-            this.Rogue_Prof_Box.Size = new System.Drawing.Size(375, 92);
+            this.Rogue_Prof_Box.Size = new System.Drawing.Size(375, 356);
             this.Rogue_Prof_Box.TabIndex = 3;
             // 
-            // Proficiencies
+            // Proficiencies_Box
             // 
-            this.Proficiencies.FormattingEnabled = true;
-            this.Proficiencies.ItemHeight = 18;
-            this.Proficiencies.Location = new System.Drawing.Point(207, 44);
-            this.Proficiencies.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.Proficiencies.Name = "Proficiencies";
-            this.Proficiencies.Size = new System.Drawing.Size(205, 76);
-            this.Proficiencies.TabIndex = 1;
+            this.Proficiencies_Box.FormattingEnabled = true;
+            this.Proficiencies_Box.ItemHeight = 18;
+            this.Proficiencies_Box.Location = new System.Drawing.Point(5, 215);
+            this.Proficiencies_Box.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Proficiencies_Box.Name = "Proficiencies_Box";
+            this.Proficiencies_Box.Size = new System.Drawing.Size(317, 166);
+            this.Proficiencies_Box.TabIndex = 1;
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.label6);
             this.groupBox9.Controls.Add(this.RegularNumber);
             this.groupBox9.Controls.Add(this.WeaponNumber);
             this.groupBox9.Controls.Add(this.RegularProf);
@@ -1507,7 +1527,7 @@ namespace CharacterGUI
             this.groupBox9.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.groupBox9.Size = new System.Drawing.Size(180, 90);
+            this.groupBox9.Size = new System.Drawing.Size(180, 104);
             this.groupBox9.TabIndex = 0;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Proficiencies ";
@@ -1519,6 +1539,7 @@ namespace CharacterGUI
             this.RegularNumber.Name = "RegularNumber";
             this.RegularNumber.Size = new System.Drawing.Size(16, 27);
             this.RegularNumber.TabIndex = 3;
+            this.RegularNumber.Text = "0";
             // 
             // WeaponNumber
             // 
@@ -1527,6 +1548,7 @@ namespace CharacterGUI
             this.WeaponNumber.Name = "WeaponNumber";
             this.WeaponNumber.Size = new System.Drawing.Size(16, 27);
             this.WeaponNumber.TabIndex = 2;
+            this.WeaponNumber.Text = "0";
             // 
             // RegularProf
             // 
@@ -1556,6 +1578,25 @@ namespace CharacterGUI
             this.label1.Size = new System.Drawing.Size(154, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Character Generator";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 72);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 18);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "# Remaining";
+            // 
+            // Remaining_Prof
+            // 
+            this.Remaining_Prof.Location = new System.Drawing.Point(149, 104);
+            this.Remaining_Prof.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Remaining_Prof.Name = "Remaining_Prof";
+            this.Remaining_Prof.Size = new System.Drawing.Size(16, 27);
+            this.Remaining_Prof.TabIndex = 5;
+            this.Remaining_Prof.Text = "0";
             // 
             // Form1
             // 
@@ -1593,7 +1634,7 @@ namespace CharacterGUI
             this.Rollbox.ResumeLayout(false);
             this.Rollbox.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.groupBox10.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
@@ -1720,12 +1761,16 @@ namespace CharacterGUI
         private System.Windows.Forms.TextBox RegularNumber;
         private System.Windows.Forms.TextBox WeaponNumber;
         private System.Windows.Forms.CheckedListBox General_Prof_Box;
-        private System.Windows.Forms.ListBox Proficiencies;
+        private System.Windows.Forms.ListBox Proficiencies_Box;
         private System.Windows.Forms.CheckedListBox Wizard_Prof_Box;
         private System.Windows.Forms.CheckedListBox Warrior_Prof_Box;
         private System.Windows.Forms.CheckedListBox Priest_Prof_Box;
         private System.Windows.Forms.CheckedListBox Rogue_Prof_Box;
-        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.TextBox Proficiency_Error_Box;
+        private System.Windows.Forms.Label Proficiency_Access;
+        private System.Windows.Forms.TextBox Proficiency_Access_Box;
+        private System.Windows.Forms.TextBox Remaining_Prof;
+        private System.Windows.Forms.Label label6;
     }
 }
 
