@@ -59,7 +59,7 @@ namespace CharacterGUI
                 //return normalize(name, slots, stat, modifier, 40);
 
                 //THE BACKUP
-               return String.Format("{0,-20} {1,-3} {2, -15} {3,-3}", name, slots, stat, modifier);
+                return String.Format("{0,-20} {1,-3} {2, -15} {3,-3}", name, slots, stat, modifier);
 
 
 
@@ -90,7 +90,7 @@ namespace CharacterGUI
                     teststring += " ";
                 }
 
-                return name + " ".PadRight(spacesAdded,'x') + slot;
+                return name + " ".PadRight(spacesAdded, 'x') + slot;
             }
         }
         private List<proficiency> GeneralProf = new List<proficiency>();
@@ -125,7 +125,7 @@ namespace CharacterGUI
             raceroller = new Race();
         }
 
-        
+
         private void Random_Click(object sender, EventArgs e)
         {
             string rollMethod = "";
@@ -180,7 +180,7 @@ namespace CharacterGUI
             BBLGBox.Text = strSplit[6] + "%";
 
             Classbox.Text = charclass;
-            RaceBox.Text= charrace;
+            RaceBox.Text = charrace;
             Update_Proficiencies();
 
 
@@ -206,7 +206,7 @@ namespace CharacterGUI
         /// <param name="race"></param>
         /// <param name="ismulitclass"></param>
         /// <param name="iselite"></param>
-     
+
 
         /// <summary>
         /// Reads in the stat lines
@@ -288,7 +288,8 @@ namespace CharacterGUI
                 }
             }
         }
-        private void readProficiencies() {
+        private void readProficiencies()
+        {
 
             using (System.IO.StreamReader file = new System.IO.StreamReader("regularProficiencies.txt"))
             {
@@ -410,8 +411,8 @@ namespace CharacterGUI
                 }
             }
 
-        
-            
+
+
         }
 
         private void DexterityBox_TextChanged(object sender, EventArgs e)
@@ -434,7 +435,7 @@ namespace CharacterGUI
                     ReactBox.Text = dexSplit[0];
                     MissileBox.Text = dexSplit[1];
                     ACBox.Text = dexSplit[2];
-          
+
                 }
             }
 
@@ -492,12 +493,12 @@ namespace CharacterGUI
                         SpellChanceBox.Text = "- -";
                         MaxSpellBox.Text = "- -";
                     }
-                    else 
+                    else
                     {
                         SpellChanceBox.Text = entSplit[2] + "%";
                         MaxSpellBox.Text = entSplit[3];
                     }
-                    
+
                     //ImmunityBox.Text = conSplit[4];
                 }
             }
@@ -505,7 +506,7 @@ namespace CharacterGUI
 
         private void WisdomBox_TextChanged(object sender, EventArgs e)
         {
-            if(Int32.TryParse(WisdomBox.Text, out int stat))
+            if (Int32.TryParse(WisdomBox.Text, out int stat))
             {
                 if (stat > 26)
                     return;
@@ -513,7 +514,7 @@ namespace CharacterGUI
                 string wisLine = "";
                 wis.TryGetValue(stat, out wisLine);
 
-                if(wisLine != null)
+                if (wisLine != null)
                 {
                     string[] wisSplit = wisLine.Split();
 
@@ -541,12 +542,14 @@ namespace CharacterGUI
                             case 4:
                                 bonusSpells += "5th x" + wisSplit[1][4];
                                 break;
-                            case 5: bonusSpells += "6th x" + wisSplit[1][5];
+                            case 5:
+                                bonusSpells += "6th x" + wisSplit[1][5];
                                 break;
                             case 6:
                                 bonusSpells += "7th x" + wisSplit[1][6];
                                 break;
-                            default: bonusSpells = "None";
+                            default:
+                                bonusSpells = "None";
                                 break;
                         }
                     }
@@ -673,13 +676,13 @@ namespace CharacterGUI
                 int num;
                 string race;
                 if (RacesList.CheckedItems.Count > 0)
-                { 
-                     num = rnd.Next(RacesList.CheckedItems.Count);
-                     race = RacesList.CheckedItems[num].ToString();
+                {
+                    num = rnd.Next(RacesList.CheckedItems.Count);
+                    race = RacesList.CheckedItems[num].ToString();
                 }
                 else
                 {
-                    race = RollRace(); 
+                    race = RollRace();
                 }
 
                 if (MultiCheck.Checked)
@@ -727,11 +730,11 @@ namespace CharacterGUI
 
 
         }
-    
+
 
         //updates the number of weapon and regular proficiencies via class and stats
 
-        private void Update_Proficiencies() 
+        private void Update_Proficiencies()
         {   //clearing previous data
             Proficiencies_Box.Items.Clear();
             foreach (int i in General_Prof_Box.CheckedIndices)
@@ -762,7 +765,7 @@ namespace CharacterGUI
 
 
             //switch case to determine which classes have access to what proficiencies 
-            switch (Classbox.Text) 
+            switch (Classbox.Text)
             {
                 case "Ranger":
                     Proficiency_Access_Box.Text += "Wizard ";
@@ -774,8 +777,8 @@ namespace CharacterGUI
                 case "Fighter":
                     weapon = 4;
                     regular = 3;
-                    Proficiency_Access_Box.Text += "Fighter ";
-                     break;
+                    Proficiency_Access_Box.Text += "Warrior ";
+                    break;
                 case "Cleric":
                     Proficiency_Access_Box.Text += "Priest ";
 
@@ -786,7 +789,7 @@ namespace CharacterGUI
                     Proficiency_Access_Box.Text += "Wizard ";
 
                     weapon = 1;
-                    regular= 4;
+                    regular = 4;
                     break;
                 case "Bard":
                     Proficiency_Access_Box.Text += "Warrior ";
@@ -801,18 +804,18 @@ namespace CharacterGUI
                 case "Log ":
                     weapon = -1;
                     regular = -1;
-                  
+
                     break;
                 default: break;
 
             }
-            //setting # of proficicines 
+            //setting # of proficiecncies 
             WeaponNumber.Text = weapon.ToString();
-            RegularNumber.Text = (regular + Convert.ToInt32(LangBox.Text )) .ToString();
+            RegularNumber.Text = (regular + Convert.ToInt32(LangBox.Text)).ToString();
             Remaining_Prof.Text = (regular + Convert.ToInt32(LangBox.Text)).ToString();
         }
 
-        
+
 
 
 
@@ -820,67 +823,167 @@ namespace CharacterGUI
 
         private void General_Prof_Box_ItemCheck(object sender, ItemCheckEventArgs e)
         {
+            proficiencyhandler("General", e);
+        }
+
+        private void Priest_Prof_Box_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            proficiencyhandler("Priest", e);
+        }
+        private void Rogue_Prof_Box_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            proficiencyhandler("Rogue", e);
+        }
+        private void Wizard_Prof_Box_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            proficiencyhandler("Wizard", e);
+        }
+
+        private void Warrior_Prof_Box_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            proficiencyhandler("Warrior", e);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="boxtype"> essentially a case determintes which proficiency category is being selected</param>
+        /// <param name="e"> the event from said box</param>
+        private void proficiencyhandler(String boxtype, ItemCheckEventArgs e)
+        {
+
+         
+
+
+
             //clearing box
             Proficiency_Error_Box.Text = "";
-            int result =0;
+            int result = 0;
             int.TryParse(Remaining_Prof.Text, out result);
 
-            if (General_Prof_Box.GetItemCheckState(e.Index) != CheckState.Checked) 
+            /// the actual box in the gui
+            var BoxTarget = General_Prof_Box;
+            //the list that actually holds the prof data
+            var ListTarget = GeneralProf;
+
+            //cost of the proficiency 
+            int cost = ListTarget[e.Index].slots;
+            
+            //checks to see if we actually have access to the proficiency 
+            bool Has_Access = false;
+            if (Proficiency_Access_Box.Text.Contains(boxtype))
+            {
+                Has_Access = true;
+            }
+
+            if (!Has_Access) 
+            {
+                cost++;
+            }
+            switch (boxtype) 
+            {
+                case "General":
+                    {
+                        BoxTarget = General_Prof_Box;
+                        ListTarget = GeneralProf;
+                        break;
+                    }
+
+                case "Warrior":
+                    {
+                        BoxTarget = Warrior_Prof_Box;
+                        ListTarget = WarriorProf;
+                        break;
+                    }
+                case "Rogue":
+                    {
+                        BoxTarget = Rogue_Prof_Box;
+                        ListTarget = RogueProf;
+                        break;
+                    }
+                case "Priest":
+                    {
+                        BoxTarget = Priest_Prof_Box;
+                        ListTarget = PriestProf;
+                        break;
+                    }
+                case "Wizard":
+                    {
+                        BoxTarget = Wizard_Prof_Box;
+                        ListTarget = WizardProf;
+                        break;
+                    }
+                default:
+                break;
+            }
+
+
+
+
+
+
+
+
+          
+            if (BoxTarget.GetItemCheckState(e.Index) != CheckState.Checked)
             {
                 //check to see if we have slots if not uncheck
                 //check to see if its already in the list if so check slot
-              
 
-                if (result - GeneralProf[e.Index].slots >= 0)
+
+                if (result - ListTarget[e.Index].slots >= 0)
                 {
-                    if (Proficiencies_Box.Items.Count == 0) 
+                    if (Proficiencies_Box.Items.Count == 0)
                     {
-                        Proficiencies_Box.Items.Add(General_Prof_Box.Items[e.Index]);
-                        Remaining_Prof.Text = (result - GeneralProf[e.Index].slots).ToString();
+                        Proficiencies_Box.Items.Add(BoxTarget.Items[e.Index]);
+                        Remaining_Prof.Text = (result - cost).ToString();
                         return;
                     }
 
                     //checking to see if it is alreay in the proficiency box
                     foreach (var stuff in Proficiencies_Box.Items)
                     {
-                        if (!stuff.ToString().Equals(GeneralProf[e.Index].ToString())) 
+                        if (!stuff.ToString().Equals(ListTarget[e.Index].ToString()))
                         {
-                            Proficiencies_Box.Items.Add(General_Prof_Box.Items[e.Index]);
-                            Remaining_Prof.Text = (result - GeneralProf[e.Index].slots).ToString();
+                            Proficiencies_Box.Items.Add(BoxTarget.Items[e.Index]);
+                            Remaining_Prof.Text = (result - cost).ToString();
 
                             return;
                         }
                     }
-                    General_Prof_Box.SetItemChecked(e.Index, false);
+                    BoxTarget.SetItemChecked(e.Index, false);
                     Proficiency_Error_Box.Text = "Proficiency has already been added";
                     return;
-                    
+
                 }
-                General_Prof_Box.SetItemChecked(e.Index, false);
-               Proficiency_Error_Box.Text = "You do not have enough slots";
+                BoxTarget.SetItemChecked(e.Index, false);
+                Proficiency_Error_Box.Text = "You do not have enough slots";
                 return;
             }
-            else 
+            else
             {
 
 
                 foreach (var stuff in Proficiencies_Box.Items)
                 {
-                    if (stuff.ToString().Equals(GeneralProf[e.Index].ToString()))
+                    if (stuff.ToString().Equals(ListTarget[e.Index].ToString()))
                     {
 
                         //Console.WriteLine("WE happy");
-                        Proficiencies_Box.Items.Remove(General_Prof_Box.Items[e.Index]);
-                        Remaining_Prof.Text = (result + GeneralProf[e.Index].slots).ToString();
+                        Proficiencies_Box.Items.Remove(BoxTarget.Items[e.Index]);
+                        Remaining_Prof.Text = (result + cost).ToString();
                         return;
                     }
                 }
-     
+
             }
 
-        }
-    }
 
+
+        }
+
+        
+    }
 }
     
 

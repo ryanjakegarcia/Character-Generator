@@ -1476,6 +1476,7 @@ namespace CharacterGUI
             // 
             // Proficiency_Access_Box
             // 
+            this.Proficiency_Access_Box.Enabled = false;
             this.Proficiency_Access_Box.Location = new System.Drawing.Point(16, 153);
             this.Proficiency_Access_Box.Name = "Proficiency_Access_Box";
             this.Proficiency_Access_Box.Size = new System.Drawing.Size(195, 27);
@@ -1501,6 +1502,7 @@ namespace CharacterGUI
             this.Wizard_Prof_Box.Name = "Wizard_Prof_Box";
             this.Wizard_Prof_Box.Size = new System.Drawing.Size(377, 290);
             this.Wizard_Prof_Box.TabIndex = 6;
+            this.Wizard_Prof_Box.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.Wizard_Prof_Box_ItemCheck);
             // 
             // Warrior_Prof_Box
             // 
@@ -1510,6 +1512,7 @@ namespace CharacterGUI
             this.Warrior_Prof_Box.Name = "Warrior_Prof_Box";
             this.Warrior_Prof_Box.Size = new System.Drawing.Size(379, 356);
             this.Warrior_Prof_Box.TabIndex = 5;
+            this.Warrior_Prof_Box.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.Warrior_Prof_Box_ItemCheck);
             // 
             // Priest_Prof_Box
             // 
@@ -1519,6 +1522,7 @@ namespace CharacterGUI
             this.Priest_Prof_Box.Name = "Priest_Prof_Box";
             this.Priest_Prof_Box.Size = new System.Drawing.Size(377, 268);
             this.Priest_Prof_Box.TabIndex = 4;
+            this.Priest_Prof_Box.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.Priest_Prof_Box_ItemCheck);
             // 
             // Rogue_Prof_Box
             // 
@@ -1528,12 +1532,13 @@ namespace CharacterGUI
             this.Rogue_Prof_Box.Name = "Rogue_Prof_Box";
             this.Rogue_Prof_Box.Size = new System.Drawing.Size(375, 356);
             this.Rogue_Prof_Box.TabIndex = 3;
+            this.Rogue_Prof_Box.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.Rogue_Prof_Box_ItemCheck);
             // 
             // Proficiencies_Box
             // 
             this.Proficiencies_Box.FormattingEnabled = true;
             this.Proficiencies_Box.ItemHeight = 18;
-            this.Proficiencies_Box.Location = new System.Drawing.Point(2, 243);
+            this.Proficiencies_Box.Location = new System.Drawing.Point(2, 280);
             this.Proficiencies_Box.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Proficiencies_Box.Name = "Proficiencies_Box";
             this.Proficiencies_Box.Size = new System.Drawing.Size(317, 166);
@@ -1615,7 +1620,7 @@ namespace CharacterGUI
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(4, 222);
+            this.label31.Location = new System.Drawing.Point(4, 259);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(137, 18);
             this.label31.TabIndex = 10;
