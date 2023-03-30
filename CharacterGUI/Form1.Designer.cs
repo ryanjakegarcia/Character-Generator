@@ -148,6 +148,7 @@ namespace CharacterGUI
             this.ClassesList = new System.Windows.Forms.CheckedListBox();
             this.Random = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Remaining_Prof = new System.Windows.Forms.TextBox();
             this.Proficiency_Error_Box = new System.Windows.Forms.TextBox();
             this.Proficiency_Access = new System.Windows.Forms.Label();
             this.Proficiency_Access_Box = new System.Windows.Forms.TextBox();
@@ -158,6 +159,7 @@ namespace CharacterGUI
             this.Rogue_Prof_Box = new System.Windows.Forms.CheckedListBox();
             this.Proficiencies_Box = new System.Windows.Forms.ListBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.RegularNumber = new System.Windows.Forms.TextBox();
             this.WeaponNumber = new System.Windows.Forms.TextBox();
             this.RegularProf = new System.Windows.Forms.Label();
@@ -165,8 +167,12 @@ namespace CharacterGUI
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label6 = new System.Windows.Forms.Label();
-            this.Remaining_Prof = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
             tabControl1 = new System.Windows.Forms.TabControl();
             tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1415,6 +1421,12 @@ namespace CharacterGUI
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label45);
+            this.tabPage2.Controls.Add(this.label44);
+            this.tabPage2.Controls.Add(this.label43);
+            this.tabPage2.Controls.Add(this.label33);
+            this.tabPage2.Controls.Add(this.label32);
+            this.tabPage2.Controls.Add(this.label31);
             this.tabPage2.Controls.Add(this.Remaining_Prof);
             this.tabPage2.Controls.Add(this.Proficiency_Error_Box);
             this.tabPage2.Controls.Add(this.Proficiency_Access);
@@ -1435,6 +1447,15 @@ namespace CharacterGUI
             this.tabPage2.Text = "Proficiencies ";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // Remaining_Prof
+            // 
+            this.Remaining_Prof.Location = new System.Drawing.Point(149, 104);
+            this.Remaining_Prof.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Remaining_Prof.Name = "Remaining_Prof";
+            this.Remaining_Prof.Size = new System.Drawing.Size(16, 27);
+            this.Remaining_Prof.TabIndex = 5;
+            this.Remaining_Prof.Text = "0";
+            // 
             // Proficiency_Error_Box
             // 
             this.Proficiency_Error_Box.Location = new System.Drawing.Point(16, 187);
@@ -1450,6 +1471,8 @@ namespace CharacterGUI
             this.Proficiency_Access.Size = new System.Drawing.Size(145, 18);
             this.Proficiency_Access.TabIndex = 8;
             this.Proficiency_Access.Text = "Proficiency Access";
+            this.toolTip1.SetToolTip(this.Proficiency_Access, "If you do not have access to a particular set of proficiencies there is a a one s" +
+        "lot penalty. ");
             // 
             // Proficiency_Access_Box
             // 
@@ -1510,7 +1533,7 @@ namespace CharacterGUI
             // 
             this.Proficiencies_Box.FormattingEnabled = true;
             this.Proficiencies_Box.ItemHeight = 18;
-            this.Proficiencies_Box.Location = new System.Drawing.Point(5, 215);
+            this.Proficiencies_Box.Location = new System.Drawing.Point(2, 243);
             this.Proficiencies_Box.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Proficiencies_Box.Name = "Proficiencies_Box";
             this.Proficiencies_Box.Size = new System.Drawing.Size(317, 166);
@@ -1531,6 +1554,16 @@ namespace CharacterGUI
             this.groupBox9.TabIndex = 0;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Proficiencies ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 72);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 18);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "# Remaining";
             // 
             // RegularNumber
             // 
@@ -1579,24 +1612,59 @@ namespace CharacterGUI
             this.label1.TabIndex = 0;
             this.label1.Text = "Character Generator";
             // 
-            // label6
+            // label31
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 72);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 18);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "# Remaining";
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(4, 222);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(137, 18);
+            this.label31.TabIndex = 10;
+            this.label31.Text = "Your Proficiencies";
             // 
-            // Remaining_Prof
+            // label32
             // 
-            this.Remaining_Prof.Location = new System.Drawing.Point(149, 104);
-            this.Remaining_Prof.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.Remaining_Prof.Name = "Remaining_Prof";
-            this.Remaining_Prof.Size = new System.Drawing.Size(16, 27);
-            this.Remaining_Prof.TabIndex = 5;
-            this.Remaining_Prof.Text = "0";
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(325, 6);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(160, 18);
+            this.label32.TabIndex = 11;
+            this.label32.Text = "General Proficiencies";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(715, 297);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(156, 18);
+            this.label33.TabIndex = 12;
+            this.label33.Text = "Wizard Proficiencies";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(715, 6);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(145, 18);
+            this.label43.TabIndex = 13;
+            this.label43.Text = "Priest Proficiencies";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(1105, 391);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(163, 18);
+            this.label44.TabIndex = 14;
+            this.label44.Text = "Warrior  Proficiencies";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(1105, 6);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(155, 18);
+            this.label45.TabIndex = 15;
+            this.label45.Text = "Rogue  Proficiencies";
             // 
             // Form1
             // 
@@ -1771,6 +1839,12 @@ namespace CharacterGUI
         private System.Windows.Forms.TextBox Proficiency_Access_Box;
         private System.Windows.Forms.TextBox Remaining_Prof;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
     }
 }
 

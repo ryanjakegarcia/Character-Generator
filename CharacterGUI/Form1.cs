@@ -732,11 +732,36 @@ namespace CharacterGUI
         //updates the number of weapon and regular proficiencies via class and stats
 
         private void Update_Proficiencies() 
-        {
+        {   //clearing previous data
+            Proficiencies_Box.Items.Clear();
+            foreach (int i in General_Prof_Box.CheckedIndices)
+            {
+                General_Prof_Box.SetItemCheckState(i, CheckState.Unchecked);
+            }
+            foreach (int i in Rogue_Prof_Box.CheckedIndices)
+            {
+                Rogue_Prof_Box.SetItemCheckState(i, CheckState.Unchecked);
+            }
+            foreach (int i in Priest_Prof_Box.CheckedIndices)
+            {
+                Priest_Prof_Box.SetItemCheckState(i, CheckState.Unchecked);
+            }
+            foreach (int i in Wizard_Prof_Box.CheckedIndices)
+            {
+                Wizard_Prof_Box.SetItemCheckState(i, CheckState.Unchecked);
+            }
+            foreach (int i in Warrior_Prof_Box.CheckedIndices)
+            {
+                Warrior_Prof_Box.SetItemCheckState(i, CheckState.Unchecked);
+            }
+            //setting defaults
             int weapon = 0;
             int regular = 0;
             Proficiency_Access_Box.Text = string.Empty;
             Proficiency_Access_Box.Text += "General ";
+
+
+            //switch case to determine which classes have access to what proficiencies 
             switch (Classbox.Text) 
             {
                 case "Ranger":
@@ -781,6 +806,7 @@ namespace CharacterGUI
                 default: break;
 
             }
+            //setting # of proficicines 
             WeaponNumber.Text = weapon.ToString();
             RegularNumber.Text = (regular + Convert.ToInt32(LangBox.Text )) .ToString();
             Remaining_Prof.Text = (regular + Convert.ToInt32(LangBox.Text)).ToString();
