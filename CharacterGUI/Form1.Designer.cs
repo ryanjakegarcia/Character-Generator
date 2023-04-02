@@ -148,6 +148,12 @@ namespace CharacterGUI
             this.ClassesList = new System.Windows.Forms.CheckedListBox();
             this.Random = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
             this.Remaining_Prof = new System.Windows.Forms.TextBox();
             this.Proficiency_Error_Box = new System.Windows.Forms.TextBox();
             this.Proficiency_Access = new System.Windows.Forms.Label();
@@ -167,12 +173,8 @@ namespace CharacterGUI
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
+            this.Random_Prof = new System.Windows.Forms.Button();
+            this.Clear_Prof = new System.Windows.Forms.Button();
             tabControl1 = new System.Windows.Forms.TabControl();
             tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1421,6 +1423,8 @@ namespace CharacterGUI
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.Clear_Prof);
+            this.tabPage2.Controls.Add(this.Random_Prof);
             this.tabPage2.Controls.Add(this.label45);
             this.tabPage2.Controls.Add(this.label44);
             this.tabPage2.Controls.Add(this.label43);
@@ -1446,6 +1450,60 @@ namespace CharacterGUI
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Proficiencies ";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(1105, 6);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(155, 18);
+            this.label45.TabIndex = 15;
+            this.label45.Text = "Rogue  Proficiencies";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(1105, 391);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(163, 18);
+            this.label44.TabIndex = 14;
+            this.label44.Text = "Warrior  Proficiencies";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(715, 6);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(145, 18);
+            this.label43.TabIndex = 13;
+            this.label43.Text = "Priest Proficiencies";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(715, 297);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(156, 18);
+            this.label33.TabIndex = 12;
+            this.label33.Text = "Wizard Proficiencies";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(325, 6);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(160, 18);
+            this.label32.TabIndex = 11;
+            this.label32.Text = "General Proficiencies";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(4, 259);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(137, 18);
+            this.label31.TabIndex = 10;
+            this.label31.Text = "Your Proficiencies";
             // 
             // Remaining_Prof
             // 
@@ -1617,59 +1675,25 @@ namespace CharacterGUI
             this.label1.TabIndex = 0;
             this.label1.Text = "Character Generator";
             // 
-            // label31
+            // Random_Prof
             // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(4, 259);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(137, 18);
-            this.label31.TabIndex = 10;
-            this.label31.Text = "Your Proficiencies";
+            this.Random_Prof.Location = new System.Drawing.Point(19, 221);
+            this.Random_Prof.Name = "Random_Prof";
+            this.Random_Prof.Size = new System.Drawing.Size(75, 23);
+            this.Random_Prof.TabIndex = 16;
+            this.Random_Prof.Text = "Random";
+            this.Random_Prof.UseVisualStyleBackColor = true;
+            this.Random_Prof.Click += new System.EventHandler(this.Random_Prof_Click);
             // 
-            // label32
+            // Clear_Prof
             // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(325, 6);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(160, 18);
-            this.label32.TabIndex = 11;
-            this.label32.Text = "General Proficiencies";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(715, 297);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(156, 18);
-            this.label33.TabIndex = 12;
-            this.label33.Text = "Wizard Proficiencies";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(715, 6);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(145, 18);
-            this.label43.TabIndex = 13;
-            this.label43.Text = "Priest Proficiencies";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(1105, 391);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(163, 18);
-            this.label44.TabIndex = 14;
-            this.label44.Text = "Warrior  Proficiencies";
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(1105, 6);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(155, 18);
-            this.label45.TabIndex = 15;
-            this.label45.Text = "Rogue  Proficiencies";
+            this.Clear_Prof.Location = new System.Drawing.Point(136, 221);
+            this.Clear_Prof.Name = "Clear_Prof";
+            this.Clear_Prof.Size = new System.Drawing.Size(75, 23);
+            this.Clear_Prof.TabIndex = 17;
+            this.Clear_Prof.Text = "Clear";
+            this.Clear_Prof.UseVisualStyleBackColor = true;
+            this.Clear_Prof.Click += new System.EventHandler(this.Clear_Prof_Click);
             // 
             // Form1
             // 
@@ -1850,6 +1874,8 @@ namespace CharacterGUI
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Button Clear_Prof;
+        private System.Windows.Forms.Button Random_Prof;
     }
 }
 

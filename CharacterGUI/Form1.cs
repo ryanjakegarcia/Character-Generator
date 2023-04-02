@@ -43,7 +43,7 @@ namespace CharacterGUI
 
 
 
-
+        //should move this out somewhere else
 
         struct proficiency
         {
@@ -931,32 +931,49 @@ namespace CharacterGUI
                 //check to see if its already in the list if so check slot
 
 
-                if (result - ListTarget[e.Index].slots >= 0)
+                if (result - cost >= 0)
                 {
                     if (Proficiencies_Box.Items.Count == 0)
                     {
-                        Proficiencies_Box.Items.Add(BoxTarget.Items[e.Index]);
+                        Proficiencies_Box.Items.Add(BoxTarget.Items[e.Index].ToString() + boxtype.Substring(0, 2));
                         Remaining_Prof.Text = (result - cost).ToString();
                         return;
                     }
 
+                    //this is to prevent addint duplicates
+                    // one letter is not enough as both wizard and warrior both start with W
+                    // This wouldnt be an issue if they didn't have any overlap but navigation is in both
+                    // i could use substr instead of chars to trim but its kinda long reference chain 
+                    //this is cleaner
+                  
+                    char[] charsToTrim = { 'R', 'W', 'G', 'P','r','i','o','e','a' };
                     //checking to see if it is alreay in the proficiency box
                     foreach (var stuff in Proficiencies_Box.Items)
                     {
-                        if (!stuff.ToString().Equals(ListTarget[e.Index].ToString()))
+                        if (!stuff.ToString().TrimEnd(charsToTrim).Equals(ListTarget[e.Index].ToString().TrimEnd(charsToTrim)))
                         {
-                            Proficiencies_Box.Items.Add(BoxTarget.Items[e.Index]);
+                            Proficiencies_Box.Items.Add(BoxTarget.Items[e.Index].ToString() + boxtype.Substring(0, 2));
                             Remaining_Prof.Text = (result - cost).ToString();
 
                             return;
                         }
                     }
-                    BoxTarget.SetItemChecked(e.Index, false);
+
+                    //doesnt work
+                    //   |
+                    //   |
+                    //  \/
+                    //BoxTarget.SetItemChecked(e.Index, false);
                     Proficiency_Error_Box.Text = "Proficiency has already been added";
                     return;
 
                 }
-                BoxTarget.SetItemChecked(e.Index, false);
+
+                //I wish I worked
+                //   |
+                //   |
+                //  \/
+                ///BoxTarget.SetItemChecked(e.Index, false);
                 Proficiency_Error_Box.Text = "You do not have enough slots";
                 return;
             }
@@ -966,11 +983,11 @@ namespace CharacterGUI
 
                 foreach (var stuff in Proficiencies_Box.Items)
                 {
-                    if (stuff.ToString().Equals(ListTarget[e.Index].ToString()))
+                    if (stuff.ToString().Equals(ListTarget[e.Index].ToString() + boxtype.Substring(0, 2)))
                     {
 
                         //Console.WriteLine("WE happy");
-                        Proficiencies_Box.Items.Remove(BoxTarget.Items[e.Index]);
+                        Proficiencies_Box.Items.Remove(BoxTarget.Items[e.Index].ToString() + boxtype.Substring(0,2));
                         Remaining_Prof.Text = (result + cost).ToString();
                         return;
                     }
@@ -982,7 +999,82 @@ namespace CharacterGUI
 
         }
 
-        
+
+        //clears all proficiency data
+        private void Clear_Prof_Click(object sender, EventArgs e)
+        {
+            Update_Proficiencies();
+        }
+        private void Random_Prof_Click(object sender, EventArgs e)
+        {
+
+
+            DateTime dateTime = DateTime.Now;
+            int timeMsSinceMidnight = (int)dateTime.TimeOfDay.TotalMilliseconds;
+            var rnd = new Random(timeMsSinceMidnight);
+            int mIndex= rnd.Next(0, 5);
+            int range = 0;
+            while (Convert.ToInt32(Remaining_Prof.Text) > 0)
+            { 
+                 mIndex = rnd.Next(1, 5);
+                 
+                switch (mIndex) 
+                
+                
+
+                {
+
+                    case 1:
+                        //general
+                        range = rnd.Next(0,General_Prof_Box.Items.Count - 1);
+                        General_Prof_Box.SetItemChecked(range, true);
+                        //return;
+                        break;
+
+                    case 2:
+                        //Wizard
+                        range = rnd.Next(0,Wizard_Prof_Box.Items.Count - 1);
+                        Wizard_Prof_Box.SetItemChecked(range, true);
+                        //return;
+                        break;
+
+                    case 3:
+                        //Warrior
+                        range = rnd.Next(0, Warrior_Prof_Box.Items.Count - 1);
+                        Warrior_Prof_Box.SetItemChecked(range, true);
+                        //return;
+                        break;
+
+
+                    case 4:
+                        //Priest
+                        range = rnd.Next(0, Priest_Prof_Box.Items.Count-1);
+                        Priest_Prof_Box.SetItemChecked(range, true);
+                        //return;
+                        break;
+
+                    case 5:
+                        //Rogue
+                        range = rnd.Next(0, Rogue_Prof_Box.Items.Count-1);
+                        Rogue_Prof_Box.SetItemChecked(range, true);
+                        //return;
+                        break;
+                    default: break;
+
+                }
+
+                Console.WriteLine("Help " + range);
+                                
+
+             
+
+            }
+
+
+        }
+
+
+
     }
 }
     
